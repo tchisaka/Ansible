@@ -14,6 +14,12 @@ add_pkgs:
   - i2c-tools
   - libi2c-dev
   - python-smbus
+  # Fonts
+  - fonts-takao
+  # Japanese Input Method
+  - ibus-mozc
+  # Web Browser
+  - iceweasel
 
 samba_file: /etc/samba/smb.conf
 samba_conf: |

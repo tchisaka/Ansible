@@ -1,4 +1,3 @@
 # Ansible
-#
-# Ansible code for setup Raspberry Pis and Macs
-#
+
+Ansible code for setup Raspberry Pis and Macs
