@@ -1,0 +1,14 @@
+alias ll="ls -l"
+alias la="ls -la"
+
+alias raspi-update="sudo apt-get update;sudo apt-get upgrade -y;sudo apt-get dist-upgrade -y;sudo apt-get autoremove -y"
+alias rpi-update="sudo rpi-update"
+alias now="sudo hwclock -r;date"
+alias jp="LANG=jp_JP.UTF-8"
+alias en="LANG=en_GB.UTF-8"
+
+# http://elinux.org/RPI_vcgencmd_usage
+alias cpu-temp="vcgencmd measure_temp"
+alias cpu-freq="vcgencmd measure_clock arm"
+alias display_power_off="vcgencmd display_power 0"
+alias display_power_on="vcgencmd display_power 1"

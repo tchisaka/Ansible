@@ -1,0 +1,6 @@
+---
+install_motion_lib_oath: /var/lib/motion
+install_motion_user: motion
+
+install_motion_config_file: motion.conf
+install_motion_dest_path: "{{ ansible_user_dir }}/.motion"

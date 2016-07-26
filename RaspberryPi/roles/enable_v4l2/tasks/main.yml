@@ -1,0 +1,13 @@
+---
+# ----- enable v4l2 module -----
+
+- name: add v4l2 module name in /etc/modules
+  become: yes
+  lineinfile: dest=/etc/modules line={{ item }} state=present
+  with_items:
+    - bcm2835-v4l2
+  register: v4l2
+
+- name: reboot
+  include: roles/common/reboot.yml
+  when: v4l2|changed

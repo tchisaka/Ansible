@@ -1,0 +1,17 @@
+---
+- name: iMac's tasks
+  hosts: localhost
+  user: takamasa
+  tasks:
+  
+  - name: Delete local zetazero*.tsv files in the iMac
+#   file: path={{item}} state=absent  
+    shell: mv {{item}} {{item|dirname}}/.Trash/{{item|basename}}
+    with_fileglob:
+      - ~/zetazero*.tsv
+
+- name: Every Raspberry Pi's tasks
+  hosts: zetazero
+  tasks:
+  - name: Get zetazero*.tsv files from Raspberry Pis
+    shell: bash move-data.sh -m chdir=~/ZetaZero/

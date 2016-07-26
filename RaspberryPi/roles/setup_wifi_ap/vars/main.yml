@@ -1,0 +1,7 @@
+---
+setup_wifi_ap_wifi_list:
+      - { ssid: 'TC-Network',     pwd: 'fox177619711220' }
+      - { ssid: 'ap-pc-c1e1e4',   pwd: 'fox177619711220' }
+      - { ssid: 'ap-game-c1e1e5', pwd: 'fox177619711220' }
+setup_wifi_ap_conf_file: /etc/wpa_supplicant/wpa_supplicant.conf
+setup_wifi_ap_temp_dir: '{{ ansible_user_dir }}/__temp__'

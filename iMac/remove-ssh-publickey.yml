@@ -1,0 +1,7 @@
+---
+- name: remove Raspberry Pi ssh-publickey
+  hosts: localhost
+  tasks:
+   - name:  remove ssh publickey
+     shell: ssh-keygen -R {{ inventory_hostname }}
+

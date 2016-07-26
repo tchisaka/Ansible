@@ -1,0 +1,4 @@
+---
+- name: restart wpa_supplicant
+  become: yes
+  service: name=wpa_supplicant state=restarted

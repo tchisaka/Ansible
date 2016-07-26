@@ -1,0 +1,20 @@
+---
+temp_file: __test__.tmp
+priv_key: ~/.ssh/id_rsa
+pub_key: ~/.ssh/id_rsa.pub
+auth_file: ~/.ssh/authorized_keys
+all_user_keys: |
+  {% set o = [] %}
+  {% for i in play_hosts %}
+  {%   set _ = o.append(hostvars[i].pubkey) %}
+  {% endfor %}
+  {{ o }}
+all_host_keys: |
+  {% set o = [] %}
+  {% for i in play_hosts %}
+  {%   set v = hostvars[i] %}
+  {%   set h = ','.join([i,v.ansible_fqdn]+v.ansible_all_ipv4_addresses) %}
+  {%   set k = ' '.join([h, 'ssh-rsa', v.ansible_ssh_host_key_rsa_public]) %}
+  {%   set _ = o.append({'name': i, 'key': k}) %}
+  {% endfor %}
+  {{ o }}

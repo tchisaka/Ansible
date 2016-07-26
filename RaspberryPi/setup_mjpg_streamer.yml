@@ -1,0 +1,27 @@
+---
+# Setup MJPG-streamer
+#   - refer to http://ogane.com/homebrew/rpi/1522/index.html
+
+- name: setup MJPG-streamer
+  hosts: Leon.local
+  environment:
+    LANG: C
+    LC_ALL: C
+    LC_MESSAGES: C
+  roles:
+    - enable_i2c
+    - enable_v4l2
+    - enable_picamera
+    - apt_get_update
+    - install_mjpg_streamer
+
+#  tasks:
+#    - name: set video format
+#      shell: v4l2-ctl --set-fmt-video=width=640,height=480,pixelformat=0
+#      changed_when: no
+#
+# ----- use mjpg_streamer -----
+#
+# sudo mjpg_streamer \ 
+# -i "/usr/local/lib/mjpg-streamer/input_raspicam.so -x 640 -y 480 -fps 30" \
+# -o "/usr/local/lib/mjpg-streamer/output_http.so -w /usr/local/www -p 8080"

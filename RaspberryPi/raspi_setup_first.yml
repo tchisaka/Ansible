@@ -1,0 +1,17 @@
+---
+- name: Raspberry Pi's First Setup
+  hosts: all
+  roles:
+    # set SSH public key
+    - set_authorized_key
+    # setup timezone, keyboard, locale
+    - international_setting
+    # set Wi-Fi configure
+    - setup_usb_wifi_adapter
+    - setup_wifi_ap
+    # update software
+    - apt_get_update
+    - apt_get_upgrade
+    - update_firmware
+    # essential
+    - setup_first

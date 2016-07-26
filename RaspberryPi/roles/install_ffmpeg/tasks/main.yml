@@ -1,0 +1,70 @@
+---
+# ----- install ffmpeg with fdk-aac-----
+# refer to http://d.hatena.ne.jp/embedded/20151011/p2
+
+- name: apt-get install add pkgs
+  become: yes
+  apt: name={{ item }} state=latest force=yes
+  with_items: "{{ install_ffmpeg_add_pkgs }}"
+
+# --- check architecture ---
+- include_vars: armv6l.yml
+  when: ansible_architecture == 'armv6l'
+
+# --- install fdk-aac ---
+- name: wget fdk-aac
+  become: yes
+  get_url: >
+    url={{ install_ffmpeg_fdk_aac_source }}
+    dest={{ install_ffmpeg_working_dir }}
+  register: fdkacc_tar
+
+- name: unarchive fdk-aac
+  become: yes
+  unarchive: >
+    src={{ fdkacc_tar.dest }}
+    dest={{ install_ffmpeg_working_dir }}
+    copy=no
+    list_files=yes
+  register: fdkacc
+
+- name: build fdk-acc
+  become: yes
+  shell: "{{ item }}"
+  args:
+    chdir: "{{ install_ffmpeg_working_dir }}/{{ fdkacc.files[0] }}"
+  with_items: "{{ install_ffmpeg_build_fdkaac_items }}"
+  changed_when: no
+  when: fdkacc_tar.changed
+
+# --- install ffmpeg ---
+- name: wget ffmpeg
+  become: yes
+  get_url: >
+    url={{ install_ffmpeg_ffmpeg_source }}
+    dest={{ install_ffmpeg_working_dir }}
+  register: ffmpeg_tar
+
+- name: unarchive ffmpeg
+  become: yes
+  unarchive: >
+    src={{ ffmpeg_tar.dest }}
+    dest={{ install_ffmpeg_working_dir }}
+    copy=no
+    list_files=yes
+  register: ffmpeg
+
+- name: copy myconfig.sh
+  become: yes
+  copy: >
+    src={{ install_ffmpeg_myconfig}}
+    dest={{ install_ffmpeg_working_dir }}/{{ ffmpeg.files[0] }}
+      
+- name: build ffmpeg
+  become: yes
+  shell: "{{ item }}"
+  args:
+    chdir: "{{ install_ffmpeg_working_dir }}/{{ ffmpeg.files[0] }}"
+  with_items: "{{ install_ffmpeg_build_ffmpeg_items }}"
+  changed_when: no
+  when: ffmpeg_tar.changed

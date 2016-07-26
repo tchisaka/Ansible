@@ -1,0 +1,36 @@
+---
+# ----- set bash aliases -----
+- name: copy .bash_aliases
+  copy: >
+    src=bash_aliases
+    dest={{ ansible_user_dir }}/.bash_aliases
+  tags:
+    - set bash aliases
+
+# ----- add pkgs -----
+- name: apt-get install additional pkgs
+  become: yes
+  apt: name={{ item }} state=latest force=yes
+  with_items: "{{ add_pkgs }}"
+  notify:
+    - restart avahi-daemon
+  tags:
+    - add software
+
+# --- setup samba ---
+- block:
+  - name: edit smb.conf
+    become: yes
+    blockinfile: >
+      dest={{ samba_file }}
+      block={{ samba_conf }}
+    notify:
+     - restart samba     
+  - name: add samba user
+    become: yes
+    shell: |
+      echo '{{ samba_pwd }}\n{{ samba_pwd }}\n' | \
+      smbpasswd -a -s {{ samba_user }}
+    changed_when: no
+  tags:
+    - setup samba

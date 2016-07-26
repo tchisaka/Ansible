@@ -1,0 +1,64 @@
+---
+# Refer to http://blog.keshi.org/hogememo/2015/12/07/exploiting-ansible-jinja2
+#
+# --- push pub_key from localhost to hosts ---
+- name: set authorized_keys
+  authorized_key: >
+    user={{ ansible_user_id }}
+    key="{{ lookup('file', '{{ pub_key }}' ) }}"
+  tags:
+    push pub_key
+
+# --- create ssh key on hosts ---
+- name: create ssh-key
+  shell: ssh-keygen -q -f {{ priv_key }} -N ''
+  args:
+    creates: "{{ priv_key }}"
+  tags:
+    - create ssh-key
+
+# --- fetch pub key ---
+- block:
+  - name: get pub_key
+    shell: cat {{ pub_key }}
+    register: reg
+    changed_when: no
+  - name: set_fact
+    set_fact:
+      pubkey: "{{reg.stdout}}"
+  tags:
+    - fetch pub_key
+
+# --- dist pub key ---
+- block:
+  - name: add authorized keys to localhost
+    lineinfile: >
+      dest={{ auth_file }}
+      line={{ item }}
+      state=present
+      regexp="{{ item.split(' ')[-1] }}$"
+    with_items: "{{ pubkey }}"
+    delegate_to: localhost
+  - name: set authorized keys from hosts to hosts
+    authorized_key: >
+      user={{ansible_user_id}}
+      key={{item}}
+    with_items: "{{ all_user_keys }}"
+  - name: sort authorized_keys
+    shell: |
+      sort -k3 {{ auth_file }} > {{ temp_file }}
+      mv {{ temp_file }} {{ auth_file }}
+    args:
+      chdir: ~/.ssh
+    changed_when: no
+  tags:
+    - dist_pubkey
+
+#- debug: msg="NAME={{ item.name }}, KEY={{ item.key }}"
+#  with_items: "{{ all_host_keys }}"
+#
+#  - name: set known_hosts
+#    known_hosts: >
+#      name={{ item.name }}
+#      key={{ item.key }}
+#    with_items: "{{ all_host_keys }}"

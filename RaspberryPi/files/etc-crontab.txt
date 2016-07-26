@@ -1,0 +1,2 @@
+*/1 *   * * *   pi      /home/pi/meas_temp_owfs.py
+

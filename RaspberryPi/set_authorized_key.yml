@@ -1,0 +1,7 @@
+---
+# ----- Raspberry Pi first setup -----
+
+- name: setup
+  hosts: all
+  roles:
+    - set_authorized_key

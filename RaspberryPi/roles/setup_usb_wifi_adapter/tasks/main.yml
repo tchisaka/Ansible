@@ -1,0 +1,32 @@
+---
+# ----- Setup USB-WiFi Adapter -----
+
+- name: check usb-wifi adapter
+  shell: lsusb
+  register: usb_wifi
+  changed_when: no
+  tags:
+    - check usb_wifi
+
+# ----- setup power management
+# PLANEX GW-USNano2 : use 8192cu module
+#
+- block:
+  - name: check wifi power management
+    become: yes
+    shell: cat /sys/module/8192cu/parameters/rtw_power_mgnt
+    register: wan_power_mng
+    changed_when: no
+  - name: copy config file
+    become: yes
+    copy: >
+      src=8192cu.conf
+      dest=/etc/modprobe.d/
+    register: copy_file
+    when: wan_power_mng.stdout != 0
+  - name: reboot
+    include: roles/common/reboot.yml
+    when: copy_file.changed
+  when: "'PLANEX GW-USNano2' in usb_wifi.stdout"
+  tags:
+    - set usb_wifi (8192cu)

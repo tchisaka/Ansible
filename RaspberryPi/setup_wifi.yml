@@ -1,0 +1,6 @@
+---
+- name: setup wifi
+  hosts: all
+  roles:
+    - setup_usb_wifi_adapter
+    - setup_wifi_ap

@@ -1,0 +1,12 @@
+---
+install_ffmpeg_build_fdkaac_items:
+  - autoreconf -fiv
+  - ./configure
+  - make
+  - sudo make install
+
+install_ffmpeg_build_ffmpeg_items:
+  - sh myconfig.sh
+  - time make 2>&1 | tee make.log
+  - sudo make install
+  - sudo /sbin/ldconfig

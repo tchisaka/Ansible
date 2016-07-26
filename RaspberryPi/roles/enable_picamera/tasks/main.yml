@@ -1,0 +1,14 @@
+---
+# ----- enable pi-camera module -----
+
+- name: enable pi-camera module
+  become: yes
+  lineinfile: >
+    dest=/boot/config.txt
+    line='start_x=1'
+    regexp='^start_x=' 
+  register: pi_camera
+ 
+- name: reboot
+  include: roles/common/reboot.yml
+  when: pi_camera|changed

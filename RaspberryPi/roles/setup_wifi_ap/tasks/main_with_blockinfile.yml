@@ -1,0 +1,19 @@
+---
+- name: make wpa_conf
+  shell: wpa_passphrase {{ item.ssid }} {{ item.pwd }}
+  args:
+    executable: /bin/sh
+  with_items: "{{ setup_wifi_ap_wifi_list }}"
+  register: wifi
+  changed_when: no
+
+- name: add wifi access point
+  become: yes
+  blockinfile: >
+    dest={{ setup_wifi_ap_conf_file }}
+    block={{ item.stdout }}
+    state=present
+    marker="# {mark} {{item.item.ssid}}"
+  with_items: "{{ wifi.results }}"
+  notify:
+    - restart wpa_supplicant

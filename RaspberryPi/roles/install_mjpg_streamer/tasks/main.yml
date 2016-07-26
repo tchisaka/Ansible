@@ -1,0 +1,24 @@
+---
+# Setup MJPG-streamer
+#   - refer to http://ogane.com/homebrew/rpi/1522/index.html
+
+- name: apt-get install additional pkgs
+  become: yes
+  apt: name={{ item }} state=latest force=yes
+  with_items: "{{ install_mjpg_streamer_add_pkgs }}"
+
+- name: download source code of mjpg-streamer
+  become: yes
+  git: >
+    repo={{ install_mjpg_streamer_source }}
+    dest={{ install_mjpg_streamer_dist }}
+    update=yes
+  register: mjpg_streamer
+
+- name: build mjpg-streamer
+  become: yes
+  shell: "{{ item }}"
+  args:
+    chdir: "{{ install_mjpg_streamer_build_dir}}"
+  with_items: "{{ install_mjpg_streamer_build_items }}"
+  when: mjpg_streamer|changed

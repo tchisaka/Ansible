@@ -1,0 +1,86 @@
+---
+# ----- vars file for build scientific-python ----
+
+build_sp_based_python: 3.5.1
+build_sp_virtual_python: imaging
+build_sp_virtual_setup_dir: "{{ ansible_user_dir }}/imaging"
+
+# --- list & dict---
+build_sp_add_pkgs:
+  - build-essential
+  - libatlas-base-dev
+  - libatlas-doc
+  - liblapack-dev
+  - libopenblas-base
+  - libopenblas-dev
+  - gfortran
+  - libtiff5-dev
+  - libhdf5-serial-dev
+  - python-pip
+  - python3-pip      
+  - python-dev
+  - python3-dev
+  - python-setuptools
+  - python3-setuptools
+  # --- Optional ---
+  - python-numpy
+  - python3-numpy
+  - python-matplotlib
+  - python3-matplotlib
+  - python-scipy
+  - python3-scipy
+
+build_sp_pip_system_pkgs:
+  - { pkg: 'pip',        env: 'pip'  }
+  - { pkg: 'pip',        env: 'pip3' }
+  - { pkg: 'pipdeptree', env: 'pip'  }
+  - { pkg: 'pipdeptree', env: 'pip3' }
+
+build_sp_pip_science_pkgs1:
+  # --- Package Managements ---
+  - pip
+  - setuptools
+  - wheel
+  - python-debian
+  # --- Fundamental Packages ---
+  - six
+  - urllib3
+  - cython
+  # --- Tool Packages ---
+  - nose              # for UnitTest
+  - pipdeptree        # for checking the package dependencies
+  # --- GPIO Control Packages ---
+  - pyserial          # General Serial Port Control
+  - RPi.GPIO          # for Raspberry Pi GPIO
+  - picamera          # for Raspberry Pi Camera
+  - pifacecommon      # for PiFace products.
+  - pifacedigitalio   # for PiFace Digital I/O
+  # --- Scientific Packages ---
+  - numpy
+  - numexpr
+  - bottleneck
+  - py-cpuinfo
+  - tables
+  - sympy
+  - simpy
+  - pandas
+  - openopt
+  # --- Image Proccessing ---
+  - pillow
+  # --- Interactive Environments ---
+  - ipython
+  - jupyter
+  - notebook
+  # --- Graphical Package --
+  - matplotlib
+
+build_sp_pip_science_pkgs2:   
+  # --- Scientific Packages ---
+  - scipy
+  # --- Graphical Package --
+  - bokeh
+  - seaborn
+  - vispy
+  # --- Machine Learning ---
+  - scikit-learn
+      

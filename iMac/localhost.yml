@@ -1,0 +1,13 @@
+---
+- name: Ansible Command Test
+  hosts: localhost
+  tasks:
+  - name: pyenv
+    stat: path=/usr/local/bin/pyenv
+    register: result
+    changed_when: not result.stat.exists
+
+  - name: Install pyenv
+    shell: echo "pyenv is not installed"
+    when: result|changed
+

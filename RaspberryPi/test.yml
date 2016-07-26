@@ -1,0 +1,8 @@
+---
+- name: test setup
+  hosts: Leon.local
+  vars:
+    test: {"changed": false,"invocation": {"module_args": {"_raw_params": "check_wificonf.py TC-Network fox177619711220 /etc/wpa_supplicant/wpa_supplicant.conf"},"module_name": "script"}, "item": {"pwd": "fox177619711220", "ssid": "TC-Network"}, "rc": 0, "stderr": "", "stdout": "True", "stdout_lines": ["True"]}
+  tasks:
+    - debug: msg={{ test.changed }}
+    - debug: msg={{ test| }}

@@ -1,0 +1,8 @@
+---
+- name: Check IP Address
+  hosts: all
+  tasks:
+    - debug: var={{ item }}
+      with_items:
+        - ansible_eth0.ipv4.address
+        - ansible_wlan0.ipv4.address

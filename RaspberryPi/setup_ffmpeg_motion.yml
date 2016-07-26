@@ -1,0 +1,21 @@
+---
+# Setup fdk-aac & ffmpeg
+#  - refer to http://d.hatena.ne.jp/embedded/20151011/p2
+#
+# Setup Motion
+#   - refer to http://qiita.com/rukihena/items/95da3860f9ca86c39f8d
+
+- name: Setup motion & ffmpeg
+  hosts: Leon.local
+  environment:
+    LANG: C
+    LC_ALL: C
+    LC_MESSAGES: C
+  roles:
+    - enable_i2c
+    - enable_v4l2
+    - enable_picamera
+    - apt_get_update
+    - install_ffmpeg
+    - install_motion
+

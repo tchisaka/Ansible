@@ -1,0 +1,25 @@
+---
+# ----- enable i2c module -----
+
+- name: check i2c module
+  shell: i2cdetect -y 1
+  register: i2c_result
+  changed_when: "'Error' in i2c_result.stderr"
+  ignore_errors: yes
+
+- block:
+  - name: add i2c module name in /etc/modules
+    become: yes
+    lineinfile: dest=/etc/modules line={{ item }} state=present
+    with_items:
+      - i2c-bcm2708
+      - i2c-dev
+  - name: add i2c module name in /boot/config.txt
+    become: yes
+    lineinfile: dest=/boot/config.txt line={{ item }} state=present
+    with_items:
+      - dtparam=i2c1=on
+      - dtparam=i2c_arm=on
+  - name: reboot machine
+    include: roles/common/reboot.yml
+  when: i2c_result|failed

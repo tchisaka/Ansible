@@ -1,0 +1,5 @@
+---
+install_owfs_build_items:
+  - ./configure
+  - make
+  - make install
