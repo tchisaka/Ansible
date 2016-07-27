@@ -1,0 +1,3 @@
+---
+# ----- enable i2c module -----
+enable_i2c_state: enable
