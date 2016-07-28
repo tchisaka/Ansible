@@ -1,0 +1,5 @@
+---
+- name: setup modules
+  hosts: test
+  roles:
+    - enable_modules

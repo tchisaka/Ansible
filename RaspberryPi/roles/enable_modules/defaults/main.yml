@@ -1,0 +1,7 @@
+---
+enable_i2c_state:      enable
+enable_v4l2_state:     enable
+enable_picamera_state: enable
+
+etc_modules_file: /etc/modules
+boot_config_file: /boot/config.txt

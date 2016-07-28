@@ -1,6 +1,0 @@
----
-- name: i2c module setup
-  hosts: test
-  roles:
-    - { role: enable_i2c, enable_i2c_state: enable }
-

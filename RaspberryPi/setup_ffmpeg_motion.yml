@@ -12,9 +12,7 @@
     LC_ALL: C
     LC_MESSAGES: C
   roles:
-    - enable_i2c
-    - enable_v4l2
-    - enable_picamera
+    - enable_modules
     - apt_get_update
     - install_ffmpeg
     - install_motion
