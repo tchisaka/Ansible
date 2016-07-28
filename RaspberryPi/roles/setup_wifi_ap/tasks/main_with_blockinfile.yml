@@ -1,6 +1,8 @@
 ---
 - name: make wpa_conf
-  shell: wpa_passphrase {{ item }} {{ wifi_passphrase }}
+  shell: |
+    wpa_passphrase {{ item }} {{ wifi_passphrase }} | \
+    sed -e "/#psk/d"
   with_items: "{{ setup_wifi_ap_wifi_list }}"
   register: wifi
   changed_when: no
