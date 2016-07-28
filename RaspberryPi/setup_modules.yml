@@ -2,4 +2,7 @@
 - name: setup modules
   hosts: test
   roles:
-    - enable_modules
+    - role: enable_modules
+      enable_i2c_state: unchange
+      enable_v4l2_state: unchange
+      enable_picamera_state: unchange
