@@ -1,4 +1,4 @@
 ---
 # ----- disable v4l2 module -----
 v4l2_modules_items:
-  - { line: bcm2835-v4l2, state: absent  }
+  - { line: 'bcm2835-v4l2', state: absent  }

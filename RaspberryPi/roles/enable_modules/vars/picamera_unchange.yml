@@ -1,5 +1,4 @@
 ---
 # ----- enable picamera module -----
 picamera_config_items:
-  - regexp:  'start_x='
-    replace: 'start_x='
+  - { regexp: None, replace: None }

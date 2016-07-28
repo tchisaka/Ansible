@@ -9,9 +9,10 @@
     LC_ALL: C
     LC_MESSAGES: C
   roles:
-    - enable_i2c
-    - enable_v4l2
-    - enable_picamera
+    - role: enable_modules
+      enable_i2c_state: enable
+      enable_v4l2_state: enable
+      enable_picamera_state: enable
     - apt_get_update
     - install_mjpg_streamer
 

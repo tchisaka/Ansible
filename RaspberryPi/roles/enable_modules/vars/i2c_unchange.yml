@@ -1,8 +1,7 @@
 ---
 # ----- enable i2c module -----
 i2c_modules_items:
-  - { line: i2c-dev, state: present }
+  - { line: None, state: absent }
 
 i2c_config_items:
-  - regexp:  'dtparam=i2c_arm='
-    replace: 'dtparam=i2c_arm='
+  - { regexp: None, replace: None }

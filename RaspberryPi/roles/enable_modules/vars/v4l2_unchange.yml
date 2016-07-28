@@ -1,4 +1,4 @@
 ---
 # ----- enable v4l2 module -----
 v4l2_modules_items:
-  - { line: i2c-dev, state: present }
+  - { line: None, state: absent }

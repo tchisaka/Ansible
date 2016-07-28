@@ -1,7 +1,7 @@
 ---
-- include_vars: "i2c_{{ enable_i2c_state }}.yml"
-- include_vars: "v4l2_{{ enable_v4l2_state }}.yml"
-- include_vars: "picamera_{{ enable_picamera_state }}.yml"
+- include_vars: "i2c_{{ enable_i2c_state | default('unchange') }}.yml"
+- include_vars: "v4l2_{{ enable_v4l2_state | default('unchange') }}.yml"
+- include_vars: "picamera_{{ enable_picamera_state | default('unchange') }}.yml"
 
 - name: edit /etc/modules
   become: yes
@@ -12,8 +12,8 @@
   with_flattened:
     - "{{ i2c_modules_items }}"
     - "{{ v4l2_modules_items }}"
+  when: "'{{ item.line }}' != None"
   register: modules
-  ignore_errors: yes
 
 - name: edit /boot/config.txt
   become: yes
@@ -21,11 +21,11 @@
     dest={{ boot_config_file }}
     replace={{ item.replace }}
     regexp={{ item.regexp }}
+  when: "'{{ item.replace }}' != None"
   with_flattened:
     - "{{ i2c_config_items }}"
     - "{{ picamera_config_items }}"
   register: config
-  ignore_errors: yes
 
 - name: reboot machine
   include: roles/common/reboot.yml
