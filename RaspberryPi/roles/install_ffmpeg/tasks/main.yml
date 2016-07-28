@@ -35,7 +35,7 @@
     chdir: "{{ install_ffmpeg_working_dir }}/{{ fdkacc.files[0] }}"
   with_items: "{{ install_ffmpeg_build_fdkaac_items }}"
   changed_when: no
-  when: fdkacc_tar.changed
+  when: fdkacc_tar|changed
 
 # --- install ffmpeg ---
 - name: wget ffmpeg
@@ -67,4 +67,4 @@
     chdir: "{{ install_ffmpeg_working_dir }}/{{ ffmpeg.files[0] }}"
   with_items: "{{ install_ffmpeg_build_ffmpeg_items }}"
   changed_when: no
-  when: ffmpeg_tar.changed
+  when: ffmpeg_tar|changed
