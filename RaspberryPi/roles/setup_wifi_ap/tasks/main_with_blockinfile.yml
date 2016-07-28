@@ -1,8 +1,6 @@
 ---
 - name: make wpa_conf
-  shell: wpa_passphrase {{ item.ssid }} {{ item.pwd }}
-  args:
-    executable: /bin/sh
+  shell: wpa_passphrase {{ item }} {{ wifi_passphrase }}
   with_items: "{{ setup_wifi_ap_wifi_list }}"
   register: wifi
   changed_when: no

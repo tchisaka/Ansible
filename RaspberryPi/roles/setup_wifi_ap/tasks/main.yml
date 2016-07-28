@@ -4,7 +4,7 @@
   - name: check wpa_supplicant.conf
     become: yes
     script: |
-      check_wificonf.py {{ item.ssid }} {{ item.pwd }} {{ setup_wifi_ap_conf_file}}
+      check_wificonf.py {{ item }} {{ wifi_passphrase }} {{ setup_wifi_ap_conf_file}}
     register: wifi_conf
     changed_when: "'False' in wifi_conf.stdout"
     with_items: "{{ setup_wifi_ap_wifi_list }}"
@@ -17,7 +17,7 @@
 - name: add wifi access point
   become: yes
   shell: |
-    wpa_passphrase {{ item.1.ssid }} {{ item.1.pwd }} >> {{ setup_wifi_ap_conf_file }}
+    wpa_passphrase {{ item.1 }} {{ wifi_passphrase }} >> {{ setup_wifi_ap_conf_file }}
   when: item.0
   with_together:
     - "{{ wifi_ap }}"

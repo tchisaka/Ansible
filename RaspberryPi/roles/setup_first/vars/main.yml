@@ -33,4 +33,3 @@ samba_conf: |
      share modes = yes
      force user = {{ ansible_user_id }}
 samba_user: "{{ ansible_user_id }}"
-samba_pwd: 'raspberry'

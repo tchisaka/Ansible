@@ -1,6 +1,11 @@
 ---
 - name: setup wifi
   hosts: all
+  vars_prompt:
+    - name: "wifi_passphrase"
+      prompt: "Please enter Wi-Fi passphrase"
+      private: yes
+      confirm: yes
   roles:
     - setup_usb_wifi_adapter
     - setup_wifi_ap
