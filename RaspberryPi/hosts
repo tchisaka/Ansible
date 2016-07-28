@@ -9,8 +9,8 @@ Harry.local
 Iris.local
 John.local
 Kate.local
-Leon.local    enable_i2c_state=enable enable_v4l2_state=enable  enable_picamera_state=enable
-Yolanda.local enable_i2c_state=enable enable_v4l2_state=disable enable_picamera_state=disable
+Leon.local
+Yolanda.local
 Zero.local
 
 [zetazero]
@@ -58,8 +58,8 @@ Cathy.local
 Yolanda.local
 
 [test]
-Leon.local
-Yolanda.local
+Leon.local    enable_i2c_state=enable enable_v4l2_state=enable  enable_picamera_state=enable
+Yolanda.local enable_i2c_state=enable enable_v4l2_state=disable enable_picamera_state=disable
 
 [rest]
 Annie.local
