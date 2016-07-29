@@ -1,0 +1,6 @@
+working_dir: "{{ ansible_user_dir }}/i2c"
+logging_dir: "{{ working_dir }}/log"
+script_files: 
+  - bme280.sh
+  - bme280.py
+

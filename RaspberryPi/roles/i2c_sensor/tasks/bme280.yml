@@ -1,0 +1,23 @@
+---
+# ----- BME280 Temperature/Pressure/Humidity Sensor -----
+# var: module_name=bme280
+
+- name: copy scripts
+  copy: >
+    dest={{ working_dir }}
+    src={{ item }}
+    mode=0777
+  with_items: "{{ script_files }}"
+    
+- name: make logging directory
+  file: >
+    path={{ logging_dir }}
+    state=directory
+
+- name: set cron
+  cron: >
+    name='check temperature'
+    job='{{ working_dir }}/{{ script_files[0] }}'
+    backup=yes
+  notify:
+    - restart cron
