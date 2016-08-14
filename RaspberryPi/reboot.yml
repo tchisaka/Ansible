@@ -1,0 +1,6 @@
+---
+- name: Raspberry Pi software update
+  hosts: all
+  tasks:
+    - name: reboot machine
+      include: roles/common/reboot.yml

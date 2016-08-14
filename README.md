@@ -18,7 +18,9 @@ Raspberry Pi 用セットアップ・ファイル
 1. apt_get_update, apt_get_upgrade ... ソフトウェアのアップデート
 1. update_firmware ... ファームウェアのアップデート
 1. setup_first ... Raspberry Pi の基本セットアップ
-  * ソフトウェアの追加インストール (Avahi, Samba, リモートデスクトップ, 日本語フォント, 日本語入力メソッド, ウェブブラウザ)
+  * ソフトウェアの追加インストール
+    - Avahi, Samba, リモートデスクトップ
+    - 日本語フォント, 日本語入力メソッド, ウェブブラウザ
   * Sambaのユーザー設定
 
 ### B. 補助的モジュール
@@ -38,7 +40,7 @@ Raspberry Pi 用セットアップ・ファイル
 1. install_pyenv ... Pythonの仮想環境(pyenv, pyenv-virtualenv)の導入
 1. build_scientific-python ... Python仮想環境に科学計算用パッケージを導入
 
-#### D-2. 動画 (Pi2, Pi3 用)
+#### D-2. 動画 (主に Pi2, Pi3 用)
 1. install_ffmpeg ... FFmpegのインストール(ソーヅコードからビルドする)
   * FDK-AAC ... AACエンコーダのビルド
   * FFmpeg ... FFmpegのビルド

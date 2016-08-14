@@ -14,6 +14,8 @@ add_pkgs:
   - i2c-tools
   - libi2c-dev
   - python-smbus
+  - python-gpiozero
+  - python3-gpiozero
   # Fonts
   - fonts-takao
   # Japanese Input Method

@@ -1,6 +1,5 @@
 ---
 # ----- BME280 Temperature/Pressure/Humidity Sensor -----
-# var: module_name=bme280
 
 - name: copy scripts
   copy: >
@@ -18,6 +17,9 @@
   cron: >
     name='check temperature'
     job='{{ working_dir }}/{{ script_files[0] }}'
+    minute='*/1'
     backup=yes
+    state=present
+    disabled={{ bme280_disabled | default('no') }}
   notify:
     - restart cron

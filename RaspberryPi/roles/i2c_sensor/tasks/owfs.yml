@@ -1,0 +1,25 @@
+---
+# ----- Using 1-Wire I2C Master -----
+    
+- name: make logging directory
+  file: >
+    path={{ logging_dir }}
+    state=directory
+    recurse=yes
+
+- name: copy scripts
+  copy: >
+    dest={{ working_dir }}
+    src={{ script_file }}
+    mode=0777
+
+- name: set cron
+  cron: >
+    name='check temperature'
+    job='{{ working_dir }}/{{ script_file }}'
+    minute='*/1'
+    backup=yes
+    state=present
+    disabled={{ owfs_disabled | default('no') }}
+  notify:
+    - restart cron

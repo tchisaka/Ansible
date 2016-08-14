@@ -9,6 +9,7 @@ def main():
     OWPATH  = '/mnt/1wire/'
     SENSOR  = 'DS18B20'
     SUBDIR  = ('temperature','type','id','r_id')
+    LOGDIR  = 'log'
     sensors = []
     
     for d in os.listdir(OWPATH):
@@ -40,7 +41,7 @@ def main():
 
     fpath    = os.path.dirname(__file__)
     fname    = os.uname()[1] + '_temp_' + dt.today().strftime('%Y%m%d') + '.log'
-    filename = os.path.join(fpath,'log',fname)
+    filename = os.path.join(fpath,LOGDIR,fname)
     with open(filename,'a') as f:
         f.write(data)
 

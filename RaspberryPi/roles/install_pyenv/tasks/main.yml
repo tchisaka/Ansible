@@ -36,7 +36,7 @@
   changed_when: no
 
 - name: install python
-  shell: pyenv install {{ item }}
+  shell: pyenv install {{ item }} -f
   when: "'{{ item }}' not in result.stdout"
   with_items: '{{ install_pyenv_python_versions }}'
 

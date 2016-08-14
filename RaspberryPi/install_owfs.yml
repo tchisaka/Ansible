@@ -7,7 +7,7 @@
     LC_ALL: C
     LC_MESSAGES: C
   roles:
-    - role: enable_modules
-      enable_i2c_state: enable
     - apt_get_update
-    - install_owfs
+    - install_owfs 
+    - { role: enable_modules, enable_i2c_state: enable }
+    - { role: i2c_sensor, module: owfs }

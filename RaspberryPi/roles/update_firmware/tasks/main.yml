@@ -6,9 +6,9 @@
   shell: rpi-update
   register: result
   changed_when: "'firmware is already up to date' not in result.stdout"
-  notify:
-    - reboot
+#  notify:
+#    - reboot
 
-#- name: reboot machine
-#  include: roles/common/reboot.yml
-#  when: result|changed
+- name: reboot machine
+  include: roles/common/reboot.yml
+  when: result|changed
