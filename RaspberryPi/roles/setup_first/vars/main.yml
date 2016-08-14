@@ -35,3 +35,5 @@ samba_conf: |
      share modes = yes
      force user = {{ ansible_user_id }}
 samba_user: "{{ ansible_user_id }}"
+samba_service_src: smb_service.txt
+samba_service_dest: /etc/avahi/services/smb.service

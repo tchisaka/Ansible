@@ -32,5 +32,12 @@
       echo '{{ samba_pwd }}\n{{ samba_pwd }}\n' | \
       smbpasswd -a -s {{ samba_user }}
     changed_when: no
+  - name: copy smb.service file
+    become: yes
+    copy: >
+      src={{ samba_service_src }}
+      dest={{ samba_service_dest }}
+    notify:
+      - restart avahi-daemon
   tags:
     - setup samba

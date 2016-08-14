@@ -3,11 +3,4 @@
   hosts: owfs
   roles:
     - { role: enable_modules, enable_i2c_state: enable }
-    - role: i2c_sensor
-      module: owfs
-      owfs_disabled: yes
-      when: "ansible_nodename in  [ 'Bobby','Yolanda' ]"
-    - role: i2c_sensor
-      module: owfs
-      owfs_disabled: no
-      when: "ansible_nodename in  [ 'Annie','Cathy' ]"
+    - { role: i2c_sensor, module: owfs }
