@@ -58,6 +58,7 @@ Cathy.local
 Yolanda.local owfs_disabled=yes
 
 [test]
+Annie.local   enable_i2c_state=enable enable_v4l2_state=disable enable_picamera_state=disable bme280_disabled=no
 Leon.local    enable_i2c_state=enable enable_v4l2_state=enable  enable_picamera_state=enable  bme280_disabled=yes
 Yolanda.local enable_i2c_state=enable enable_v4l2_state=disable enable_picamera_state=disable bme280_disabled=no
 

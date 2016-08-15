@@ -15,7 +15,7 @@
 
 - name: set cron
   cron: >
-    name='check temperature'
+    name='check temperature by using OWFS'
     job='{{ working_dir }}/{{ script_file }}'
     minute='*/1'
     backup=yes
