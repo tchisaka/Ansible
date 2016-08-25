@@ -1,0 +1,19 @@
+---
+# ----- Set RTC module -----
+#
+#- debug: var=rtc_type
+#- debug: var=rtc_param[rtc_type]
+#- debug: var=rtc_param[rtc_type].name
+#- debug: var=rtc_param[rtc_type].i2c_addr
+
+- name: copy service file
+  become: yes
+  template: >
+    src=rtc.service.j2
+    dest=/etc/systemd/system/rtc.service
+    owner=root
+    group=root
+    mode=0644
+  when: rtc_type is defined
+  notify:
+    - enable rtc service

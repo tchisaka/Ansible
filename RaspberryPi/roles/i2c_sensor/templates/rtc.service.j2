@@ -1,0 +1,14 @@
+# /etc/systemd/system/rtc.service
+[Unit]
+Description=Prepare Hardware Clock
+Before=chronyd.service rsyslog.service network.target
+
+[Service]
+Type=oneshot
+ExecStartPre=/bin/bash -c "/bin/echo '{{ rtc_param[rtc_type].name }} {{ rtc_param[rtc_type].i2c_addr }}' > /sys/class/i2c-adapter/i2c-1/new_device" ; /bin/sleep 1
+ExecStart=/sbin/hwclock -s
+ExecStop=/sbin/hwclock -w
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

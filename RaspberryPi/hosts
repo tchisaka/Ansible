@@ -57,6 +57,13 @@ Bobby.local   owfs_disabled=yes
 Cathy.local
 Yolanda.local owfs_disabled=yes
 
+[RTC]
+Annie.local   rtc_type=DS1307
+Bobby.local   rtc_type=DS1307
+Cathy.local   rtc_type=DS3231
+Leon.local    rtc_type=DS3231
+
+
 [test]
 Annie.local   enable_i2c_state=enable enable_v4l2_state=disable enable_picamera_state=disable bme280_disabled=no
 Leon.local    enable_i2c_state=enable enable_v4l2_state=enable  enable_picamera_state=enable  bme280_disabled=yes

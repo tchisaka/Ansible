@@ -1,0 +1,7 @@
+rtc_param:
+  DS1307:    { name: ds1307,  i2c_addr: 0x68 }   # Maxim DS1307
+  DS3231:    { name: ds3231,  i2c_addr: 0x68 }   # Maxim DS3231
+  M41T62:    { name: m41t62,  i2c_addr: 0x68 }   # ST M41T62
+  PCF2127AT: { name: pcf2127, i2c_addr: 0x51 }   # NXP PCF2127AT
+  RTC8564NB: { name: pcf8563, i2c_addr: 0x51 }   # Epson Toyocom RTC-8564NB
+  RX8025NB:  { name: rx8025,  i2c_addr: 0x51 }   # Epson Toyocom RX-8025NB
