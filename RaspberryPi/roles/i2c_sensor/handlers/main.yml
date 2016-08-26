@@ -2,8 +2,3 @@
 - name: restart cron
   become: yes
   service: name=cron state=restarted
-
-- name: enable rtc service
-  become: yes
-  service: name=rtc enabled=yes state=reloaded
-

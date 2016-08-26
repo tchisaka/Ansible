@@ -14,6 +14,8 @@
     owner=root
     group=root
     mode=0644
-  when: rtc_type is defined
-  notify:
-    - enable rtc service
+  register: rtc
+
+- name: reboot machine
+  include: roles/common/reboot.yml
+  when: rtc|changed

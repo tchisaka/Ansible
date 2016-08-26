@@ -21,7 +21,7 @@ $ ls /lib/modules/$(uname -r)/kernel/drivers/rtc/
 | Maker | RTC name | Module name | I2C address | /etc/modules |
 |:-----:|:--------:|:-----------:|:-----------:|:------------:|
 | Maxim | DS1307 | ds1307 | 0x68 | none |
-| Maxim | DS3231 | ds3231 | 0x68 | none |
+| Maxim | DS3231 | ds3232 | 0x68 | none |
 | ST | M41T62 | m41t62 | 0x68 | none |
 | NXP | PCF2127AT | pcf2127 | 0x51 | rtc-pcf2127 |
 | Epson Toyocom | RTC-8564NB | pcf8563 | 0x51 | rtc-pcf8563 |
