@@ -1,7 +1,0 @@
----
-# ----- enable i2c module -----
-i2c_modules_items:
-  - { line: None, state: absent }
-
-i2c_config_items:
-  - { regexp: None, replace: None }

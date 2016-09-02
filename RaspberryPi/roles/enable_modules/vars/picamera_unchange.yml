@@ -1,4 +1,0 @@
----
-# ----- enable picamera module -----
-picamera_config_items:
-  - { regexp: None, replace: None }

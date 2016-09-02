@@ -1,0 +1,3 @@
+---
+dependencies:
+  - { role: enable_modules, i2c: enabled }

@@ -1,6 +1,8 @@
 ---
 # ----- Set RTC module -----
 #
+# Need variable: rtc_type
+#
 #- debug: var=rtc_type
 #- debug: var=rtc_param[rtc_type]
 #- debug: var=rtc_param[rtc_type].name

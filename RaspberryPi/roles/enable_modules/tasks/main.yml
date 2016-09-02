@@ -1,7 +1,10 @@
 ---
-- include_vars: "i2c_{{ enable_i2c_state | default('unchange') }}.yml"
-- include_vars: "v4l2_{{ enable_v4l2_state | default('unchange') }}.yml"
-- include_vars: "picamera_{{ enable_picamera_state | default('unchange') }}.yml"
+- name: include variables
+  include_vars: "{{ item }}"
+  with_items:
+    - i2c_vars.yml
+    - v4l2_vars.yml
+    - picamera_vars.yml
 
 - name: edit /etc/modules
   become: yes
@@ -10,8 +13,8 @@
     line={{ item.line }}
     state={{ item.state }}
   with_flattened:
-    - "{{ i2c_modules_items }}"
-    - "{{ v4l2_modules_items }}"
+    - "{{ i2c_module[i2c | default('unchanged')].module_items }}"
+    - "{{ v4l2_module[v4l2 | default('unchanged')].module_items }}"
   when: "'{{ item.line }}' != None"
   register: modules
 
@@ -23,8 +26,8 @@
     regexp={{ item.regexp }}
   when: "'{{ item.replace }}' != None"
   with_flattened:
-    - "{{ i2c_config_items }}"
-    - "{{ picamera_config_items }}"
+    - "{{ i2c_module[i2c | default('unchanged')].config_items }}"
+    - "{{ picamera_module[picamera | default('unchanged')].config_items }}"
   register: config
 
 - name: reboot machine

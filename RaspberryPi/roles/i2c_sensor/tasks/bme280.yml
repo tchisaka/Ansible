@@ -1,6 +1,6 @@
 ---
 # ----- BME280 Temperature/Pressure/Humidity Sensor -----
-    
+
 - name: make logging directory
   file: >
     path={{ logging_dir }}

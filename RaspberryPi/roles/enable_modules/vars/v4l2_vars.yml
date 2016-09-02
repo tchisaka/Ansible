@@ -1,0 +1,11 @@
+---
+v4l2_module:
+  enabled:
+    module_items:
+      - { line: 'bcm2835-v4l2', state: present }
+  disabled:
+    module_items:
+      - { line: 'bcm2835-v4l2', state: absent  }
+  unchanged:
+    module_items:
+      - { line: None, state: absent }

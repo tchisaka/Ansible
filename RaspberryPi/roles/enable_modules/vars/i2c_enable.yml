@@ -1,9 +1,0 @@
----
-# ----- enable i2c module -----
-i2c_modules_items:
-  - { line: 'i2c-bcm2708', state: present }
-  - { line: 'i2c-dev',     state: present }
-
-i2c_config_items:
-  - regexp:  '^#?\s*dtparam=i2c_arm=on'
-    replace: 'dtparam=i2c_arm=on'

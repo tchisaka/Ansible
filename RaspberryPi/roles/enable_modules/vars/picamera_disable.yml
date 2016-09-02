@@ -1,5 +1,0 @@
----
-# ----- disable picamera module -----
-picamera_config_items:
-  - regexp:  '^start_x=1'
-    replace: 'start_x=0'

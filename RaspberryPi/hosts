@@ -63,11 +63,9 @@ Bobby.local   rtc_type=DS1307
 Cathy.local   rtc_type=DS3231
 Leon.local    rtc_type=DS3231
 
-
 [test]
-Annie.local   enable_i2c_state=enable enable_v4l2_state=disable enable_picamera_state=disable bme280_disabled=no
-Leon.local    enable_i2c_state=enable enable_v4l2_state=enable  enable_picamera_state=enable  bme280_disabled=yes
-Yolanda.local enable_i2c_state=enable enable_v4l2_state=disable enable_picamera_state=disable bme280_disabled=no
+Annie.local   i2c=enabled v4l2=disabled picamera=disabled bme280_disabled=no
+Leon.local    i2c=enabled v4l2=enabled  picamera=enabled bme280_disabled=yes
 
 [rest]
 Annie.local

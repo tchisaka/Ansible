@@ -1,6 +1,5 @@
 ---
 # ----- distribute i2c sensor -----
-# var: module
 
 - name: include vars
   include_vars: "{{ module }}_vars.yml"

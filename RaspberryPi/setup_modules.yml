@@ -3,6 +3,7 @@
   hosts: test
   roles:
     - role: enable_modules
-#      enable_i2c_state: enable
-#      enable_v4l2_state: enable
-#      enable_picamera_state: enable
+#      i2c: enabled
+#      v4l2: enabled
+#      picamera: enabled
+
