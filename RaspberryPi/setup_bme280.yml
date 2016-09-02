@@ -3,5 +3,5 @@
   hosts: test
   roles:
     - role: i2c_sensor
-      module: bme280
-
+      i2c_modules:
+        - bme280
