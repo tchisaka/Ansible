@@ -3,6 +3,7 @@ add_pkgs:
   # Avahi
   - avahi-daemon
   - avahi-autoipd
+  - avahi-utils
   # Samba
   - samba
   - samba-common
