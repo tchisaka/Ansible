@@ -1,0 +1,19 @@
+---
+# Refer to https://github.com/processing/processing/wiki/Raspberry-Pi
+#
+- name: Install Processing
+  hosts: Leon.local
+  vars:
+    src_url: "https://processing.org/download/install-arm.sh"
+    install_script: install-arm.sh
+    
+  tasks:
+    - name: download archive file
+      get_url: >
+        rul={{ src_url }}
+        dest={{ ansible_user_dir }}
+
+    - name: Install Processing
+      become: yes
+      shell: sh {{ install_script }}
+      register: processing

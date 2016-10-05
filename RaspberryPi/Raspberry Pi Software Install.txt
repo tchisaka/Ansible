@@ -30,7 +30,14 @@ sudo reboot
 # zetazero
 cd ZetaZero
 ./zetazero.wl &
-./T.sh &
+
 
 # ========================
 ssh takamasa@Fuga.local
+
+# ========================
+sudo apt-get update
+sudo apt-get -y dist-upgrade
+sudo apt-get install -y rpi-chromium-mods python-sense-emu-doc realvnc-vnc-viewer
+
+
