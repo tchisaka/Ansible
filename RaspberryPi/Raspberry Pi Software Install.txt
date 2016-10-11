@@ -30,6 +30,8 @@ sudo reboot
 # zetazero
 cd ZetaZero
 ./zetazero.wl &
+ps
+
 
 
 # ========================
