@@ -2,7 +2,7 @@
 - name: Install Arduino IDE
   hosts: Leon.local
   vars:
-    srcfile: "arduino-1.6.11-linuxarm.tar.xz"
+    srcfile: "arduino-1.6.12-linuxarm.tar.xz"
 
   tasks:
     - name: Copy archive file
