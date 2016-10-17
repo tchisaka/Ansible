@@ -8,7 +8,10 @@
 #- debug: var=rtc_param[rtc_type].name
 #- debug: var=rtc_param[rtc_type].i2c_addr
 
-- name: copy service file
+- debug: msg="RTC is {{ rtc_type }}"
+  when: rtc_param  is defined
+
+- name: copy service file for RTC
   become: yes
   template: >
     src=rtc.service.j2
@@ -17,6 +20,7 @@
     group=root
     mode=0644
   register: rtc
+  when: rtc_param  is defined
 
 - name: reboot machine
   include: roles/common/reboot.yml

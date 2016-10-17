@@ -1,4 +1,4 @@
-working_dir: "{{ ansible_user_dir }}/owfs"
-logging_dir: "{{ working_dir }}/log"
-script_file: meas_temp_owfs.py
+owfs_working_dir: "{{ ansible_user_dir }}/owfs"
+owfs_logging_dir: "{{ owfs_working_dir }}/log"
+owfs_script_file: meas_temp_owfs.py
 

@@ -13,6 +13,21 @@ Leon.local
 Yolanda.local
 Zero.local
 
+[REST]
+Bobby.local
+Cathy.local
+Dick.local
+Elsa.local
+Fred.local
+Grace.local
+Harry.local
+Iris.local
+John.local
+Kate.local
+Leon.local
+Yolanda.local
+Zero.local
+
 [zetazero]
 Cathy.local
 Dick.local
@@ -56,7 +71,7 @@ Annie.local
 Bobby.local   owfs_disabled=yes
 Cathy.local
 Yolanda.local owfs_disabled=yes
-Zero.local owfs_disabled=yes
+Zero.local    owfs_disabled=yes
 
 [RTC]
 Annie.local   rtc_type=DS1307
@@ -66,19 +81,5 @@ Leon.local    rtc_type=DS3231
 
 [test]
 Annie.local   i2c=enabled v4l2=disabled picamera=disabled bme280_disabled=no
-Leon.local    i2c=enabled v4l2=enabled  picamera=enabled bme280_disabled=yes
-Zero.local   i2c=enabled v4l2=disabled picamera=disabled bme280_disabled=no
-
-[rest]
-Annie.local
-Bobby.local
-Cathy.local
-Dick.local
-Elsa.local
-Fred.local
-Grace.local
-Harry.local
-Iris.local
-John.local
-Kate.local
-Zero.local
+Leon.local    i2c=enabled v4l2=enabled  picamera=enabled  bme280_disabled=yes
+Zero.local    i2c=enabled v4l2=disabled picamera=disabled bme280_disabled=no

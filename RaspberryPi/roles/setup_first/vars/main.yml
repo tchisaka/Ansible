@@ -23,6 +23,9 @@ add_pkgs:
   - ibus-mozc
   # Web Browser
   - iceweasel
+  # Tools
+  - zip
+  - unzip
 
 samba_file: /etc/samba/smb.conf
 samba_conf: |

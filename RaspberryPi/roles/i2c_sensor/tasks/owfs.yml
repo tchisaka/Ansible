@@ -1,22 +1,22 @@
 ---
 # ----- Using 1-Wire I2C Master -----
     
-- name: make logging directory
+- name: make logging directory for OWFS
   file: >
-    path={{ logging_dir }}
+    path={{ owfs_logging_dir }}
     state=directory
     recurse=yes
 
-- name: copy scripts
+- name: copy scripts for OWFS
   copy: >
-    dest={{ working_dir }}
-    src={{ script_file }}
+    dest={{ owfs_working_dir }}
+    src={{ owfs_script_file }}
     mode=0777
 
-- name: set cron
+- name: set cron for OWFS
   cron: >
     name='check temperature by using OWFS'
-    job='{{ working_dir }}/{{ script_file }}'
+    job='{{ owfs_working_dir }}/{{ owfs_script_file }}'
     minute='*/1'
     backup=yes
     state=present

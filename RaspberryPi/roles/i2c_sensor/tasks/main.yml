@@ -1,12 +1,12 @@
 ---
 # ----- distribute i2c sensor -----
 
-- name: include vars
+- name: include i2c vars
   include_vars: "{{ item }}_vars.yml"
-  with_items: "{{ i2c_modules }}"
+  with_items: "{{ modules }}"
 
-- name: include module
+- name: include i2c module
   include: "{{ module_item }}.yml"
-  with_items: "{{ i2c_modules }}"
+  with_items: "{{ modules }}"
   loop_control:
     loop_var: module_item

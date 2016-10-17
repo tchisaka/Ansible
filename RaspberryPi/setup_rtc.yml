@@ -2,5 +2,5 @@
 - name: Raspberry Pi software update
   hosts: RTC
   roles:
-    - { role: enable_modules, enable_i2c_state: enable }
-    - { role: i2c_sensor, module: rtc }
+    - { role: enable_modules, i2c: enabled }
+    - { role: i2c_sensor, modules: [ rtc ] }
