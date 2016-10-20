@@ -1,0 +1,13 @@
+---
+- name: copy config files
+  become: yes
+  copy: >
+    src={{ item }}
+    dest={{ igzo_config_dest }}/{{ item }}
+  with_items: "{{ igzo_config_files }}"
+    
+- name: copy shell script
+  copy: >
+    src={{ igzo_shell_script }}
+    dest={{ ansible_user_dir }}
+    mode=755

@@ -1,0 +1,7 @@
+---
+# Setup IGZO Display
+#
+- name: Setup IGZO Display
+  hosts: Leon.local
+  roles:
+    - setup_igzo_dispiay

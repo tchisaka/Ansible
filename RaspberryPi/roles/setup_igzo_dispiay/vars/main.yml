@@ -1,0 +1,8 @@
+---
+igzo_config_files:
+  - IGZO_0.cfg
+  - IGZO_1.cfg
+  - IGZO_2.cfg
+  - IGZO_3.cfg
+igzo_config_dest: /boot
+igzo_shell_script: IGZO.sh
