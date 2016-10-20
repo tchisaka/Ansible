@@ -8,12 +8,17 @@
     install_script: install-arm.sh
     
   tasks:
-    - name: download archive file
+    - name: Download install script
       get_url: >
-        rul={{ src_url }}
+        url={{ src_url }}
         dest={{ ansible_user_dir }}
 
     - name: Install Processing
       become: yes
       shell: sh {{ install_script }}
       register: processing
+
+    - name: Remove install script
+      file: >
+        path={{ install_script }}
+        state=absent
