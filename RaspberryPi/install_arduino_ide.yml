@@ -3,21 +3,25 @@
   hosts: Leon.local
   vars:
     srcfile: "arduino-1.6.12-linuxarm.tar.xz"
+    src_dest: /usr/local/src
 
   tasks:
     - name: Copy archive file
+      become: yes
       copy: >
         src={{ srcfile }}
-        dest={{ ansible_user_dir }}
+        dest={{ src_dest }}
 
     - name: Unarchive
+      become: yes
       unarchive: >
-        src={{ srcfile }}
-        dest={{ ansible_user_dir }}
+        src={{ src_dest }}/{{ srcfile }}
+        dest={{ src_dest }}
         copy=no
         list_files=yes
       register: arduino
     
-    - name: Install Arduino IDE
-      shell: "{{ arduino.files[0] }}/install.sh"
+    - name: install
+      become: yes
+      shell: "{{ src_dest }}/{{ arduino.files[0] }}install.sh"
 
