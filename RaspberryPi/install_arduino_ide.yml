@@ -4,6 +4,8 @@
   vars:
     srcfile: "arduino-1.6.12-linuxarm.tar.xz"
     src_dest: /usr/local/src
+    src_lib: /usr/local/lib
+    src_bin: /usr/local/bin
 
   tasks:
     - name: Copy archive file
@@ -16,12 +18,23 @@
       become: yes
       unarchive: >
         src={{ src_dest }}/{{ srcfile }}
-        dest={{ src_dest }}
+        dest={{ src_lib }}
         copy=no
         list_files=yes
-      register: arduino
+      register: ide
+
+    - debug: var=ide.files[0]
+      
+    - name: make links
+      become: yes
+      file: >
+        src={{ item.path }}
+        dest={{ item.dest }}
+        state=link
+      with_items:
+        - { path: "{{ ide.files[0] }}", dest: "{{ src_lib }}/arduino" }
+        - { path: "../lib/arduino/arduino", dest: "{{ src_bin }}/arduino" }
     
     - name: install
-      become: yes
-      shell: "{{ src_dest }}/{{ arduino.files[0] }}install.sh"
+      shell: sh install.sh chdir={{ src_lib }}/arduino/
 
