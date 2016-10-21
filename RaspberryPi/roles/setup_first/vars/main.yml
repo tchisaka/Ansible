@@ -9,7 +9,8 @@ add_pkgs:
   - samba-common
   - samba-common-bin
   # Remote desktop
-  - tightvncserver
+  - realvnc-vnc-server
+  - realvnc-vnc-viewer
   - xrdp
   # GPIO
   - i2c-tools
@@ -27,6 +28,7 @@ add_pkgs:
   - zip
   - unzip
   - exfat-fuse
+  - exfat-utils
 
 samba_file: /etc/samba/smb.conf
 samba_conf: |
