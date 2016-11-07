@@ -28,10 +28,15 @@ sudo reboot
 
 # ========================
 # zetazero
-cd ZetaZero
+cd ~/ZetaZero
 ./zetazero.wl &
 ps
 
+
+cd
+cd imaging
+pip list
+pip install jupyter -U
 
 
 # ========================

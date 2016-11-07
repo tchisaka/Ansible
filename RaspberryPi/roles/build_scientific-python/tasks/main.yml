@@ -64,6 +64,7 @@
     name={{ item }}
     state=latest
     chdir={{ build_sp_virtual_setup_dir }}
+    executable=pip3
   with_items: '{{ build_sp_pip_science_pkgs1 }}'
 
 - name: pip install pkgs for virtualenv (Pi2 and pi3 only)
@@ -71,5 +72,6 @@
     name={{ item }}
     state=latest
     chdir={{ build_sp_virtual_setup_dir }}
+    executable=pip3
   with_items: '{{ build_sp_pip_science_pkgs2 }}'
   when: ansible_architecture == 'armv7l'
