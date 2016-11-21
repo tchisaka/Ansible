@@ -3,7 +3,7 @@
 
 - name: restart machine
   become: yes
-  command: shutdown -r -t 5
+  command: shutdown -r now
   async: 0
   poll: 0
   ignore_errors: yes

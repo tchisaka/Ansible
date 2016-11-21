@@ -10,4 +10,4 @@
     - apt_get_update
     - install_owfs 
     - { role: enable_modules, enable_i2c_state: enable }
-    - { role: i2c_sensor, module: owfs }
+    - { role: i2c_sensor, modules: [ owfs ] }
