@@ -22,11 +22,22 @@
   shell: pyenv install {{ build_sp_based_python }}
   changed_when: no
   when: "'{{ build_sp_based_python }}' not in pyenv_result.stdout"
-
+  
 - name: make a virtualenv as "{{ build_sp_virtual_python }}"
   shell: pyenv virtualenv {{ build_sp_based_python }} {{ build_sp_virtual_python }}
   changed_when: no
+  ignore_errors: yes
+  register: virtual_pythin_is_exists
   when: "'{{ build_sp_virtual_python }}' not in pyenv_result.stdout"
+  
+- debug: var=virtual_pythin_is_exists.stderr
+
+- name: uninstall virtualenv
+  shell: pyenv uninstall -f {{ build_sp_virtual_python }}
+  when: "'already exists' in virtual_pythin_is_exists.stderr"
+- name: re-install virtualenv
+  shell: pyenv virtualenv {{ build_sp_based_python }} {{ build_sp_virtual_python }}
+  when: "'already exists' in virtual_pythin_is_exists.stderr"
 
 - name: pyenv rehash
   shell: pyenv rehash

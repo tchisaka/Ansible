@@ -29,5 +29,5 @@ install_pyenv_add_profile:
 
 # --- installing python version on pyenv ---
 install_pyenv_python_versions:
-  - 2.7.12
-  - 3.5.2
+  - 2.7.13
+  - 3.6.0

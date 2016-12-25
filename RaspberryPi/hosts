@@ -75,7 +75,7 @@ Zero.local    owfs_disabled=yes
 
 [RTC]
 Annie.local   rtc_type=DS3231
-Bobby.local   rtc_type=DS1307
+Bobby.local   rtc_type=DS3231
 Cathy.local   rtc_type=DS3231
 Leon.local    rtc_type=DS3231
 
