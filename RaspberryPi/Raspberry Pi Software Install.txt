@@ -38,6 +38,14 @@ cd imaging
 pip list
 pip install jupyter -U
 
+passwd
+raspberry
+RaspberryFarm
+RaspberryFarm
+
+
+
+
 
 # ========================
 ssh takamasa@Fuga.local
