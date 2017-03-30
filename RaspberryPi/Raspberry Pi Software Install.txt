@@ -1,8 +1,8 @@
 # https://wiki.m.nu/index.php/OWFS_with_i2c_support_on_Raspberry_Pi_(English_version)
 
 /opt/owfs/bin/owdir -V
-cd /usr/src
-sudo wget  -O owfs-latest.tgz http://sourceforge.net/projects/owfs/files/latest/download
+cd /usr/local/src
+sudo wget  -O owfs-latest.tgz https://sourceforge.net/projects/owfs/files/latest/download
 sudo tar xzvf owfs-latest.tgz
 cd owfs-3.1p1
 sudo ./configure

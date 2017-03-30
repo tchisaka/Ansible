@@ -2,7 +2,7 @@
 - name: Install Arduino IDE
   hosts: Leon.local
   vars:
-    srcfile: "arduino-1.8.1-linuxarm.tar.xz"
+    srcfile: "arduino-1.8.2-linuxarm.tar.xz"
     src_dest: /usr/local/src
     src_lib: /usr/local/lib
     src_bin: /usr/local/bin

@@ -10,6 +10,7 @@ Iris.local
 John.local
 Kate.local
 Leon.local
+Xan.local
 Yolanda.local
 Zero.local
 
@@ -25,6 +26,7 @@ Iris.local
 John.local
 Kate.local
 Leon.local
+Xan.local
 Yolanda.local
 Zero.local
 
@@ -41,6 +43,7 @@ Kate.local
 Zero.local
 
 [pi0]
+Xan.local
 Yolanda.local
 Zero.local
 
@@ -70,6 +73,7 @@ Leon.local
 Annie.local
 Bobby.local   owfs_disabled=yes
 Cathy.local
+Xan.local     owfs_disabled=yes
 Yolanda.local owfs_disabled=yes
 Zero.local    owfs_disabled=yes
 
@@ -81,5 +85,6 @@ Leon.local    rtc_type=DS3231
 
 [test]
 Annie.local   i2c=enabled v4l2=disabled picamera=disabled bme280_disabled=no
+Xan.local     i2c=enabled v4l2=enabled  picamera=enabled  bme280_disabled=yes
 Leon.local    i2c=enabled v4l2=enabled  picamera=enabled  bme280_disabled=yes
 Zero.local    i2c=enabled v4l2=disabled picamera=disabled bme280_disabled=no

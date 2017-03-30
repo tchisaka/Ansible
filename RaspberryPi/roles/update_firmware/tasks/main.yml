@@ -3,11 +3,10 @@
 
 - name: firmware update
   become: yes
-  shell: rpi-update
+  shell: rpi-update <<< 'y\n'
+  ignore_errors: yes
   register: result
-  changed_when: "'firmware is already up to date' not in result.stdout"
-#  notify:
-#    - reboot
+  changed_when: "'reboot is needed' in result.stdout"
 
 - name: reboot machine
   include: roles/common/reboot.yml

@@ -27,6 +27,7 @@
   - include_vars: armv6l.yml
     when: ansible_architecture == 'armv6l'
   - name: install OWFS
+    become: yes
     shell: "{{ item }}"
     args:
       chdir: "{{ install_owfs_src_dir }}/{{ owfs.files[0] }}"

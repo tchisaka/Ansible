@@ -1,0 +1,16 @@
+---
+- name: Setup USB-GPS Module
+  hosts: Leon.local
+  tasks:
+    - name: apt-get update
+      become: yes
+      apt: update_cache=yes
+  
+    - name: apt-get install additional pkgs
+      become: yes
+      apt: name={{ item }} state=latest force=yes
+      with_items:
+        - gpsd
+        - gpsd-clients
+        - python-gps
+
