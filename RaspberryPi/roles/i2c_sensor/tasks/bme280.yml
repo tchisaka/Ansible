@@ -1,26 +1,28 @@
 ---
 # ----- BME280 Temperature/Pressure/Humidity Sensor -----
 
-- name: make logging directory for BME280
-  file: >
-    path={{ bme280_logging_dir }}
-    state=directory
-    recurse=yes
+- block:
+  - name: make logging directory for BME280
+    file:
+      path: "{{ bme280.logging_dir }}"
+      state: directory
+      recurse: true
+      
+  - name: copy scripts for BME280
+    copy:
+      dest: "{{ bme280.working_dir }}"
+      src:  "{{ item }}"
+      mode: 0777
+    with_items: "{{ bme280.script_files }}"
 
-- name: copy scripts for BME280
-  copy: >
-    dest={{ bme280_working_dir }}
-    src={{ item }}
-    mode=0777
-  with_items: "{{ bme280_script_files }}"
-
-- name: set cron for BME280
-  cron: >
-    name='check temperature by using BME280'
-    job='{{ bme280_working_dir }}/{{ bme280_script_files[0] }}'
-    minute='*/1'
-    backup=yes
-    state=present
-    disabled={{ bme280_disabled | default('no') }}
-  notify:
-    - restart cron
+  - name: set cron for BME280
+    cron:
+      name: 'check temperature by using BME280'
+      job:  "{{ bme280.working_dir }}/{{ bme280.script_files[0] }}"
+      minute: '*/1'
+      backup: true
+      state:  present
+      disabled: "{{ not bme280Q.enabled | default('false') }}"
+    notify:
+      - restart cron
+  when: "{{ bme280Q.installed }}"

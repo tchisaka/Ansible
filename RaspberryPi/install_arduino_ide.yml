@@ -2,39 +2,41 @@
 - name: Install Arduino IDE
   hosts: Leon.local
   vars:
-    srcfile: "arduino-1.8.2-linuxarm.tar.xz"
-    src_dest: /usr/local/src
-    src_lib: /usr/local/lib
-    src_bin: /usr/local/bin
+    srcfile:  'arduino-1.8.2-linuxarm.tar.xz'
+    src_dest: '/usr/local/src'
+    src_lib:  '/usr/local/lib'
+    src_bin:  '/usr/local/bin'
 
   tasks:
     - name: Copy archive file
-      become: yes
-      copy: >
-        src={{ srcfile }}
-        dest={{ src_dest }}
+      become: true
+      copy:
+        src:  "{{ srcfile }}"
+        dest: "{{ src_dest }}"
 
     - name: Unarchive
-      become: yes
-      unarchive: >
-        src={{ src_dest }}/{{ srcfile }}
-        dest={{ src_lib }}
-        copy=no
-        list_files=yes
+      become: true
+      unarchive:
+        src:  "{{ src_dest }}/{{ srcfile }}"
+        dest: "{{ src_lib }}"
+        copy: false
+        list_files: true
       register: ide
 
     - debug: var=ide.files[0]
       
     - name: make links
-      become: yes
-      file: >
-        src={{ item.path }}
-        dest={{ item.dest }}
-        state=link
+      become: true
+      file:
+        src:   "{{ item.path }}"
+        dest:  "{{ item.dest }}"
+        state: link
       with_items:
         - { path: "{{ ide.files[0] }}", dest: "{{ src_lib }}/arduino" }
         - { path: "../lib/arduino/arduino", dest: "{{ src_bin }}/arduino" }
     
     - name: install
-      shell: sh install.sh chdir={{ src_lib }}/arduino/
+      shell: sh install.sh
+      args:
+        chdir: "{{ src_lib }}/arduino/"
 

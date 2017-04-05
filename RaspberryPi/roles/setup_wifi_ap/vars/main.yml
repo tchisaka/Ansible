@@ -1,8 +1,8 @@
 ---
 setup_wifi_ap_wifi_list:
-      - TC-Network
-      - ap-pc-c1e1e4
-      - ap-game-c1e1e5
-      - Shiori
-setup_wifi_ap_conf_file: /etc/wpa_supplicant/wpa_supplicant.conf
-setup_wifi_ap_temp_dir: '{{ ansible_user_dir }}/__temp__'
+  - TC-Network
+  - ap-pc-c1e1e4
+  - ap-game-c1e1e5
+  - Shiori
+setup_wifi_ap_conf_file: '/etc/wpa_supplicant/wpa_supplicant.conf'
+setup_wifi_ap_temp_dir: "{{ ansible_user_dir }}/__temp__"

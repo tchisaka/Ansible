@@ -1,8 +1,0 @@
----
-# --- Default value ---
-# i2c:      unchanged
-# v4l2:     unchanged
-# picamera: unchanged
-
-etc_modules_file: /etc/modules
-boot_config_file: /boot/config.txt

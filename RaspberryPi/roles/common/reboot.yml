@@ -7,15 +7,15 @@
 # 28 Feb. 2017
 
 - name: restart machine
-  become: yes
+  become: true
   shell: sleep 2 && shutdown -r now
   async: 1
   poll: 0
-  ignore_errors: yes
+  ignore_errors: true
 
 - name: wait for SSH port down
   local_action: wait_for host={{ inventory_hostname }} port=22 state=stopped
-  ignore_errors: yes
+  ignore_errors: true
 
 - name: wait for SSH port up
   local_action: wait_for host={{ inventory_hostname }} port=22 state=started delay=30

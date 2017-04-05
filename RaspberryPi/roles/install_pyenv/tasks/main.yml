@@ -2,44 +2,44 @@
 # ----- install pyenv -----
 # install additional pkgs
 - name: apt-get install packages for pyenv
-  become : yes
+  become : true
   apt: name={{ item }} state=latest force=yes
-  with_items: '{{ install_pyenv_add_pkgs }}'
+  with_items: "{{ install_pyenv_add_pkgs }}"
 
 # install pyenv & pyenv-vitrualenv
 - name: checking pyenv command
   shell: pyenv --version
   register: pyenv_result
-  changed_when: no
+  changed_when: false
   failed_when: "'command not found' in pyenv_result.stderr"
 
 - name: git clone pyenv (new)
   git: repo={{ item.repo }} dest={{ item.dest }}
-  with_items: '{{ install_pyenv_git }}'
+  with_items: "{{ install_pyenv_git }}"
   when: pyenv_result|failed
   
 - name: git clone pyenv (update)
   git: repo={{ item.repo }} dest={{ item.dest }} update=yes
-  with_items: '{{ install_pyenv_git }}'
+  with_items: "{{ install_pyenv_git }}"
   when: pyenv_result|success
     
 - name: add pyenv path in .profile       
-  lineinfile: >
-    dest={{ ansible_user_dir }}/.profile
-    line={{ item }}
-  with_items: '{{ install_pyenv_add_profile }}'
+  lineinfile:
+    dest: "{{ ansible_user_dir }}/.profile"
+    line: "{{ item }}"
+  with_items: "{{ install_pyenv_add_profile }}"
 
 # install new pythons
 - name: check python versions in virtual environment
   shell: pyenv versions
   register: result
-  changed_when: no
+  changed_when: false
 
 - name: install python
   shell: pyenv install {{ item }} -f
   when: "'{{ item }}' not in result.stdout"
-  with_items: '{{ install_pyenv_python_versions }}'
+  with_items: "{{ install_pyenv_python_versions }}"
 
 - name: pyenv rehash
   shell: pyenv rehash
-  changed_when: no
+  changed_when: false

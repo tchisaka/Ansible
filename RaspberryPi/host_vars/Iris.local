@@ -1,0 +1,11 @@
+---
+# hostname: Iris ( Raspberry Pi 3 )
+
+# ----- i2c module -----
+i2cQ: disabled
+
+# ----- Pi-Camera module -----
+picameraQ: disabled
+
+# ----- v4l2 (Video for Linux Two) module -----
+v4l2Q: disabled

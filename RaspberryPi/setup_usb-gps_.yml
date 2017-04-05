@@ -3,11 +3,11 @@
   hosts: Leon.local
   tasks:
     - name: apt-get update
-      become: yes
+      become: true
       apt: update_cache=yes
   
     - name: apt-get install additional pkgs
-      become: yes
+      become: true
       apt: name={{ item }} state=latest force=yes
       with_items:
         - gpsd

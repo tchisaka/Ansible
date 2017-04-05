@@ -1,8 +1,8 @@
 ---
 # ----- vars file for install fdk-aac & ffmpeg ----
-install_ffmpeg_working_dir: /usr/local/src
-install_ffmpeg_fdk_aac_source: "https://github.com/mstorsjo/fdk-aac/tarball/master"
-install_ffmpeg_ffmpeg_source:  "https://www.ffmpeg.org/releases/ffmpeg-3.1.1.tar.xz"
+install_ffmpeg_working_dir: '/usr/local/src'
+install_ffmpeg_fdk_aac_source: 'https://github.com/mstorsjo/fdk-aac/tarball/master'
+install_ffmpeg_ffmpeg_source:  'https://www.ffmpeg.org/releases/ffmpeg-3.1.1.tar.xz'
 install_ffmpeg_myconfig: myconfig.sh
 
 # --- list & dict---

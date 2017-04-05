@@ -3,11 +3,11 @@
 #
 # --- push pub_key from localhost to hosts ---
 - name: set authorized_keys
-  authorized_key: >
-    user={{ ansible_user_id }}
-    key="{{ lookup('file', '{{ pub_key }}' ) }}"
+  authorized_key:
+    user: "{{ ansible_user_id }}"
+    key: "{{ lookup('file', '{{ pub_key }}' ) }}"
   tags:
-    push pub_key
+    - push pub_key
 
 # --- create ssh key on hosts ---
 - name: create ssh-key
@@ -22,7 +22,8 @@
   - name: get pub_key
     shell: cat {{ pub_key }}
     register: reg
-    changed_when: no
+    changed_when: false
+    
   - name: set_fact
     set_fact:
       pubkey: "{{reg.stdout}}"
@@ -32,25 +33,27 @@
 # --- dist pub key ---
 - block:
   - name: add authorized keys to localhost
-    lineinfile: >
-      dest={{ auth_file }}
-      line={{ item }}
-      state=present
-      regexp="{{ item.split(' ')[-1] }}$"
+    lineinfile:
+      dest: "{{ auth_file }}"
+      line: "{{ item }}"
+      state: present
+      regexp: "{{ item.split(' ')[-1] }}$"
     with_items: "{{ pubkey }}"
     delegate_to: localhost
+    
   - name: set authorized keys from hosts to hosts
-    authorized_key: >
-      user={{ansible_user_id}}
-      key={{item}}
+    authorized_key:
+      user: "{{ ansible_user_id }}"
+      key:  "{{ item }}"
     with_items: "{{ all_user_keys }}"
+    
   - name: sort authorized_keys
     shell: |
       sort -k3 {{ auth_file }} > {{ temp_file }}
       mv {{ temp_file }} {{ auth_file }}
     args:
-      chdir: ~/.ssh
-    changed_when: no
+      chdir: '~/.ssh'
+    changed_when: false
   tags:
     - dist_pubkey
 

@@ -4,7 +4,7 @@
 - name: check usb-wifi adapter
   shell: lsusb
   register: usb_wifi
-  changed_when: no
+  changed_when: false
   tags:
     - check usb_wifi
 
@@ -13,17 +13,19 @@
 #
 - block:
   - name: check wifi power management
-    become: yes
+    become: true
     shell: cat /sys/module/8192cu/parameters/rtw_power_mgnt
     register: wan_power_mng
-    changed_when: no
+    changed_when: false
+    
   - name: copy config file
-    become: yes
-    copy: >
-      src=8192cu.conf
-      dest=/etc/modprobe.d/
+    become: true
+    copy:
+      src:  '8192cu.conf'
+      dest: '/etc/modprobe.d/'
     register: copy_file
     when: wan_power_mng.stdout != 0
+    
   - name: reboot
     include: roles/common/reboot.yml
     when: copy_file.changed

@@ -1,0 +1,20 @@
+---
+# hostname: Annie ( Raspberry Pi model B )
+
+# ----- i2c module -----
+i2cQ: enabled
+rtcQ:
+  installed: true
+  rtc_type:  DS3231
+bme280Q:
+  installed: true
+  enabled:   true
+owfsQ:
+  installed: true
+  enabled:   true
+
+# ----- Pi-Camera module -----
+picameraQ: disabled
+
+# ----- v4l2 (Video for Linux Two) module -----
+v4l2Q: disabled

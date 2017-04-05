@@ -1,0 +1,35 @@
+---
+- debug: var=otgQ
+    
+- name: check the model of Raspberry Pi
+  shell: gpio -v | grep Type
+  args:
+    executable: '/bin/bash'
+  register: pimodel
+  changed_when: pimodel.stderr != ""
+
+- name: set fact ( Pi Zero or not )
+  set_fact:
+    pizeroQ: "{{ 'Pi Zero' in pimodel.stdout }}"
+
+- block:
+  - name: edit /boot/config.txt
+    become: true
+    lineinfile:
+      dest:  "{{ config.dest }}"
+      line:  "{{ config.otg[otgQ].line }}"
+      state: "{{ config.otg[otgQ].state }}"
+    register: result1
+
+  - name: edit /boot/cmdline.txt
+    become: true
+    replace:
+      dest:    "{{ cmdline.dest }}"
+      regexp:  "{{ cmdline.otg[otgQ].regexp }}"
+      replace: "{{ cmdline.otg[otgQ].replace }}"
+    register: result2
+
+  - name: shutdown Paspberry Pi Zero
+    include: 'roles/common/shutdown.yml'
+    when: ( (result1|changed) or (result2|changed) ) and shutdownQ
+  when: pizeroQ

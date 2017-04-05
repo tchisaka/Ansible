@@ -1,0 +1,22 @@
+---
+# hostname: Yolanda ( Raspberry Pi Zero Rev.03 )
+
+# ----- i2c module -----
+i2cQ: enabled
+rtcQ:
+  installed: false
+bme280Q:
+  installed: true
+  enabled:   false
+owfsQ:
+  installed: true
+  enabled:   false
+
+# ----- Pi-Camera module -----
+picameraQ: disabled
+
+# ----- v4l2 (Video for Linux Two) module -----
+v4l2Q: disabled
+
+# ----- USB On-The-Go -----
+otgQ: false

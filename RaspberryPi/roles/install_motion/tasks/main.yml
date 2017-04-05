@@ -4,26 +4,26 @@
 
 # install motion
 - name: apt-get install motion
-  become: yes
+  become: true
   apt: name={{ item }} state=latest force=yes
   with_items:
     - motion
 
 - name: set permission
-  become: yes
-  file: >
-    path={{ install_motion_lib_oath }}
-    state=directory
-    group={{ install_motion_user }}
+  become: true
+  file:
+    path: "{{ install_motion_lib_oath }}"
+    state: directory
+    group: "{{ install_motion_user }}"
 
 # setup config
 - name: mkdir .motion
-  file: >
-    path={{ install_motion_dest_path }}
-    state=directory
-    force=yes
+  file:
+    path: "{{ install_motion_dest_path }}"
+    state: directory
+    force: true
 
 - name: set motion.conf
-  copy: >
-    src={{ install_motion_config_file }}
-    dest={{ install_motion_dest_path }}
+  copy:
+    src:  "{{ install_motion_config_file }}"
+    dest: "{{ install_motion_dest_path }}"

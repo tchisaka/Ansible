@@ -1,0 +1,31 @@
+---
+# ----- vars file for install OWFS ----
+install_owfs:
+  add_pkgs:
+    - automake
+    - autoconf
+    - autotools-dev
+    - gcc-4.7
+    - libavahi-client-dev
+    - libtool
+    - libusb-dev
+    - libusb-1.0-0-dev
+    - libfuse-dev
+    - swig
+    - python2.7-dev
+    - tcl8.5-dev
+    - php5-dev
+    - i2c-tools
+  build_items:
+    armv6l:
+      - ./configure
+      - make
+      - make install
+    armv7l:
+      - ./configure
+      - make -j4
+      - make install 
+  url: 'http://sourceforge.net/projects/owfs/files/latest/download'
+  src_dir: '/usr/local/src'
+  mnt_dir: '/mnt/1wire'
+  service_file: 'start1wire.sh'

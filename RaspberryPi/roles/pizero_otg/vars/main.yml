@@ -1,0 +1,14 @@
+---
+config:
+  dest: '/boot/config.txt'
+  otg:
+    true:  { line: 'dtoverlay=dwc2', state: present }
+    false: { line: 'dtoverlay=dwc2', state: absent }
+    
+cmdline:
+  dest: '/boot/cmdline.txt'
+  otg:
+    true:  { regexp: 'rootwait$', replace: 'rootwait modules-load=dwc2,g_ether' }
+    false: { regexp: 'rootwait modules-load=dwc2,g_ether$', replace: 'rootwait' }
+    
+shutdownQ: true

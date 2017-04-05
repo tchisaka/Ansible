@@ -1,8 +1,8 @@
 ---
 - name: apt-get upgrade
-  become : yes
+  become : true
   apt: upgrade=yes force=yes
 
 - name: apt-get dist-upgrade
-  become : yes
+  become : true
   apt: upgrade=dist force=yes

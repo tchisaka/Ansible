@@ -45,7 +45,7 @@ samba_conf: |
 samba_user: "{{ ansible_user_id }}"
 
 avahi_service:
-  - { src: afpd_service.txt, dest: /etc/avahi/services/afpd.service }
-  - { src: rfb_service.txt,  dest: /etc/avahi/services/rtc.service  }
-  - { src: smb_service.txt,  dest: /etc/avahi/services/smb.service  }
+  - { src: 'afpd_service.txt', dest: '/etc/avahi/services/afpd.service' }
+  - { src: 'rfb_service.txt',  dest: '/etc/avahi/services/rtc.service'  }
+  - { src: 'smb_service.txt',  dest: '/etc/avahi/services/smb.service'  }
 

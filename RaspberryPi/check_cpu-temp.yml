@@ -1,10 +1,12 @@
 ---
 - name: Check CPU Temperatures of Raspberry Pis
   hosts: all
-  gather_facts: no
+  gather_facts: false
+  
   tasks:
     - name: read cpu temperatures
       shell: vcgencmd measure_temp
       register: result
       changed_when: result.stderr != ""
+      
     - debug: var=result.stdout

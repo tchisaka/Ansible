@@ -1,0 +1,20 @@
+---
+# hostname: Kate ( Raspberry Pi 3 )
+
+# ----- i2c module -----
+i2cQ: enabled
+rtcQ:
+  installed: true
+  rtc_type:  DS3231
+bme280Q:
+  installed: false
+  enabled:   false
+owfsQ:
+  installed: true
+  enabled:   false
+
+# ----- Pi-Camera module -----
+picameraQ: enabled
+
+# ----- v4l2 (Video for Linux Two) module -----
+v4l2Q: enabled

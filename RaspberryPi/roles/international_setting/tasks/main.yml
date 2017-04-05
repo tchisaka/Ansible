@@ -3,70 +3,74 @@
 # ----- set timezone -----
 - block:
     - name: create timezone file
-      become: yes
-      copy: >
-        src={{ timezone.src }}
-        dest={{ timezone.dest }}
-        mode=0644
+      become: true
+      copy:
+        src:  "{{ timezone.src }}"
+        dest: "{{ timezone.dest }}"
+        mode: 0644
     - name: update timezone
-      become: yes
+      become: true
       shell: dpkg-reconfigure --frontend noninteractive tzdata
-      changed_when: no
+      changed_when: false
   tags:
     - set_timezone
 
 # ----- set keyboard layout -----
 - block:
     - name: create keyboard keymap file
-      become: yes
-      copy: >
-        src={{ keyboard.src }}
-        dest={{ keyboard.dest }}
-        mode=0644
+      become: true
+      copy:
+        src:  "{{ keyboard.src }}"
+        dest: "{{ keyboard.dest }}"
+        mode: 0644
     - name: update keymap
-      become: yes
+      become: true
       shell: /etc/init.d/keyboard-setup reload
-      changed_when: no
+      changed_when: false
   tags:
-    set_keyboard
+    - set_keyboard
 
 # ----- set locale -----
 - block:
     - name: enable locales
-      become: yes
-      replace: >
-        dest={{ locale_file }}
-        replace={{ item.lang }}
-        regexp='^#?\s*{{ item.lang }}'
+      become: true
+      replace:
+        dest: "{{ locale_file }}"
+        replace: "{{ item.lang }}"
+        regexp: "^#?\s*{{ item.lang }}"
       when: item.enable
       with_items: "{{ locales }}"
+      
     - name: disable locales
-      become: yes
-      replace: >
-        dest={{ locale_file }}
-        replace='# {{ item.lang }}'
-        regexp='^{{ item.lang }}'
+      become: true
+      replace:
+        dest: "{{ locale_file }}"
+        replace: "# {{ item.lang }}"
+        regexp: "^{{ item.lang }}"
       when: not item.enable
       with_items: "{{ locales }}"
+      
     - name: update locale
-      become: yes
+      become: true
       shell: locale-gen
-      changed_when: no
+      changed_when: false
+      
     - name: set default locale
-      become: yes
+      become: true
       shell: update-locale LANG={{ default_locale }}
-      changed_when: no
+      changed_when: false
   tags:
     - set_locale
 
 # ----- set Wi-Fi country -----
 - name: set wifi country
-  become: yes
-  lineinfile: >
-    dest={{ wifi.dest }}
-    line='country={{ wifi.country }}'
-    regexp="^country="
-    state=present
+  become: true
+  shell: 'raspi-config nonint do_wifi_country {{ wifi.country }}'
+#  lineinfile: >
+#    dest={{ wifi.dest }}
+#    line='country={{ wifi.country }}'
+#    regexp="^country="
+#    state=present
   notify:
     - restart wpa_supplicant
   tags:

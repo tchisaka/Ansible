@@ -2,12 +2,13 @@
 #----- set wifi access point -----
 - block:
   - name: check wpa_supplicant.conf
-    become: yes
+    become: true
     script: |
       check_wificonf.py {{ item }} {{ wifi_passphrase }} {{ setup_wifi_ap_conf_file}}
     register: wifi_conf
     changed_when: "'False' in wifi_conf.stdout"
     with_items: "{{ setup_wifi_ap_wifi_list }}"
+    
   - name: set_fact
     set_fact:
       wifi_ap: "{{ wifi_conf.results | map(attribute='changed') | list }}"    
@@ -15,7 +16,7 @@
     - check wifi_ap
 
 - name: add wifi access point
-  become: yes
+  become: true
   shell: |
     wpa_passphrase {{ item.1 }} {{ wifi_passphrase }} >> {{ setup_wifi_ap_conf_file }}
   when: item.0

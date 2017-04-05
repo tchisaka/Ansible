@@ -2,11 +2,11 @@
 - name: Raspberry Pi's First Setup
   hosts: all
   vars_prompt:
-    - name: "wifi_passphrase"
+    - name: wifi_passphrase
       prompt: "Please enter Wi-Fi passphrase"
       private: yes
       confirm: yes
-    - name: "samba_pwd"
+    - name: samba_pwd
       prompt: "Please enter Samba password"
       private: yes
       confirm: yes

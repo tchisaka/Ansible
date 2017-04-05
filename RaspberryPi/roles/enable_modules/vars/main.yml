@@ -1,0 +1,50 @@
+---
+# ----- files -----
+dest:
+  modules: '/etc/modules'
+  config: '/boot/config.txt'
+
+# ----- i2c module -----
+i2c_module:
+  enabled:
+    module_items:
+      - { line: 'i2c-bcm2708', state: present }
+      - { line: 'i2c-dev',     state: present }
+    config_items:
+      - { regexp:  '^#?\s*dtparam=i2c_arm=on', replace: 'dtparam=i2c_arm=on' }
+      - { regexp:  '^dtparam=i2c_arm=off',     replace: 'dtparam=i2c_arm=on' }
+  disabled:
+    module_items:
+      - { line: 'i2c-bcm2708', state: absent  }
+      - { line: 'i2c-dev',     state: present }
+    config_items:
+      - { regexp:  '^dtparam=i2c_arm=on', replace: 'dtparam=i2c_arm=off' }
+  unchanged:
+    module_items:
+      - { line: None, state: absent }
+    config_items:
+      - { regexp: None, replace: None }
+
+# ----- Pi-Camera module -----
+picamera_module:
+  enabled:
+    config_items:
+      - { regexp: '^start_x=0', replace: 'start_x=1' }
+  disabled:
+    config_items:
+      - { regexp: '^start_x=1', replace: 'start_x=0' }
+  unchanged:
+    config_items:
+      - { regexp: None, replace: None }
+
+# ----- v4l2 (Video for Linux Two) module -----
+v4l2_module:
+  enabled:
+    module_items:
+      - { line: 'bcm2835-v4l2', state: present }
+  disabled:
+    module_items:
+      - { line: 'bcm2835-v4l2', state: absent  }
+  unchanged:
+    module_items:
+      - { line: None, state: absent }

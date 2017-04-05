@@ -1,5 +1,5 @@
 ---
-- name: Raspberry Pi software update
+- name: reboot Raspberry Pi
   hosts: all
   tasks:
     - name: reboot machine

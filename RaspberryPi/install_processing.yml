@@ -4,21 +4,21 @@
 - name: Install Processing
   hosts: Leon.local
   vars:
-    src_url: "https://processing.org/download/install-arm.sh"
-    install_script: install-arm.sh
+    src_url: 'https://processing.org/download/install-arm.sh'
+    install_script: 'install-arm.sh'
     
   tasks:
     - name: Download install script
-      get_url: >
-        url={{ src_url }}
-        dest={{ ansible_user_dir }}
+      get_url:
+        url:  "{{ src_url }}"
+        dest: "{{ ansible_user_dir }}"
 
     - name: Install Processing
-      become: yes
+      become: true
       shell: sh {{ install_script }}
       register: processing
 
     - name: Remove install script
-      file: >
-        path={{ install_script }}
-        state=absent
+      file:
+        path:  "{{ install_script }}"
+        state: absent

@@ -1,4 +1,4 @@
 ---
 - name: restart cron
-  become: yes
+  become: true
   service: name=cron state=restarted

@@ -1,35 +1,28 @@
 ---
-- name: include variables
-  include_vars: "{{ item }}"
-  with_items:
-    - i2c_vars.yml
-    - v4l2_vars.yml
-    - picamera_vars.yml
-
 - name: edit /etc/modules
-  become: yes
-  lineinfile: >
-    dest={{ etc_modules_file }}
-    line={{ item.line }}
-    state={{ item.state }}
+  become: true
+  lineinfile:
+    dest:  "{{ dest.modules }}"
+    line:  "{{ item.line }}"
+    state: "{{ item.state }}"
   with_flattened:
-    - "{{ i2c_module[i2c | default('unchanged')].module_items }}"
-    - "{{ v4l2_module[v4l2 | default('unchanged')].module_items }}"
+    - "{{ i2c_module[  i2cQ  | default('unchanged')].module_items }}"
+    - "{{ v4l2_module[ v4l2Q | default('unchanged')].module_items }}"
   when: "'{{ item.line }}' != None"
-  register: modules
+  register: modules_state
 
 - name: edit /boot/config.txt
-  become: yes
-  replace: >
-    dest={{ boot_config_file }}
-    replace={{ item.replace }}
-    regexp={{ item.regexp }}
+  become: true
+  replace:
+    dest:    "{{ dest.config }}"
+    replace: "{{ item.replace }}"
+    regexp:  "{{ item.regexp }}"
   when: "'{{ item.replace }}' != None"
   with_flattened:
-    - "{{ i2c_module[i2c | default('unchanged')].config_items }}"
-    - "{{ picamera_module[picamera | default('unchanged')].config_items }}"
-  register: config
+    - "{{ i2c_module[      i2cQ      | default('unchanged')].config_items }}"
+    - "{{ picamera_module[ picameraQ | default('unchanged')].config_items }}"
+  register: config_state
 
 - name: reboot machine
-  include: roles/common/reboot.yml
-  when: (modules|changed) or (config|changed)
+  include: 'roles/common/reboot.yml'
+  when: (modules_state|changed) or (config_state|changed)

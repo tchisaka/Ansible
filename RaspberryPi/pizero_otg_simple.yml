@@ -1,0 +1,49 @@
+---
+- name: Set Raspberry Pi Zero on/off OTG-mode 
+  hosts: pi0
+  vars:
+    config:
+      dest: '/boot/config.txt'
+      otg:
+        true:  { line: 'dtoverlay=dwc2', state: present }
+        false: { line: 'dtoverlay=dwc2', state: absent }
+    cmdline:
+      dest: '/boot/cmdline.txt'
+      otg:
+        true:  { regexp: 'rootwait$', replace: 'rootwait modules-load=dwc2,g_ether' }
+        false: { regexp: 'rootwait modules-load=dwc2,g_ether$', replace: 'rootwait' }
+    shutdownQ: false
+    
+  gather_facts: false
+  
+  tasks:  
+    - debug: var=otgQ
+    
+    - name: check the model of Raspberry Pi
+      shell: gpio -v | grep Type
+      args:
+        executable: '/bin/bash'
+      register: pimodel
+      changed_when: pimodel.stderr != ""
+      
+    - name: set fact
+      set_fact:
+        pizeroQ: "{{ 'Pi Zero' in pimodel.stdout }}"
+
+    - block:
+      - name: edit /boot/config.txt
+        become: true
+        lineinfile:
+          dest:  "{{ config.dest }}"
+          line:  "{{ config.otg[otgQ].line }}"
+          state: "{{ config.otg[otgQ].state }}"
+      - name: edit /boot/cmdline.txt
+        become: true
+        replace:
+          dest:    "{{ cmdline.dest }}"
+          regexp:  "{{ cmdline.otg[otgQ].regexp }}"
+          replace: "{{ cmdline.otg[otgQ].replace }}"
+      - name: shutdown Paspberry Pi Zero
+        include: roles/common/shutdown.yml
+        when: shutdownQ
+      when: pizeroQ

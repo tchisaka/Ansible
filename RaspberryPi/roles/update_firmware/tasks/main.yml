@@ -2,12 +2,14 @@
 # ----- firmware update -----
 
 - name: firmware update
-  become: yes
+  become: true
   shell: rpi-update <<< 'y\n'
-  ignore_errors: yes
+  args:
+    executable: '/bin/bash'
+  ignore_errors: true
   register: result
   changed_when: "'reboot is needed' in result.stdout"
 
 - name: reboot machine
-  include: roles/common/reboot.yml
+  include: 'roles/common/reboot.yml'
   when: result|changed

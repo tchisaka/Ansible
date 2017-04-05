@@ -8,12 +8,12 @@
   changed_when: no
 
 - name: add wifi access point
-  become: yes
-  blockinfile: >
-    dest={{ setup_wifi_ap_conf_file }}
-    block={{ item.stdout }}
-    state=present
-    marker="# {mark} {{item.item.ssid}}"
+  become: true
+  blockinfile:
+    dest:  "{{ setup_wifi_ap_conf_file }}"
+    block: "{{ item.stdout }}"
+    state: present
+    marker: "# {mark} {{item.item.ssid}}"
   with_items: "{{ wifi.results }}"
   notify:
     - restart wpa_supplicant

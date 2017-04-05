@@ -41,13 +41,13 @@
 
 - name: pyenv rehash
   shell: pyenv rehash
-  changed_when: no
+  changed_when: false
 
 # ----- make local python environment -----
 - name: mkdir {{ build_sp_virtual_setup_dir }}
-  file: >
-    path={{ build_sp_virtual_setup_dir }}
-    state=directory
+  file:
+    path:  "{{ build_sp_virtual_setup_dir }}"
+    state: directory
 
 - name: checking local virtualenv is setted or not
   stat: path={{ build_sp_virtual_setup_dir }}/.python-version
@@ -56,33 +56,33 @@
 - name: cheking virtualenv name if local virtualenv is exsist
   shell: cat .python-version
   args:
-    chdir: '{{ build_sp_virtual_setup_dir }}'
-  changed_when: no
+    chdir: "{{ build_sp_virtual_setup_dir }}"
+  changed_when: false
   register: py_version
   when: pyenv_stat.stat.exists
 
 - name: create local pyenv
   shell: pyenv local {{ build_sp_virtual_python }}
   args:
-    chdir: '{{ build_sp_virtual_setup_dir }}'
-  changed_when: no    
+    chdir: "{{ build_sp_virtual_setup_dir }}"
+  changed_when: false  
   when: (not pyenv_stat.stat.exists) or
         "py_version is not '{{ build_sp_virtual_python }}'"
 
 # ----- install python modules -----
 - name: pip install pkgs for virtualenv (common)
-  pip: >
-    name={{ item }}
-    state=latest
-    chdir={{ build_sp_virtual_setup_dir }}
-    executable=pip3
-  with_items: '{{ build_sp_pip_science_pkgs1 }}'
+  pip:
+    name:  "{{ item }}"
+    state: latest
+    chdir: "{{ build_sp_virtual_setup_dir }}"
+    executable: pip3
+  with_items: "{{ build_sp_pip_science_pkgs1 }}"
 
 - name: pip install pkgs for virtualenv (Pi2 and pi3 only)
-  pip: >
-    name={{ item }}
-    state=latest
-    chdir={{ build_sp_virtual_setup_dir }}
-    executable=pip3
-  with_items: '{{ build_sp_pip_science_pkgs2 }}'
+  pip:
+    name:  "{{ item }}"
+    state: latest
+    chdir: "{{ build_sp_virtual_setup_dir }}"
+    executable: "pip3"
+  with_items: "{{ build_sp_pip_science_pkgs2 }}"
   when: ansible_architecture == 'armv7l'

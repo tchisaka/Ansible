@@ -1,4 +1,4 @@
 ---
 - name: apt-get update
-  become : yes
+  become : true
   apt: update_cache=yes

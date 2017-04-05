@@ -1,0 +1,14 @@
+---
+- name: Set Raspberry Pi Zero on/off OTG-mode 
+  hosts: all
+  gather_facts: false
+  tasks:  
+    - name: check the model of Raspberry Pi
+      shell: gpio -v | grep Type
+      args:
+        executable: /bin/bash
+      register: pimodel
+      ignore_errors: true
+      changed_when: pimodel.stderr != ""
+      
+    - debug: var=pimodel.stdout

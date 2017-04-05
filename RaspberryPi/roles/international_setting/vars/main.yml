@@ -1,11 +1,11 @@
 ---
 timezone:
-  { src: timezone.txt , dest: /etc/timezone }
+  { src: 'timezone.txt' , dest: '/etc/timezone' }
 
 keyboard:
-  { src: keyboard.txt , dest: /etc/default/keyboard }
+  { src: 'keyboard.txt' , dest: '/etc/default/keyboard' }
   
-locale_file: /etc/locale.gen
+locale_file: '/etc/locale.gen'
 locales:
   - { lang: 'en_GB.UTF-8 UTF-8',   enable: False }
   - { lang: 'en_US.UTF-8 UTF-8',   enable: True }
@@ -14,4 +14,4 @@ locales:
 default_locale: en_US.UTF-8
 
 wifi:
-  { dest: /etc/wpa_supplicant/wpa_supplicant.conf , country: JP}
+  { dest: '/etc/wpa_supplicant/wpa_supplicant.conf' , country: 'JP' }

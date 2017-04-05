@@ -6,10 +6,10 @@ install_mjpg_streamer_add_pkgs:
   - cmake
   - libv4l-dev
 
-install_mjpg_streamer_source: "https://github.com/jacksonliam/mjpg-streamer.git"
-install_mjpg_streamer_dist: /usr/local/src/mjpg-streamer
+install_mjpg_streamer_source: 'https://github.com/jacksonliam/mjpg-streamer.git'
+install_mjpg_streamer_dist: '/usr/local/src/mjpg-streamer'
     
-install_mjpg_streamer_build_dir: /usr/local/src/mjpg-streamer/mjpg-streamer-experimental
+install_mjpg_streamer_build_dir: '/usr/local/src/mjpg-streamer/mjpg-streamer-experimental'
 install_mjpg_streamer_build_items:
   - make USE_LIBV4L2=true clean all
   - make install

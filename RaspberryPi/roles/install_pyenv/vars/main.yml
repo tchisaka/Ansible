@@ -16,10 +16,10 @@ install_pyenv_add_pkgs:
 
 # --- for pyenv & pyenv-virtualenv ---
 install_pyenv_git: 
-  - repo: https://github.com/yyuu/pyenv.git
-    dest: ~/.pyenv
-  - repo: https://github.com/yyuu/pyenv-virtualenv.git
-    dest: ~/.pyenv/plugins/pyenv-virtualenv
+  - repo: 'https://github.com/yyuu/pyenv.git'
+    dest: '~/.pyenv'
+  - repo: 'https://github.com/yyuu/pyenv-virtualenv.git'
+    dest: '~/.pyenv/plugins/pyenv-virtualenv'
 
 install_pyenv_add_profile:
   - export PYENV_ROOT="$HOME/.pyenv"

@@ -1,13 +1,9 @@
 ---
 - name: Install OWFS on Raspberry Pis
   hosts: owfs
-  become: yes
-  environment:
-    LANG: C
-    LC_ALL: C
-    LC_MESSAGES: C
+  become: true
   roles:
     - apt_get_update
-    - install_owfs 
-    - { role: enable_modules, enable_i2c_state: enable }
+    - install_owfs_pkgs
+    - { role: enable_modules, i2c: enabled }
     - { role: i2c_sensor, modules: [ owfs ] }

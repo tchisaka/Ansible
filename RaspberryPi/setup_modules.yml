@@ -1,9 +1,9 @@
 ---
 - name: setup modules
-  hosts: test
+  hosts: all
   roles:
     - role: enable_modules
-#      i2c: enabled
-#      v4l2: enabled
-#      picamera: enabled
+#      i2cQ:      enable
+#      v4l2Q:     enable
+#      picameraQ: enable
 
