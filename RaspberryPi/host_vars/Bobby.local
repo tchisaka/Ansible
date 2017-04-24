@@ -1,5 +1,5 @@
 ---
-# hostname: Bobby ( Raspberry Pi model B )
+# hostname: Bobby ( Raspberry Pi model B Rev.02 )
 
 # ----- i2c module -----
 i2cQ: enabled

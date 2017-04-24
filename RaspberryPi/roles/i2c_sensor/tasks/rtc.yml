@@ -13,21 +13,21 @@
 
 - name: copy service file for RTC
   become: yes
-  template: >
-    src=rtc.service.j2
-    dest=/etc/systemd/system/rtc.service
-    owner=root
-    group=root
-    mode=0644
+  template:
+    src: rtc.service.j2
+    dest: '/etc/systemd/system/rtc.service'
+    owner: root
+    group: root
+    mode: 0644
   register: rtc
-  when: rtc_param  is defined
+  when: rtc_param is defined
 
 - name: set RTC as servie
   become: yes
-  service: >
-    name=rtc
-    enabled=yes
-    state=started
+  systemd:
+    name: rtc
+    enabled: true
+    state: started
 
 - name: reboot machine
   include: roles/common/reboot.yml

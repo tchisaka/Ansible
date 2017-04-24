@@ -1,0 +1,7 @@
+---
+- name: Check CPU type of Raspberry Pis
+  hosts: all
+  gather_facts: false
+  tasks:
+    - debug: var=ansible_architecture
+      register: cputype

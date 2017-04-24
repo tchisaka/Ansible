@@ -1,6 +1,7 @@
 ---
 - name: shutdown Raspberry Pi
   hosts: all
+  gather_facts: false
   tasks:
     - name: shutdown machine
-      include: roles/common/shutdown.yml
+      include: 'roles/common/shutdown.yml'

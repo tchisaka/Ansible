@@ -17,6 +17,3 @@ picameraQ: disabled
 
 # ----- v4l2 (Video for Linux Two) module -----
 v4l2Q: disabled
-
-# ----- USB On-The-Go -----
-otgQ: false

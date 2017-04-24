@@ -1,5 +1,5 @@
 ---
-# hostname: Kate ( Raspberry Pi 3 )
+# hostname: Kate ( Raspberry Pi 3 Rev.02 )
 
 # ----- i2c module -----
 i2cQ: disabled

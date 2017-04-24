@@ -1,5 +1,5 @@
 ---
-# hostname: Elsa ( Raspberry Pi 2 )
+# hostname: Elsa ( Raspberry Pi 2 Rev.01 )
 
 # ----- i2c module -----
 i2cQ: disabled

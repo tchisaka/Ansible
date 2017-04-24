@@ -1,6 +1,7 @@
 ---
 - name: reboot Raspberry Pi
   hosts: all
+  gather_facts: false
   tasks:
     - name: reboot machine
-      include: roles/common/reboot.yml
+      include: 'roles/common/reboot.yml'
