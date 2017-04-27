@@ -1,8 +1,13 @@
 ---
 - name: apt-get upgrade
   become : true
-  apt: upgrade=yes force=yes
+  apt:
+    upgrade: full
+    force: yes
+    update_cache: yes
 
 - name: apt-get dist-upgrade
   become : true
-  apt: upgrade=dist force=yes
+  apt:
+    upgrade: dist
+    force: yes

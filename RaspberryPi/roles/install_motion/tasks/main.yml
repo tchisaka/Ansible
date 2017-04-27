@@ -5,7 +5,11 @@
 # install motion
 - name: apt-get install motion
   become: true
-  apt: name={{ item }} state=latest force=yes
+  apt:
+    name: "{{ item }}"
+    state: latest
+    force: yes
+    update_cache: yes
   with_items:
     - motion
 
@@ -25,5 +29,5 @@
 
 - name: set motion.conf
   copy:
-    src:  "{{ install_motion_config_file }}"
+    src: "{{ install_motion_config_file }}"
     dest: "{{ install_motion_dest_path }}"

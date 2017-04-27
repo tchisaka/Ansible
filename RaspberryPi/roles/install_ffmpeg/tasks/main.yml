@@ -4,7 +4,11 @@
 
 - name: apt-get install add pkgs
   become: true
-  apt: name={{ item }} state=latest force=yes
+  apt:
+    name: "{{ item }}"
+    state: latest
+    force: yes
+    update_cache: yes
   with_items: "{{ install_ffmpeg_add_pkgs }}"
 
 # --- check architecture ---

@@ -3,7 +3,6 @@
   hosts: owfs
   become: true
   roles:
-    - apt_get_update
     - install_owfs_pkgs
     - { role: enable_modules, i2c: enabled }
     - { role: i2c_sensor, modules: [ owfs ] }

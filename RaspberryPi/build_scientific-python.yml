@@ -2,6 +2,5 @@
 - name: Build Scientific Python on Raspberry pi
   hosts: all
   roles:
-    - apt_get_update
     - build_scientific-python
 

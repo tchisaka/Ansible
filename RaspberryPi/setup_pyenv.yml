@@ -2,7 +2,6 @@
 - name: setup pyenv & pyenv-virtualenv
   hosts: all
   roles:
-    - apt_get_update
     - apt_get_upgrade
     - update_firmware
     - install_pyenv

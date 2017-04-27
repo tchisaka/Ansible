@@ -6,6 +6,7 @@
     name: "{{ item }}"
     state: latest
     force: yes
+    upgrade_cache: yes
   with_items: "{{ build_sp_add_pkgs }}"
 
 - name: pip install & update
