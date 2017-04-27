@@ -2,6 +2,5 @@
 - name: Raspberry Pi software update
   hosts: all
   roles:
-    - apt_get_update
     - apt_get_upgrade
     - update_firmware
