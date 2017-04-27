@@ -3,7 +3,7 @@
 
 build_sp_based_python: 3.6.1
 build_sp_virtual_python: imaging
-build_sp_virtual_setup_dir: "{{ ansible_user_dir }}/imaging"
+build_sp_virtual_setup_dir: '{{ ansible_user_dir }}/imaging'
 
 # --- list & dict---
 build_sp_add_pkgs:
