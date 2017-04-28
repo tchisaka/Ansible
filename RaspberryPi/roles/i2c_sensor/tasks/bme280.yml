@@ -25,4 +25,4 @@
       disabled: "{{ not bme280Q.enabled | default('false') }}"
     notify:
       - restart cron
-  when: "{{ bme280Q.installed }}"
+  when: bme280Q.installed

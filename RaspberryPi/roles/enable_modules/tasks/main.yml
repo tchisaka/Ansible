@@ -8,7 +8,7 @@
   with_flattened:
     - "{{ i2c_module[  i2cQ  | default('unchanged')].module_items }}"
     - "{{ v4l2_module[ v4l2Q | default('unchanged')].module_items }}"
-  when: "'{{ item.line }}' != None"
+  when: item.line != None
   register: modules_state
 
 - name: edit /boot/config.txt
@@ -17,7 +17,7 @@
     dest:    "{{ dest.config }}"
     replace: "{{ item.replace }}"
     regexp:  "{{ item.regexp }}"
-  when: "'{{ item.replace }}' != None"
+  when: item.replace != None
   with_flattened:
     - "{{ i2c_module[      i2cQ      | default('unchanged')].config_items }}"
     - "{{ picamera_module[ picameraQ | default('unchanged')].config_items }}"

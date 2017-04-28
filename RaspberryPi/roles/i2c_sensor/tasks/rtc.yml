@@ -8,7 +8,7 @@
 #- debug: var=rtc_param[rtc_type].name
 #- debug: var=rtc_param[rtc_type].i2c_addr
 
-- debug: msg="RTC is {{ rtc_type }}"
+- debug: msg="RTC is {{ rtcQ.rtc_type }}"
   when: rtc_param  is defined
 
 - name: copy service file for RTC
