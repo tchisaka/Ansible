@@ -24,7 +24,8 @@
   register: archived
 
 - name: check OWFS config.log
-  stat: path={{ install_owfs.src_dir }}/{{ archived.files[0] }}/config.log
+  stat:
+    path: "{{ install_owfs.src_dir }}/{{ archived.files[0] }}/config.log"
   register: owfs_is_maked
 
 # ----- install OWFS -----
@@ -39,7 +40,7 @@
 
 - name: make OWFS mount directory
   file:
-    path:  "{{ install_owfs.mnt_dir}}"
+    path: "{{ install_owfs.mnt_dir}}"
     state: directory
 
 - name: edit /etc/fuse.conf
@@ -57,7 +58,7 @@
   
 - block:
   - name: regist start1wire service
-    shell: update-rc.d {{ install_owfs_service_file }} defaults
+    shell: update-rc.d {{ install_owfs.service_file }} defaults
     args:
       chdir: '/etc/init.d'
     changed_when: false

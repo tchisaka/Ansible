@@ -4,14 +4,18 @@
 
 - name: apt-get install additional pkgs
   become: true
-  apt: name={{ item }} state=latest force=yes
-  with_items: "{{ install_mjpg_streamer_add_pkgs }}"
+  apt:
+    name: "{{ item }}"
+    state: latest
+    force: yes
+    update_cache: yes
+  with_items: "{{ install_mjpg_streamer.add_pkgs }}"
 
 - name: download source code of mjpg-streamer
   become: true
   git:
-    repo: "{{ install_mjpg_streamer_source }}"
-    dest: "{{ install_mjpg_streamer_dist }}"
+    repo: "{{ install_mjpg_streamer.repo }}"
+    dest: "{{ install_mjpg_streamer.dest }}"
     update: true
   register: mjpg_streamer
 
@@ -19,6 +23,6 @@
   become: true
   shell: "{{ item }}"
   args:
-    chdir: "{{ install_mjpg_streamer_build_dir}}"
-  with_items: "{{ install_mjpg_streamer_build_items }}"
+    chdir: "{{ install_mjpg_streamer.build_dir}}"
+  with_items: "{{ install_mjpg_streamer.build_items }}"
   when: mjpg_streamer|changed

@@ -2,5 +2,6 @@
 - name: Raspberry Pi software update
   hosts: BME280
   roles:
-    - { role: enable_modules, i2c: enabled }
-    - { role: i2c_sensor, modules: [ bme280 ] }
+    - enable_modules
+    - role: i2c_sensor
+      modules: [ bme280 ]

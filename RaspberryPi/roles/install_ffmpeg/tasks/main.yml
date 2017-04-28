@@ -9,35 +9,31 @@
     state: latest
     force: yes
     update_cache: yes
-  with_items: "{{ install_ffmpeg_add_pkgs }}"
-
-# --- check architecture ---
-- include_vars: armv6l.yml
-  when: ansible_architecture == 'armv6l'
+  with_items: "{{ install_ffmpeg.add_pkgs }}"
 
 # --- install fdk-aac ---
 - name: wget fdk-aac
   become: true
   get_url:
-    url:  "{{ install_ffmpeg_fdk_aac_source }}"
-    dest: "{{ install_ffmpeg_working_dir }}"
+    url: "{{ install_ffmpeg.fdk_aac_source }}"
+    dest: "{{ install_ffmpeg.working_dir }}"
   register: fdkacc_tar
 
 - name: unarchive fdk-aac
   become: true
   unarchive:
-    src:  "{{ fdkacc_tar.dest }}"
-    dest: "{{ install_ffmpeg_working_dir }}"
+    src: "{{ fdkacc_tar.dest }}"
+    dest: "{{ install_ffmpeg.working_dir }}"
     copy: false
     list_files: true
-  register: fdkacc
+  register: fdk_acc
 
 - name: build fdk-acc
   become: true
   shell: "{{ item }}"
   args:
-    chdir: "{{ install_ffmpeg_working_dir }}/{{ fdkacc.files[0] }}"
-  with_items: "{{ install_ffmpeg_build_fdkaac_items }}"
+    chdir: "{{ install_ffmpeg.working_dir }}/{{ fdk_acc.files[0] }}"
+  with_items: "{{ install_ffmpeg.build_fdkaac_items[ ansible_architecture ] }}"
   changed_when: false
   when: fdkacc_tar|changed
 
@@ -45,15 +41,15 @@
 - name: wget ffmpeg
   become: true
   get_url:
-    url:  "{{ install_ffmpeg_ffmpeg_source }}"
-    dest: "{{ install_ffmpeg_working_dir }}"
+    url: "{{ install_ffmpeg.ffmpeg_source }}"
+    dest: "{{ install_ffmpeg.working_dir }}"
   register: ffmpeg_tar
 
 - name: unarchive ffmpeg
   become: true
   unarchive:
-    src:  "{{ ffmpeg_tar.dest }}"
-    dest: "{{ install_ffmpeg_working_dir }}"
+    src: "{{ ffmpeg_tar.dest }}"
+    dest: "{{ install_ffmpeg.working_dir }}"
     copy: false
     list_files: true
   register: ffmpeg
@@ -61,14 +57,14 @@
 - name: copy myconfig.sh
   become: true
   copy:
-    src:  "{{ install_ffmpeg_myconfig }}"
-    dest: "{{ install_ffmpeg_working_dir }}/{{ ffmpeg.files[0] }}"
+    src: "{{ install_ffmpeg.myconfig }}"
+    dest: "{{ install_ffmpeg.working_dir }}/{{ ffmpeg.files[0] }}"
       
 - name: build ffmpeg
   become: true
   shell: "{{ item }}"
   args:
-    chdir: "{{ install_ffmpeg_working_dir }}/{{ ffmpeg.files[0] }}"
-  with_items: "{{ install_ffmpeg_build_ffmpeg_items }}"
+    chdir: "{{ install_ffmpeg.working_dir }}/{{ ffmpeg.files[0] }}"
+  with_items: "{{ install_ffmpeg.build_ffmpeg_items[ ansible_architecture ] }}"
   changed_when: false
   when: ffmpeg_tar|changed

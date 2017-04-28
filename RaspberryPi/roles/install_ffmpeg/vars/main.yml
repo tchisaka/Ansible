@@ -1,40 +1,49 @@
 ---
 # ----- vars file for install fdk-aac & ffmpeg ----
-install_ffmpeg_working_dir: '/usr/local/src'
-install_ffmpeg_fdk_aac_source: 'https://github.com/mstorsjo/fdk-aac/tarball/master'
-install_ffmpeg_ffmpeg_source:  'https://www.ffmpeg.org/releases/ffmpeg-3.1.1.tar.xz'
-install_ffmpeg_myconfig: myconfig.sh
-
-# --- list & dict---
-install_ffmpeg_add_pkgs:
-  - autoconf
-  - automake
-  - build-essential
-  - libass-dev
-  - libfreetype6-dev
-  - libsdl1.2-dev
-  - libtheora-dev
-  - libtool
-  - libva-dev
-  - libvdpau-dev
-  - libvorbis-dev
-  - libxcb1-dev
-  - libxcb-shm0-dev
-  - libxcb-xfixes0-dev
-  - pkg-config
-  - texinfo
-  - zlib1g-dev
-  - yasm
-  - libx264-dev
-
-install_ffmpeg_build_fdkaac_items:
-  - autoreconf -fiv
-  - ./configure
-  - make -j4          # use 4-cores in cpu
-  - sudo make install
-
-install_ffmpeg_build_ffmpeg_items:
-  - sh myconfig.sh
-  - time make -j4 2>&1 | tee make.log   # use 4-cores in cpu
-  - sudo make install
-  - sudo /sbin/ldconfig
+install_ffmpeg:
+  working_dir: '/usr/local/src'
+  fdk_aac_source: 'https://github.com/mstorsjo/fdk-aac/tarball/master'
+  ffmpeg_source:  'https://www.ffmpeg.org/releases/ffmpeg-3.1.1.tar.xz'
+  myconfig: myconfig.sh
+  add_pkgs:
+    - autoconf
+    - automake
+    - build-essential
+    - libass-dev
+    - libfreetype6-dev
+    - libsdl1.2-dev
+    - libtheora-dev
+    - libtool
+    - libva-dev
+    - libvdpau-dev
+    - libvorbis-dev
+    - libxcb1-dev
+    - libxcb-shm0-dev
+    - libxcb-xfixes0-dev
+    - pkg-config
+    - texinfo
+    - zlib1g-dev
+    - yasm
+    - libx264-dev
+  build_fdkaac_items:
+    armv6l:
+      - autoreconf -fiv
+      - ./configure
+      - make
+      - sudo make install  
+    armv7l: # use 4-cores in cpu
+      - autoreconf -fiv
+      - ./configure
+      - make -j4
+      - sudo make install
+  build_ffmpeg_items:
+    armv6l:
+      - sh myconfig.sh
+      - time make 2>&1 | tee make.log
+      - sudo make install
+      - sudo /sbin/ldconfig
+    armv7l: # use 4-cores in cpu
+      - sh myconfig.sh
+      - time make -j4 2>&1 | tee make.log
+      - sudo make install
+      - sudo /sbin/ldconfig

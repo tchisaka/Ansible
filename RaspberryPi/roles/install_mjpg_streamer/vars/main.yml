@@ -1,15 +1,14 @@
 ---
-install_mjpg_streamer_add_pkgs:
-  - subversion
-  - libjpeg-dev
-  - imagemagick
-  - cmake
-  - libv4l-dev
-
-install_mjpg_streamer_source: 'https://github.com/jacksonliam/mjpg-streamer.git'
-install_mjpg_streamer_dist: '/usr/local/src/mjpg-streamer'
-    
-install_mjpg_streamer_build_dir: '/usr/local/src/mjpg-streamer/mjpg-streamer-experimental'
-install_mjpg_streamer_build_items:
-  - make USE_LIBV4L2=true clean all
-  - make install
+install_mjpg_streamer:
+  add_pkgs:
+    - subversion
+    - libjpeg-dev
+    - imagemagick
+    - cmake
+    - libv4l-dev
+  repo: 'https://github.com/jacksonliam/mjpg-streamer.git'
+  dest: '/usr/local/src/mjpg-streamer'   
+  build_dir: '/usr/local/src/mjpg-streamer/mjpg-streamer-experimental'
+  build_items:
+    - make USE_LIBV4L2=true clean all
+    - make install
