@@ -10,6 +10,8 @@
     - "{{ v4l2_module[ v4l2Q | default('unchanged')].module_items }}"
   when: item.line != None
   register: modules_state
+  notify:
+    - reboot machine
 
 - name: edit /boot/config.txt
   become: true
@@ -22,7 +24,9 @@
     - "{{ i2c_module[      i2cQ      | default('unchanged')].config_items }}"
     - "{{ picamera_module[ picameraQ | default('unchanged')].config_items }}"
   register: config_state
+  notify:
+    - reboot machine
 
-- name: reboot machine
-  include: 'roles/common/reboot.yml'
-  when: (modules_state|changed) or (config_state|changed)
+#- name: reboot machine
+#  include: 'roles/common/reboot.yml'
+#  when: (modules_state|changed) or (config_state|changed)

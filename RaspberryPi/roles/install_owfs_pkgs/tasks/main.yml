@@ -55,14 +55,23 @@
     dest: '/etc/init.d'
     mode: "u=rwx,g=rx,o=rx"
   register: owfs_service
-  
-- block:
-  - name: regist start1wire service
-    shell: update-rc.d {{ install_owfs.service_file }} defaults
-    args:
-      chdir: '/etc/init.d'
-    changed_when: false
-    
-  - name: reboot machine
-    include: 'roles/common/reboot.yml'
+
+- name: regist start1wire service
+  shell: update-rc.d {{ install_owfs.service_file }} defaults
+  args:
+    chdir: '/etc/init.d'
+  changed_when: false
   when: owfs_service|changed
+  notify: 
+    - reboot machine
+
+#- block:
+#  - name: regist start1wire service
+#    shell: update-rc.d {{ install_owfs.service_file }} defaults
+#    args:
+#      chdir: '/etc/init.d'
+#    changed_when: false
+#    
+#  - name: reboot machine
+#    include: 'roles/common/reboot.yml'
+#  when: owfs_service|changed

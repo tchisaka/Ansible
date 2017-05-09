@@ -1,6 +1,6 @@
 ---
-- name: Raspberry Pi software update
-  hosts: owfs
+- name: Setup OWFS on Raspberry Pis
+  hosts: OWFS
   roles:
-    - { role: enable_modules, i2c: enabled }
-    - { role: i2c_sensor, modules: [ owfs ] }
+    - { role: enable_modules, i2cQ: enabled }
+    - { role: i2c_sensor, i2c_modules: [ owfs ] }

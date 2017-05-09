@@ -8,7 +8,7 @@ rtcQ:
   rtc_type:  DS3231
 bme280Q:
   installed: true
-  enabled:   false
+  enabled:   true
 owfsQ:
   installed: true
   enabled:   false

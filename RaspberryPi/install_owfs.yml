@@ -1,8 +1,10 @@
 ---
+# Refer to https://wiki.m.nu/index.php/OWFS_with_i2c_support_on_Raspberry_Pi_(English_version)
+
 - name: Install OWFS on Raspberry Pis
-  hosts: owfs
+  hosts: OWFS
   become: true
   roles:
     - install_owfs_pkgs
-    - { role: enable_modules, i2c: enabled }
-    - { role: i2c_sensor, modules: [ owfs ] }
+    - { role: enable_modules, i2cQ: enabled }
+    - { role: i2c_sensor, i2c_modules: [ owfs ] }

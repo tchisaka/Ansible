@@ -35,20 +35,18 @@
     - name: enable locales
       become: true
       replace:
-        dest: "{{ locale_file }}"
-        replace: "{{ item.lang }}"
-        regexp: "^#?\s*{{ item.lang }}"
-      when: item.enable
-      with_items: "{{ locales }}"
+        dest: '{{ locale.file }}'
+        replace: '{{ item }}'
+        regexp: '^#?\s*{{ item }}'
+      with_items: "{{ locale.langs.enable }}"
       
     - name: disable locales
       become: true
       replace:
-        dest: "{{ locale_file }}"
-        replace: "# {{ item.lang }}"
-        regexp: "^{{ item.lang }}"
-      when: not item.enable
-      with_items: "{{ locales }}"
+        dest: '{{ locale.file }}'
+        replace: '# {{ item }}'
+        regexp: '^{{ item }}'
+      with_items: "{{ locale.langs.disable }}"
       
     - name: update locale
       become: true
@@ -57,20 +55,20 @@
       
     - name: set default locale
       become: true
-      shell: update-locale LANG={{ default_locale }}
+      shell: update-locale LANG={{ locale.default_lang }}
       changed_when: false
   tags:
     - set_locale
 
 # ----- set Wi-Fi country -----
+# shell: raspi-config nonint do_wifi_country {{ wifi.country }}
 - name: set wifi country
   become: true
-  shell: 'raspi-config nonint do_wifi_country {{ wifi.country }}'
-#  lineinfile: >
-#    dest={{ wifi.dest }}
-#    line='country={{ wifi.country }}'
-#    regexp="^country="
-#    state=present
+  lineinfile:
+    dest:   "{{ wifi.dest }}"
+    line:   country={{ wifi.country }}
+    regexp: "^country="
+    state:  present
   notify:
     - restart wpa_supplicant
   tags:

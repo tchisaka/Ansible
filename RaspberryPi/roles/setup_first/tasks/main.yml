@@ -31,7 +31,7 @@
     become: true
     shell: |
       echo '{{ samba_pwd }}\n{{ samba_pwd }}\n' | \
-      smbpasswd -a -s {{ samba_user }}
+      smbpasswd -a {{ samba_user }}
     args:
       executable: '/bin/bash'
     changed_when: false

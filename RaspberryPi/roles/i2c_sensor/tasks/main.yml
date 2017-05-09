@@ -3,10 +3,12 @@
 
 - name: include i2c vars
   include_vars: "{{ item }}_vars.yml"
-  with_items: "{{ modules }}"
+  with_items: "{{ i2c_modules }}"
 
 - name: include i2c module
   include: "{{ module_item }}.yml"
-  with_items: "{{ modules }}"
+  with_items: "{{ i2c_modules }}"
+  # change loop variable of 'with_item' as module_item 
   loop_control:
     loop_var: module_item
+

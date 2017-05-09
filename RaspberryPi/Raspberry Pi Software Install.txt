@@ -44,8 +44,8 @@ RaspberryFarm
 RaspberryFarm
 
 
-
-
+# ========================
+ssh-keygen -R bobby.local
 
 # ========================
 ssh takamasa@Fuga.local
