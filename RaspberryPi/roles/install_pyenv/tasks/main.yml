@@ -11,27 +11,13 @@
   with_items: "{{ install_pyenv_add_pkgs }}"
 
 # install pyenv & pyenv-vitrualenv
-- name: checking pyenv command
-  shell: pyenv --version
-  register: pyenv_result
-  changed_when: false
-  failed_when: "'command not found' in pyenv_result.stderr"
-
-- name: git clone pyenv (new)
-  git:
-    repo: "{{ item.repo }}"
-    dest: "{{ item.dest }}"
-  with_items: "{{ install_pyenv_git }}"
-  when: pyenv_result|failed
-  
-- name: git clone pyenv (update)
+- name: git clone pyenv
   git:
     repo: "{{ item.repo }}"
     dest: "{{ item.dest }}"
     update: yes
   with_items: "{{ install_pyenv_git }}"
-  when: pyenv_result|success
-    
+  
 - name: add pyenv path in .profile       
   lineinfile:
     dest: "{{ ansible_user_dir }}/.profile"

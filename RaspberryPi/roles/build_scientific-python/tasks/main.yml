@@ -7,15 +7,7 @@
     state: latest
     force: yes
     update_cache: yes
-  with_items: "{{ build_sp_add_pkgs }}"
-
-- name: pip install & update
-  become: true
-  pip:
-    name: "{{ item.pkg }}"
-    executable: "{{ item.env }}"
-    state: latest
-  with_items: "{{ build_sp_pip_system_pkgs }}"
+  with_items: "{{ build_sp.add_pkgs }}"
 
 # ----- checking pyenv command -----
 - name: checking pyenv command
@@ -25,62 +17,62 @@
   failed_when: "'command not found' in pyenv_result.stderr"
 
 # ----- checking python environment -----
-- name: install python {{ build_sp_based_python }}
-  shell: pyenv install {{ build_sp_based_python }}
+- name: install python {{ build_sp.based_python }}
+  shell: pyenv install {{ build_sp.based_python }} 
   changed_when: no
-  when: build_sp_based_python not in pyenv_result.stdout
+  when: build_sp.based_python not in pyenv_result.stdout
   
-- name: make a virtualenv as {{ build_sp_virtual_python }}
-  shell: pyenv virtualenv {{ build_sp_based_python }} {{ build_sp_virtual_python }}
+- name: make a virtualenv as {{ build_sp.virtual_python }}
+  shell: pyenv virtualenv {{ build_sp.based_python }} {{ build_sp.virtual_python }}
   changed_when: no
   ignore_errors: yes
   register: virtual_pythin_is_exists
-  when: build_sp_virtual_python not in pyenv_result.stdout
+  when: build_sp.virtual_python not in pyenv_result.stdout
 
 - name: pyenv rehash
   shell: pyenv rehash
   changed_when: false
 
 # ----- make local python environment -----
-- name: mkdir {{ build_sp_virtual_setup_dir }}
+- name: mkdir {{ build_sp.virtual_setup_dir }}
   file:
-    path: "{{ build_sp_virtual_setup_dir }}"
+    path: "{{ build_sp.virtual_setup_dir }}"
     state: directory
 
 - name: checking local virtualenv is setted or not
-  stat: path={{ build_sp_virtual_setup_dir }}/.python-version
+  stat: path={{ build_sp.virtual_setup_dir }}/.python-version
   register: pyenv_stat
 
 - name: cheking virtualenv name if local virtualenv is exsist
   shell: cat .python-version
   args:
-    chdir: "{{ build_sp_virtual_setup_dir }}"
+    chdir: "{{ build_sp.virtual_setup_dir }}"
   changed_when: false
   register: py_version
   when: pyenv_stat.stat.exists
 
 - name: create local pyenv
-  shell: pyenv local {{ build_sp_virtual_python }}
+  shell: pyenv local {{ build_sp.virtual_python }}
   args:
-    chdir: "{{ build_sp_virtual_setup_dir }}"
+    chdir: "{{ build_sp.virtual_setup_dir }}"
   changed_when: false  
   when: (not pyenv_stat.stat.exists) or
-        (py_version.stdout != build_sp_virtual_python)
+        (py_version.stdout != build_sp.virtual_python)
 
 # ----- install python modules -----
 - name: pip install pkgs for virtualenv (common)
   pip:
     name: "{{ item }}"
     state: latest
-    chdir: "{{ build_sp_virtual_setup_dir }}"
+    chdir: "{{ build_sp.virtual_setup_dir }}"
     executable: pip3
-  with_items: "{{ build_sp_pip_science_pkgs1 }}"
+  with_items: "{{ build_sp.pip_science_pkgs1 }}"
 
 - name: pip install pkgs for virtualenv (Pi2 and pi3 only)
   pip:
     name: "{{ item }}"
     state: latest
-    chdir: "{{ build_sp_virtual_setup_dir }}"
+    chdir: "{{ build_sp.virtual_setup_dir }}"
     executable: pip3
-  with_items: "{{ build_sp_pip_science_pkgs2 }}"
+  with_items: "{{ build_sp.pip_science_pkgs2 }}"
   when: ansible_architecture == 'armv7l'

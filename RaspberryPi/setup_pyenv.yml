@@ -3,5 +3,4 @@
   hosts: all
   roles:
     - apt_get_upgrade
-    - update_firmware
     - install_pyenv

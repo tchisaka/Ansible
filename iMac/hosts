@@ -14,22 +14,6 @@ Xan.local
 Yolanda.local
 Zero.local
 
-[REST]
-Bobby.local
-Cathy.local
-Dick.local
-Elsa.local
-Fred.local
-Grace.local
-Harry.local
-Iris.local
-John.local
-Kate.local
-Leon.local
-Xan.local
-Yolanda.local
-Zero.local
-
 [zetazero]
 Cathy.local
 Dick.local
@@ -41,50 +25,3 @@ Iris.local
 John.local
 Kate.local
 Zero.local
-
-[pi0]
-Xan.local
-Yolanda.local
-Zero.local
-
-[model-B]
-Annie.local
-Bobby.local
-
-[pi1]
-Annie.local
-Bobby.local
-Cathy.local
-
-[pi2]
-Dick.local
-Elsa.local
-Fred.local
-Grace.local
-
-[pi3]
-Harry.local
-Iris.local
-John.local
-Kate.local
-Leon.local
-
-[owfs]
-Annie.local
-Bobby.local   owfs_disabled=yes
-Cathy.local
-Xan.local     owfs_disabled=yes
-Yolanda.local owfs_disabled=yes
-Zero.local    owfs_disabled=yes
-
-[RTC]
-Annie.local   rtc_type=DS1307
-Bobby.local   rtc_type=DS1307
-Cathy.local   rtc_type=DS3231
-Leon.local    rtc_type=DS3231
-
-[test]
-Annie.local   i2c=enabled v4l2=disabled picamera=disabled bme280_disabled=no
-Xan.local     i2c=enabled v4l2=enabled  picamera=enabled  bme280_disabled=yes
-Leon.local    i2c=enabled v4l2=enabled  picamera=enabled  bme280_disabled=yes
-Zero.local    i2c=enabled v4l2=disabled picamera=disabled bme280_disabled=no

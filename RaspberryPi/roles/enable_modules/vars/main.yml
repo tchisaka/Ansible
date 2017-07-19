@@ -25,6 +25,24 @@ i2c_module:
     config_items:
       - { regexp: None, replace: None }
 
+# ----- i2s module -----
+i2s_module:
+  enabled:
+    module_items:
+      - { line: 'snd-bcm2835', state: present }
+    config_items:
+      - { regexp: '^#?\s*#dtparam=i2s=on', replace: 'dtparam=i2s=on' }
+  disabled:
+    module_items:
+      - { line: 'snd-bcm2835', state: absent }
+    config_items:
+      - { regexp: '^dtparam=i2s=on', replace: '#dtparam=i2s=on' }
+  unchanged:
+    module_items:
+      - { line: None, state: absent }
+    config_items:
+      - { regexp: None, replace: None }
+
 # ----- Pi-Camera module -----
 picamera_module:
   enabled:

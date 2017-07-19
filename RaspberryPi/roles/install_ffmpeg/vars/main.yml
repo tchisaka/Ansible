@@ -1,10 +1,6 @@
 ---
 # ----- vars file for install fdk-aac & ffmpeg ----
 install_ffmpeg:
-  working_dir: '/usr/local/src'
-  fdk_aac_source: 'https://github.com/mstorsjo/fdk-aac/tarball/master'
-  ffmpeg_source:  'https://www.ffmpeg.org/releases/ffmpeg-3.1.1.tar.xz'
-  myconfig: myconfig.sh
   add_pkgs:
     - autoconf
     - automake
@@ -25,6 +21,8 @@ install_ffmpeg:
     - zlib1g-dev
     - yasm
     - libx264-dev
+  working_dir: '/usr/local/src'
+  fdk_aac_source: 'https://github.com/mstorsjo/fdk-aac/tarball/master'
   build_fdkaac_items:
     armv6l:
       - autoreconf -fiv
@@ -36,6 +34,8 @@ install_ffmpeg:
       - ./configure
       - make -j4
       - sudo make install
+  ffmpeg_source: 'https://www.ffmpeg.org/releases/ffmpeg-3.1.1.tar.xz'
+  myconfig: myconfig.sh
   build_ffmpeg_items:
     armv6l:
       - sh myconfig.sh

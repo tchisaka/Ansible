@@ -1,0 +1,32 @@
+---
+#
+# https://learn.adafruit.com/adafruit-i2s-mems-microphone-breakout/raspberry-pi-wiring-and-test
+#
+- name: Install I2S MEMS Microphone module
+  hosts: Xan.local
+  
+  tasks:
+    - name: edit /boot/config.txt
+      become: true
+      replace:
+        dest:    '/boot/config.txt'
+        regexp:  '^#?\s*#dtparam=i2s=on'
+        replace: 'dtparam=i2s=on'
+      register: config_state
+      notify:
+        - reboot machine
+        
+    - name: edit /etc/modules
+      become: true
+      lineinfile:
+        dest: '/etc/modules'
+        line: 'snd-bcm2835'
+        state: present
+      register: modules_state
+      notify:
+        - reboot machine
+        
+  handlers:
+    - name: reboot machine
+      include: roles/common/reboot.yml
+      
