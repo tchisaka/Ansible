@@ -5,5 +5,5 @@
     name: cron
     state: restarted
 
-- name: reboot machine
-  include: roles/common/reboot.yml
+- name: reboot
+  include: 'roles/common/reboot.yml'

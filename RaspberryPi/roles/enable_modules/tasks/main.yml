@@ -11,7 +11,7 @@
   when: item.line != None
   register: modules_state
   notify:
-    - reboot machine
+    - reboot
 
 - name: edit /boot/config.txt
   become: true
@@ -25,7 +25,7 @@
     - "{{ picamera_module[ picameraQ | default('unchanged')].config_items }}"
   register: config_state
   notify:
-    - reboot machine
+    - reboot
 
 #- name: reboot machine
 #  include: 'roles/common/reboot.yml'

@@ -9,7 +9,9 @@
   ignore_errors: true
   register: result
   changed_when: "'reboot is needed' in result.stdout"
+  notify:
+    - reboot
 
-- name: reboot machine
-  include: 'roles/common/reboot.yml'
-  when: result|changed
+#- name: reboot machine
+#  include: 'roles/common/reboot.yml'
+#  when: result|changed
