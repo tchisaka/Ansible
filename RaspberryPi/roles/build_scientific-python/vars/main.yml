@@ -2,7 +2,7 @@
 # ----- vars file for build scientific-python ----
 
 build_sp:
-  based_python: 3.6.1
+  based_python: 3.6.2
   virtual_python: imaging
   virtual_setup_dir: '{{ ansible_user_dir }}/imaging'
   # --- list & dict---
