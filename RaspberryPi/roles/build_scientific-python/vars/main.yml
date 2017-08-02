@@ -58,6 +58,7 @@ build_sp:
     - simpy
     - pandas
     - openopt
+    - param
     # --- Image Proccessing ---
     - pillow
     # --- Interactive Environments ---
@@ -65,12 +66,14 @@ build_sp:
     - jupyter
     - notebook
     # --- Graphical Package --
+    - 'holoviews[recommended]'
     - matplotlib
   pip_science_pkgs2:   
     # --- Scientific Packages ---
     - scipy
     # --- Graphical Package --
     - bokeh
+    - plotly
     - seaborn
     - vispy
     # --- Machine Learning ---
