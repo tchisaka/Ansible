@@ -2,5 +2,7 @@
 - name: Build Scientific Python on Raspberry pi
   hosts: all
   roles:
+    - apt_get_upgrade
+    - install_pyenv
     - build_scientific-python
 
