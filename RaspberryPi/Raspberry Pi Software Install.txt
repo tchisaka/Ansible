@@ -29,7 +29,7 @@ sudo reboot
 # ========================
 # zetazero
 cd ~/ZetaZero
-./zetazero.wls &
+./zetazero.wl &
 sleep 0.1
 ps
 
