@@ -1,6 +1,6 @@
 ---
 - name: Raspberry Pi software update
-  hosts: all
+  hosts: RPi
   roles:
     - apt_get_upgrade
     - update_firmware

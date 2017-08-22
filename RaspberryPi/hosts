@@ -13,6 +13,27 @@ Leon.local
 Xan.local
 Yolanda.local
 Zero.local
+Tinker.local ansible_user=linaro
+
+[RPi]
+Annie.local
+Bobby.local
+Cathy.local
+Dick.local
+Elsa.local
+Fred.local
+Grace.local
+Harry.local
+Iris.local
+John.local
+Kate.local
+Leon.local
+Xan.local
+Yolanda.local
+Zero.local
+
+[TinkerBoard]
+Tinker.local ansible_user=linaro
 
 [zetazero]
 Cathy.local
