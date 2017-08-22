@@ -1,0 +1,4 @@
+---
+src_dest: '/usr/local/src'
+src_lib:  '/usr/local/lib'
+src_bin:  '/usr/local/bin'
