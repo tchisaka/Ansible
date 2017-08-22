@@ -1,0 +1,21 @@
+---
+- name: Every Raspberry Pi's tasks
+  hosts: Leon.local
+  tasks:
+  - name: Is zetazero.wl script working?
+    script: get_wolfram_id.sh
+    register: wolfram
+    changed_when: no
+
+  - name: set main WolframKernel PID
+    set_fact:
+      wolfram_id: "{{ wolfram.stdout_lines }}"
+
+  - debug: var=wolfram_id
+  
+  - name: kill process
+    shell: kill -9 {{ item }}
+    with_items: "{{ wolfram_id }}"
+    
+  - name: recive data
+    script: move-data.sh -m chdir=ZetaZero
