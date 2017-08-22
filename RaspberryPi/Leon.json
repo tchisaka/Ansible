@@ -1,0 +1,330 @@
+Leon.local | SUCCESS => {
+    "ansible_facts": {
+        "ansible_all_ipv4_addresses": [
+            "192.168.2.6"
+        ], 
+        "ansible_all_ipv6_addresses": [
+            "fe80::396:e098:4b49:30b5", 
+            "fe80::c281:4861:84b5:5d78"
+        ], 
+        "ansible_apparmor": {
+            "status": "disabled"
+        }, 
+        "ansible_architecture": "armv7l", 
+        "ansible_bios_date": "NA", 
+        "ansible_bios_version": "NA", 
+        "ansible_cmdline": {
+            "8250.nr_uarts": "1", 
+            "bcm2708_fb.fbheight": "480", 
+            "bcm2708_fb.fbswap": "1", 
+            "bcm2708_fb.fbwidth": "640", 
+            "console": "ttyS0,115200", 
+            "dwc_otg.lpm_enable": "0", 
+            "elevator": "deadline", 
+            "fsck.repair": "yes", 
+            "root": "/dev/mmcblk0p7", 
+            "rootfstype": "ext4", 
+            "rootwait": true, 
+            "vc_mem.mem_base": "0x3dc00000", 
+            "vc_mem.mem_size": "0x3f000000"
+        }, 
+        "ansible_date_time": {
+            "date": "2017-08-08", 
+            "day": "08", 
+            "epoch": "1502179288", 
+            "hour": "17", 
+            "iso8601": "2017-08-08T08:01:28Z", 
+            "iso8601_basic": "20170808T170128088574", 
+            "iso8601_basic_short": "20170808T170128", 
+            "iso8601_micro": "2017-08-08T08:01:28.088952Z", 
+            "minute": "01", 
+            "month": "08", 
+            "second": "28", 
+            "time": "17:01:28", 
+            "tz": "JST", 
+            "tz_offset": "+0900", 
+            "weekday": "Tuesday", 
+            "weekday_number": "2", 
+            "weeknumber": "32", 
+            "year": "2017"
+        }, 
+        "ansible_default_ipv4": {
+            "address": "192.168.2.6", 
+            "alias": "wlan0", 
+            "broadcast": "192.168.2.255", 
+            "gateway": "192.168.2.1", 
+            "interface": "wlan0", 
+            "macaddress": "b8:27:eb:e7:ba:a3", 
+            "mtu": 1500, 
+            "netmask": "255.255.255.0", 
+            "network": "192.168.2.0", 
+            "type": "ether"
+        }, 
+        "ansible_default_ipv6": {}, 
+        "ansible_devices": {
+            "mmcblk0": {
+                "holders": [], 
+                "host": "", 
+                "model": null, 
+                "partitions": {}, 
+                "removable": "0", 
+                "rotational": "0", 
+                "sas_address": null, 
+                "sas_device_handle": null, 
+                "scheduler_mode": "deadline", 
+                "sectors": "62945280", 
+                "sectorsize": "512", 
+                "size": "30.01 GB", 
+                "support_discard": "4194304", 
+                "vendor": null
+            }
+        }, 
+        "ansible_distribution": "Debian", 
+        "ansible_distribution_major_version": "8", 
+        "ansible_distribution_release": "jessie", 
+        "ansible_distribution_version": "8.0", 
+        "ansible_dns": {
+            "nameservers": [
+                "192.168.2.1"
+            ]
+        }, 
+        "ansible_domain": "", 
+        "ansible_effective_group_id": 1000, 
+        "ansible_effective_user_id": 1000, 
+        "ansible_env": {
+            "HOME": "/home/pi", 
+            "INFINALITY_FT_AUTOHINT_HORIZONTAL_STEM_DARKEN_STRENGTH": "10", 
+            "INFINALITY_FT_AUTOHINT_INCREASE_GLYPH_HEIGHTS": "true", 
+            "INFINALITY_FT_AUTOHINT_SNAP_STEM_HEIGHT": "100", 
+            "INFINALITY_FT_AUTOHINT_VERTICAL_STEM_DARKEN_STRENGTH": "25", 
+            "INFINALITY_FT_BOLD_EMBOLDEN_X_VALUE": "0", 
+            "INFINALITY_FT_BOLD_EMBOLDEN_Y_VALUE": "0", 
+            "INFINALITY_FT_BRIGHTNESS": "0", 
+            "INFINALITY_FT_CHROMEOS_STYLE_SHARPENING_STRENGTH": "0", 
+            "INFINALITY_FT_CONTRAST": "0", 
+            "INFINALITY_FT_FILTER_PARAMS": "11 22 38 22 11", 
+            "INFINALITY_FT_FRINGE_FILTER_STRENGTH": "0", 
+            "INFINALITY_FT_GAMMA_CORRECTION": "0 100", 
+            "INFINALITY_FT_GLOBAL_EMBOLDEN_X_VALUE": "0", 
+            "INFINALITY_FT_GLOBAL_EMBOLDEN_Y_VALUE": "0", 
+            "INFINALITY_FT_GRAYSCALE_FILTER_STRENGTH": "0", 
+            "INFINALITY_FT_STEM_ALIGNMENT_STRENGTH": "25", 
+            "INFINALITY_FT_STEM_FITTING_STRENGTH": "25", 
+            "INFINALITY_FT_STEM_SNAPPING_SLIDING_SCALE": "40", 
+            "INFINALITY_FT_USE_KNOWN_SETTINGS_ON_SELECTED_FONTS": "true", 
+            "INFINALITY_FT_USE_VARIOUS_TWEAKS": "true", 
+            "INFINALITY_FT_WINDOWS_STYLE_SHARPENING_STRENGTH": "10", 
+            "LANG": "en_US.UTF-8", 
+            "LOGNAME": "pi", 
+            "MAIL": "/var/mail/pi", 
+            "PATH": "/home/pi/.pyenv/plugins/pyenv-virtualenv/shims:/home/pi/.pyenv/shims:/home/pi/.pyenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games", 
+            "PWD": "/home/pi", 
+            "PYENV_ROOT": "/home/pi/.pyenv", 
+            "PYENV_SHELL": "bash", 
+            "PYENV_VIRTUALENV_INIT": "1", 
+            "SHELL": "/bin/bash", 
+            "SHLVL": "2", 
+            "SSH_CLIENT": "fe80::c41:d374:e532:e0ba%wlan0 53453 22", 
+            "SSH_CONNECTION": "fe80::c41:d374:e532:e0ba%wlan0 53453 fe80::c281:4861:84b5:5d78%wlan0 22", 
+            "SSH_TTY": "/dev/pts/1", 
+            "TERM": "xterm-256color", 
+            "TEXTDOMAIN": "Linux-PAM", 
+            "USER": "pi", 
+            "XDG_RUNTIME_DIR": "/run/user/1000", 
+            "XDG_SESSION_ID": "c5", 
+            "_": "/usr/bin/python"
+        }, 
+        "ansible_eth0": {
+            "active": false, 
+            "device": "eth0", 
+            "features": {}, 
+            "ipv6": [
+                {
+                    "address": "fe80::396:e098:4b49:30b5", 
+                    "prefix": "64", 
+                    "scope": "link"
+                }
+            ], 
+            "macaddress": "b8:27:eb:b2:ef:f6", 
+            "module": "smsc95xx", 
+            "mtu": 1500, 
+            "pciid": "1-1.1:1.0", 
+            "promisc": false, 
+            "speed": 10, 
+            "type": "ether"
+        }, 
+        "ansible_fips": false, 
+        "ansible_form_factor": "NA", 
+        "ansible_fqdn": "Leon", 
+        "ansible_gather_subset": [
+            "hardware", 
+            "network", 
+            "virtual"
+        ], 
+        "ansible_hostname": "Leon", 
+        "ansible_interfaces": [
+            "lo", 
+            "wlan0", 
+            "eth0"
+        ], 
+        "ansible_kernel": "4.9.40-v7+", 
+        "ansible_lo": {
+            "active": true, 
+            "device": "lo", 
+            "features": {}, 
+            "ipv4": {
+                "address": "127.0.0.1", 
+                "broadcast": "host", 
+                "netmask": "255.0.0.0", 
+                "network": "127.0.0.0"
+            }, 
+            "ipv6": [
+                {
+                    "address": "::1", 
+                    "prefix": "128", 
+                    "scope": "host"
+                }
+            ], 
+            "mtu": 65536, 
+            "promisc": false, 
+            "type": "loopback"
+        }, 
+        "ansible_lsb": {
+            "codename": "jessie", 
+            "description": "Raspbian GNU/Linux 8.0 (jessie)", 
+            "id": "Raspbian", 
+            "major_release": "8", 
+            "release": "8.0"
+        }, 
+        "ansible_machine": "armv7l", 
+        "ansible_machine_id": "fe1d4a4d0ac7441e817d011e70da2471", 
+        "ansible_memfree_mb": 696, 
+        "ansible_memory_mb": {
+            "nocache": {
+                "free": 804, 
+                "used": 55
+            }, 
+            "real": {
+                "free": 696, 
+                "total": 859, 
+                "used": 163
+            }, 
+            "swap": {
+                "cached": 0, 
+                "free": 99, 
+                "total": 99, 
+                "used": 0
+            }
+        }, 
+        "ansible_memtotal_mb": 859, 
+        "ansible_mounts": [
+            {
+                "device": "/dev/root", 
+                "fstype": "ext4", 
+                "mount": "/", 
+                "options": "rw,noatime,data=ordered", 
+                "size_available": 9684504576, 
+                "size_total": 30233669632, 
+                "uuid": "N/A"
+            }, 
+            {
+                "device": "/dev/mmcblk0p6", 
+                "fstype": "vfat", 
+                "mount": "/boot", 
+                "options": "rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,errors=remount-ro", 
+                "size_available": 46942208, 
+                "size_total": 69052416, 
+                "uuid": "N/A"
+            }
+        ], 
+        "ansible_nodename": "Leon", 
+        "ansible_os_family": "Debian", 
+        "ansible_pkg_mgr": "apt", 
+        "ansible_processor": [
+            "ARMv7 Processor rev 4 (v7l)", 
+            "ARMv7 Processor rev 4 (v7l)", 
+            "ARMv7 Processor rev 4 (v7l)", 
+            "ARMv7 Processor rev 4 (v7l)"
+        ], 
+        "ansible_processor_cores": 1, 
+        "ansible_processor_count": 4, 
+        "ansible_processor_threads_per_core": 1, 
+        "ansible_processor_vcpus": 4, 
+        "ansible_product_name": "NA", 
+        "ansible_product_serial": "NA", 
+        "ansible_product_uuid": "NA", 
+        "ansible_product_version": "NA", 
+        "ansible_python": {
+            "executable": "/usr/bin/python", 
+            "has_sslcontext": true, 
+            "type": "CPython", 
+            "version": {
+                "major": 2, 
+                "micro": 9, 
+                "minor": 7, 
+                "releaselevel": "final", 
+                "serial": 0
+            }, 
+            "version_info": [
+                2, 
+                7, 
+                9, 
+                "final", 
+                0
+            ]
+        }, 
+        "ansible_python_version": "2.7.9", 
+        "ansible_real_group_id": 1000, 
+        "ansible_real_user_id": 1000, 
+        "ansible_selinux": false, 
+        "ansible_service_mgr": "systemd", 
+        "ansible_ssh_host_key_dsa_public": "AAAAB3NzaC1kc3MAAACBAJrtlUT4Dxwv5HNbImho0tdsziEqivWce0SRq98Bfytfqn3VS8KJJWpvQEN9xZ+RpblnyYVpuKQkBg1vcTjY8iqSiL1ApNU3euhJcBRY1vCTFlrY6pAK/TL0pQd8KsmGv53A6ZYjUNvlJ6GKs00H5gq54UAszQ3bMMzSYFU0JwjLAAAAFQCG8O6WIB4hABsfhnEegBprWV4hgQAAAIEAhn6f6XwbNGLFK0HhzqW3HhAk10YIrU+2w3hVrZnwnYiOsqlUluuQHUeCcDVdC2xcDFIbsgfVgqGxWSuD8Q7l7+OJSogaUQvLewoKZiIHeZMt6Ve6emBRzTgmldRwGhH3j1ng9D8CRBOWiyynXCHbInH3wnDw2EXxhTI//cg8RBgAAACAMUs9ltx4tqRN9Z5a5yfBjhzOkSsTOsZ/wgpiJYOR0D7LT0Py53wfWAh86VJ6qWMEowQ6X4T2Fvj4t6yNkyMLXoDdS+2PSP4MZVUhb5IzY2fkNO1A2tpUswg+4ZhDhnrH7h5fxZ9uQ8HfNTYIXj6TIf6n5wPeGxn80uYSsVqgrq0=", 
+        "ansible_ssh_host_key_ecdsa_public": "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBBBEW9cSTpho5aSZ9dYz0bSoMpxRfPF8XjJSncxJCpd0qVUaJYozwO1sdZdquCKRLpzHGrjBFS7zXldOQvLAFnc=", 
+        "ansible_ssh_host_key_ed25519_public": "AAAAC3NzaC1lZDI1NTE5AAAAIPPTaw+rD6BBLkhyT7OLSVi6ahK6x5KVmyXCpxRtrJeM", 
+        "ansible_ssh_host_key_rsa_public": "AAAAB3NzaC1yc2EAAAADAQABAAABAQDWCbF/HucBQ7FZ4IbaRJbhtCaQNHBHV8AGsBxZDxGLOkxV2TXd1oDsuz6gBnKO9xe+6+Puo+jkWtvBEeE9nnvHxm45am/RUI7nl0H6BrbusWZ9T70w9YabTtaCCMSui6tpMRUBxa4scgIhUJr3EKjKbxpjOqG1Ik2vQ9d9jsx2sJcv1Jfn9fIYkBfJSnWo83//+4YC8rqD2Z9b0AgnstvUuHSw0WbZ+CH82yYqAYmOortLyEjBoB1EHeYR4EiwXMlXKeT6qmlQ4MVCOYb3Wrcs2b8wgQn5ceoiKHghinIamaBGsKHq3vBslWJKByuIFr1pxjfKMkXyWLBEkwKDM0T1", 
+        "ansible_swapfree_mb": 99, 
+        "ansible_swaptotal_mb": 99, 
+        "ansible_system": "Linux", 
+        "ansible_system_capabilities": [
+            ""
+        ], 
+        "ansible_system_capabilities_enforced": "True", 
+        "ansible_system_vendor": "NA", 
+        "ansible_uptime_seconds": 18225, 
+        "ansible_user_dir": "/home/pi", 
+        "ansible_user_gecos": ",,,", 
+        "ansible_user_gid": 1000, 
+        "ansible_user_id": "pi", 
+        "ansible_user_shell": "/bin/bash", 
+        "ansible_user_uid": 1000, 
+        "ansible_userspace_bits": "32", 
+        "ansible_virtualization_role": "NA", 
+        "ansible_virtualization_type": "NA", 
+        "ansible_wlan0": {
+            "active": true, 
+            "device": "wlan0", 
+            "features": {}, 
+            "ipv4": {
+                "address": "192.168.2.6", 
+                "broadcast": "192.168.2.255", 
+                "netmask": "255.255.255.0", 
+                "network": "192.168.2.0"
+            }, 
+            "ipv6": [
+                {
+                    "address": "fe80::c281:4861:84b5:5d78", 
+                    "prefix": "64", 
+                    "scope": "link"
+                }
+            ], 
+            "macaddress": "b8:27:eb:e7:ba:a3", 
+            "module": "brcmfmac", 
+            "mtu": 1500, 
+            "pciid": "mmc1:0001:1", 
+            "promisc": false, 
+            "type": "ether"
+        }, 
+        "module_setup": true
+    }, 
+    "changed": false
+}

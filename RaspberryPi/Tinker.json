@@ -1,0 +1,309 @@
+Tinker.local | SUCCESS => {
+    "ansible_facts": {
+        "ansible_all_ipv4_addresses": [
+            "192.168.2.17"
+        ], 
+        "ansible_all_ipv6_addresses": [
+            "fe80::3eee:52e6:1064:5f48"
+        ], 
+        "ansible_apparmor": {
+            "status": "disabled"
+        }, 
+        "ansible_architecture": "armv7l", 
+        "ansible_bios_date": "NA", 
+        "ansible_bios_version": "NA", 
+        "ansible_cmdline": {
+            "console": "tty1", 
+            "earlyprintk": true, 
+            "init": "/sbin/init", 
+            "plymouth.ignore-serial-consoles": true, 
+            "quiet": true, 
+            "root": "/dev/mmcblk0p2", 
+            "rw": true, 
+            "splash": true, 
+            "uboot_version": "2016.09-rc1-00002-ge49f665", 
+            "video": "HDMI-A-1:1368x768@60"
+        }, 
+        "ansible_date_time": {
+            "date": "2017-08-22", 
+            "day": "22", 
+            "epoch": "1503381416", 
+            "hour": "14", 
+            "iso8601": "2017-08-22T05:56:56Z", 
+            "iso8601_basic": "20170822T145656497691", 
+            "iso8601_basic_short": "20170822T145656", 
+            "iso8601_micro": "2017-08-22T05:56:56.497935Z", 
+            "minute": "56", 
+            "month": "08", 
+            "second": "56", 
+            "time": "14:56:56", 
+            "tz": "JST", 
+            "tz_offset": "+0900", 
+            "weekday": "Tuesday", 
+            "weekday_number": "2", 
+            "weeknumber": "34", 
+            "year": "2017"
+        }, 
+        "ansible_default_ipv4": {
+            "address": "192.168.2.17", 
+            "alias": "wlan0", 
+            "broadcast": "192.168.2.255", 
+            "gateway": "192.168.2.1", 
+            "interface": "wlan0", 
+            "macaddress": "f0:03:8c:2d:ad:5d", 
+            "mtu": 1500, 
+            "netmask": "255.255.255.0", 
+            "network": "192.168.2.0", 
+            "type": "ether"
+        }, 
+        "ansible_default_ipv6": {}, 
+        "ansible_devices": {
+            "mmcblk0": {
+                "holders": [], 
+                "host": "", 
+                "model": null, 
+                "partitions": {}, 
+                "removable": "0", 
+                "rotational": "0", 
+                "sas_address": null, 
+                "sas_device_handle": null, 
+                "scheduler_mode": "cfq", 
+                "sectors": "62005248", 
+                "sectorsize": "512", 
+                "size": "29.57 GB", 
+                "support_discard": "4194304", 
+                "vendor": null
+            }
+        }, 
+        "ansible_distribution": "Debian", 
+        "ansible_distribution_major_version": "9", 
+        "ansible_distribution_release": "stretch", 
+        "ansible_distribution_version": "9.1", 
+        "ansible_dns": {
+            "nameservers": [
+                "192.168.2.1", 
+                "127.0.0.53", 
+                "8.8.8.8"
+            ]
+        }, 
+        "ansible_domain": "", 
+        "ansible_effective_group_id": 1000, 
+        "ansible_effective_user_id": 1000, 
+        "ansible_env": {
+            "HOME": "/home/linaro", 
+            "JAVA_TOOL_OPTIONS": "-Dgnu.io.rxtx.SerialPorts=/dev/tty96B0", 
+            "LANG": "en_US.UTF-8", 
+            "LOGNAME": "linaro", 
+            "MAIL": "/var/mail/linaro", 
+            "MONITOR_PORT": "/dev/tty96B0", 
+            "PATH": "/home/linaro/.pyenv/plugins/pyenv-virtualenv/shims:/home/linaro/.pyenv/shims:/home/linaro/.pyenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games", 
+            "PWD": "/home/linaro", 
+            "PYENV_ROOT": "/home/linaro/.pyenv", 
+            "PYENV_SHELL": "bash", 
+            "PYENV_VIRTUALENV_INIT": "1", 
+            "SHELL": "/bin/bash", 
+            "SHLVL": "2", 
+            "SSH_CLIENT": "fe80::830:e060:f110:3e91%wlan0 60166 22", 
+            "SSH_CONNECTION": "fe80::830:e060:f110:3e91%wlan0 60166 fe80::3eee:52e6:1064:5f48%wlan0 22", 
+            "SSH_TTY": "/dev/pts/3", 
+            "TERM": "xterm-256color", 
+            "USER": "linaro", 
+            "XDG_RUNTIME_DIR": "/run/user/1000", 
+            "XDG_SESSION_ID": "c18", 
+            "_": "/usr/bin/python"
+        }, 
+        "ansible_eth0": {
+            "active": true, 
+            "device": "eth0", 
+            "features": {}, 
+            "macaddress": "2c:4d:54:42:ca:89", 
+            "mtu": 1500, 
+            "pciid": "ff290000.ethernet", 
+            "promisc": false, 
+            "speed": 100, 
+            "type": "ether"
+        }, 
+        "ansible_fips": false, 
+        "ansible_form_factor": "NA", 
+        "ansible_fqdn": "Tinker", 
+        "ansible_gather_subset": [
+            "hardware", 
+            "network", 
+            "virtual"
+        ], 
+        "ansible_hostname": "Tinker", 
+        "ansible_interfaces": [
+            "sit0", 
+            "lo", 
+            "wlan0", 
+            "eth0"
+        ], 
+        "ansible_kernel": "4.4.16-00010-g0fce7eb-dirty", 
+        "ansible_lo": {
+            "active": true, 
+            "device": "lo", 
+            "features": {}, 
+            "ipv4": {
+                "address": "127.0.0.1", 
+                "broadcast": "host", 
+                "netmask": "255.0.0.0", 
+                "network": "127.0.0.0"
+            }, 
+            "ipv6": [
+                {
+                    "address": "::1", 
+                    "prefix": "128", 
+                    "scope": "host"
+                }
+            ], 
+            "mtu": 65536, 
+            "promisc": false, 
+            "type": "loopback"
+        }, 
+        "ansible_lsb": {
+            "codename": "stretch", 
+            "description": "Debian GNU/Linux 9.1 (stretch)", 
+            "id": "Debian", 
+            "major_release": "9", 
+            "release": "9.1"
+        }, 
+        "ansible_machine": "armv7l", 
+        "ansible_machine_id": "e12ff3dd91b24ca2bb1b7dfe25145a4a", 
+        "ansible_memfree_mb": 363, 
+        "ansible_memory_mb": {
+            "nocache": {
+                "free": 1631, 
+                "used": 382
+            }, 
+            "real": {
+                "free": 363, 
+                "total": 2013, 
+                "used": 1650
+            }, 
+            "swap": {
+                "cached": 0, 
+                "free": 0, 
+                "total": 0, 
+                "used": 0
+            }
+        }, 
+        "ansible_memtotal_mb": 2013, 
+        "ansible_mounts": [
+            {
+                "device": "/dev/root", 
+                "fstype": "ext4", 
+                "mount": "/", 
+                "options": "rw,noatime,data=ordered", 
+                "size_available": 26886307840, 
+                "size_total": 31122878464, 
+                "uuid": "N/A"
+            }, 
+            {
+                "device": "/dev/mmcblk0p1", 
+                "fstype": "vfat", 
+                "mount": "/boot", 
+                "options": "rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro", 
+                "size_available": 58396160, 
+                "size_total": 66059264, 
+                "uuid": "B14D-B335"
+            }
+        ], 
+        "ansible_nodename": "Tinker", 
+        "ansible_os_family": "Debian", 
+        "ansible_pkg_mgr": "apt", 
+        "ansible_processor": [
+            "ARMv7 Processor rev 1 (v7l)", 
+            "ARMv7 Processor rev 1 (v7l)", 
+            "ARMv7 Processor rev 1 (v7l)", 
+            "ARMv7 Processor rev 1 (v7l)"
+        ], 
+        "ansible_processor_cores": 1, 
+        "ansible_processor_count": 4, 
+        "ansible_processor_threads_per_core": 1, 
+        "ansible_processor_vcpus": 4, 
+        "ansible_product_name": "NA", 
+        "ansible_product_serial": "NA", 
+        "ansible_product_uuid": "NA", 
+        "ansible_product_version": "NA", 
+        "ansible_python": {
+            "executable": "/usr/bin/python", 
+            "has_sslcontext": true, 
+            "type": "CPython", 
+            "version": {
+                "major": 2, 
+                "micro": 13, 
+                "minor": 7, 
+                "releaselevel": "final", 
+                "serial": 0
+            }, 
+            "version_info": [
+                2, 
+                7, 
+                13, 
+                "final", 
+                0
+            ]
+        }, 
+        "ansible_python_version": "2.7.13", 
+        "ansible_real_group_id": 1000, 
+        "ansible_real_user_id": 1000, 
+        "ansible_selinux": false, 
+        "ansible_service_mgr": "systemd", 
+        "ansible_sit0": {
+            "active": false, 
+            "device": "sit0", 
+            "features": {}, 
+            "macaddress": "00:00:00:00", 
+            "mtu": 1480, 
+            "promisc": false, 
+            "type": "unknown"
+        }, 
+        "ansible_ssh_host_key_dsa_public": "AAAAB3NzaC1kc3MAAACBAOoa1jfa4452NK+9f1QjhjDfadG+/oyG55nwyIQY2QXz2Xnx/PH7rDiB0zqxVcHE7Up5sdm8WCVCH1sP8a29UPBWhIS5TTPKIqtr9ZWzbs5EGKd9PC65fl980u4KiQifmASo5W0ulmgXXAdeu49BWcLKRsJ8G65p+MEkmzhTGAAZAAAAFQCCqqaywjSjHPpWcgLnvWobspwjRQAAAIBYn++BQaFasBZL+HP8rbBTZdszGz0I9Bv2D8gMDNPOYeM0MTMWD/DHAqntFePxToizhUmZ1PsY614Kmv3umlU+caL1MNGo3azu4+GPpv/7/SCK67+Pm37I5HiM9g0ahnIxQ0fhtGWfeMN9RbvLapxuBvcNlCwQR+CgoLHCj5G29wAAAIEAsx/8Ss2dDqbXoE7hWE/DeTYEduEoCaj2QafRiHKM/7R+Wl3oHJSp90kcTS66d3hLT0b9o8d0+/+ZdKmqk+9J9XniUfrxT1eCBnDYwVpQ4nAQF3Brv9gciqTCsf7rKeBfJnSLBiwY2M6+bGfCrS77y/7pQmyLI7zhJtiR1LUKfzg=", 
+        "ansible_ssh_host_key_ecdsa_public": "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBCsHIyO8Kj+nDUK//G4Vd9ieBxTrUmB/t5F4m4vmuQV0AndWz3MgHDL6A3KPk7zkBvFYeeJ+YIxwc8GdagA95u4=", 
+        "ansible_ssh_host_key_ed25519_public": "AAAAC3NzaC1lZDI1NTE5AAAAIMdTdzZ+wvSdr1nrI7X9KWai6a4yBqJBW3HICrEUZZ/7", 
+        "ansible_ssh_host_key_rsa_public": "AAAAB3NzaC1yc2EAAAADAQABAAABAQDbbzh4BB7Un5V00cOkAtV/T4oMgzrwB2yS3ZdHOzt5SZxF+JgvhTc0DGEbOoY9clzo2vphZVEuFcgIbQQlPO0Fr7aatIYygMCrhQc0/70udYSqhJSkJpkwtC2xkQIHH4YBfNdDMVORVLaYNcB3QwrOlmFdnATX8XVY+o0t3Oq2OtjP0vFM6UvPx0mMHAuAA/unzogVzU8VYvj6KBUrUe9F+tPXfNm3edC9qcmJ/zTVvW7D62Fmbw63Ut93oE7eJc1ZMmAibzKtR3g1HqsnS5E0r1yAZLIKZTpP4acI8nGoOxgeqdED5HXlbEKxxK0U1eSr8hdZSaaYRub5r9AhnVeD", 
+        "ansible_swapfree_mb": 0, 
+        "ansible_swaptotal_mb": 0, 
+        "ansible_system": "Linux", 
+        "ansible_system_capabilities": [
+            ""
+        ], 
+        "ansible_system_capabilities_enforced": "True", 
+        "ansible_system_vendor": "NA", 
+        "ansible_uptime_seconds": 4218, 
+        "ansible_user_dir": "/home/linaro", 
+        "ansible_user_gecos": "linaro,,,", 
+        "ansible_user_gid": 1000, 
+        "ansible_user_id": "linaro", 
+        "ansible_user_shell": "/bin/bash", 
+        "ansible_user_uid": 1000, 
+        "ansible_userspace_bits": "32", 
+        "ansible_virtualization_role": "NA", 
+        "ansible_virtualization_type": "NA", 
+        "ansible_wlan0": {
+            "active": true, 
+            "device": "wlan0", 
+            "features": {}, 
+            "ipv4": {
+                "address": "192.168.2.17", 
+                "broadcast": "192.168.2.255", 
+                "netmask": "255.255.255.0", 
+                "network": "192.168.2.0"
+            }, 
+            "ipv6": [
+                {
+                    "address": "fe80::3eee:52e6:1064:5f48", 
+                    "prefix": "64", 
+                    "scope": "link"
+                }
+            ], 
+            "macaddress": "f0:03:8c:2d:ad:5d", 
+            "mtu": 1500, 
+            "pciid": "mmc1:0001:1", 
+            "promisc": false, 
+            "type": "ether"
+        }, 
+        "module_setup": true
+    }, 
+    "changed": false
+}
