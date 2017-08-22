@@ -3,8 +3,8 @@ alias la="ls -la"
 alias brew-update="brew update && brew upgrade"
 
 alias original-py="pyenv global system;pyenv versions"
-alias anaconda2="pyenv global anaconda2-4.3.1;pyenv versions"
-alias anaconda3="pyenv global anaconda3-4.3.1;pyenv versions"
+alias anaconda2="pyenv global anaconda2-4.4.0;pyenv versions"
+alias anaconda3="pyenv global anaconda3-4.4.0;pyenv versions"
 alias py2713="pyenv global 2.7.13;pyenv versions"
 alias ansible2="pyenv global ansible2;pyenv versions"
 
@@ -28,4 +28,6 @@ alias Kate="ssh pi@Kate.local"
 alias Leon="ssh pi@Leon.local"
 alias Xan="ssh pi@Xan.local"
 alias Yolanda="ssh pi@Yolanda.local"
-alias Zero="ssh pi@Zero.local"
+alias Zero="ssh pi@Zero.local”
+
+alias Tinker=“ssh linaro@Tinker.local”
