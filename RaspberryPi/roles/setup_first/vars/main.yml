@@ -13,6 +13,7 @@ add_pkgs:
   - realvnc-vnc-viewer
   - tightvncserver
   - xrdp
+  - xorgxrdp
   # GPIO
   - i2c-tools
   - libi2c-dev
