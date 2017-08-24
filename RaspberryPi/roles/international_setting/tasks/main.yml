@@ -27,6 +27,7 @@
       become: true
       shell: /etc/init.d/keyboard-setup reload
       changed_when: false
+      ignore_errors: yes  # <== Add!!
   tags:
     - set_keyboard
 
