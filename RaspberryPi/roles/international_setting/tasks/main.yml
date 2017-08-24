@@ -25,9 +25,8 @@
         mode: 0644
     - name: update keymap
       become: true
-      shell: /etc/init.d/keyboard-setup reload
+      shell: /etc/init.d/keyboard-setup.sh reload
       changed_when: false
-      ignore_errors: yes  # <== Add!!
   tags:
     - set_keyboard
 
