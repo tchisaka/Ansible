@@ -21,8 +21,6 @@
     mode: 0644
   register: rtc
   when: rtc_param is defined
-  notify:
-    - reboot machine
 
 - name: set RTC as servie
   become: yes
@@ -31,6 +29,6 @@
     enabled: true
     state: started
 
-#- name: reboot machine
-#  include: roles/common/reboot.yml
-#  when: rtc|changed
+- name: reboot machine
+  include: roles/common/reboot.yml
+  when: rtc|changed
