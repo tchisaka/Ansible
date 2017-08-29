@@ -1,0 +1,4 @@
+---
+shutdown_files:
+  - { src:  'shutdown-daemon.sh', dest: '/usr/local/bin/'      , mode: 0777 }
+  - { src:  'shutdown.service'  , dest: '/etc/systemd/system/' , mpde: 0644 }

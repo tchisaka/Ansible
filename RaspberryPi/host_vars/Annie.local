@@ -1,6 +1,8 @@
 ---
 # hostname: Annie ( Raspberry Pi model B Rev.02 )
 
+shutdown_button: yes
+
 # ----- i2c module -----
 i2cQ: enabled
 rtcQ:

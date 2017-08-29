@@ -1,0 +1,26 @@
+---
+# ----- Set shutdown service -----
+#
+# Need variable: shutdown_button
+#
+# - debug: var=shutdown_button
+#   when: shutdown_button is defined
+
+- block:
+  - name: copy script file for system shutdown
+    become: yes
+    copy:
+      dest: "{{ item.dest }}"
+      src:  "{{ item.src }}"
+      mode: "{{ item.mode }}"
+    register: result
+    with_items: "{{ shutdown_files }}"
+    
+  - name: set shutdown as servie
+    become: yes
+    systemd:
+      name: shutdown
+      enabled: true
+      state: started
+  
+  when: shutdown_button is defined

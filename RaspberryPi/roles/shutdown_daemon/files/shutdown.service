@@ -1,0 +1,16 @@
+# /etc/systemd/system/shutdown.service
+[Unit]
+Description=Shutdown Service
+
+[Service]
+ExecStart=/bin/bash /usr/local/bin/shutdown-daemon.sh
+WorkingDirectory=/usr/local/bin/
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=shutdown
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target

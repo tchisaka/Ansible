@@ -1,6 +1,8 @@
 ---
 # hostname: Kate ( Raspberry Pi 3 Rev.02 )
 
+shutdown_button: yes
+
 # ----- i2c module -----
 i2cQ: enabled
 rtcQ:

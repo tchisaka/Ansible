@@ -1,0 +1,5 @@
+---
+- name: Setup shutdown.service
+  hosts: all
+  roles:
+    - shutdown_daemon
