@@ -67,6 +67,7 @@
     chdir: "{{ build_sp.virtual_setup_dir }}"
     executable: pip3
   with_items: "{{ build_sp.pip_science_pkgs1 }}"
+  ignore_errors: yes
 
 - name: pip install pkgs for virtualenv (Pi2 and pi3 only)
   pip:
