@@ -1,7 +1,7 @@
 alias ll="ls -l"
 alias la="ls -la"
 
-alias raspi-update="sudo apt-get update;sudo apt-get upgrade -y;sudo apt-get dist-upgrade -y;sudo apt-get autoremove -y"
+alias raspi-update="sudo apt-get update;sudo apt-get upgrade -y;sudo apt-get dist-upgrade -y;sudo apt-get autoremove -y; sudo apt-get autoclean"
 alias rpi-update="sudo rpi-update"
 alias now="sudo hwclock -r;date"
 alias jp="LANG=jp_JP.UTF-8"
