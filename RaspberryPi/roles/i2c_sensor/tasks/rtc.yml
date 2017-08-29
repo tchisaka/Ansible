@@ -9,7 +9,7 @@
 #- debug: var=rtc_param[rtc_type].i2c_addr
 
 - debug: msg="RTC is {{ rtcQ.rtc_type }}"
-  when: rtc_param  is defined
+  when: rtc_param is defined
 
 - name: copy service file for RTC
   become: yes
@@ -19,16 +19,17 @@
     owner: root
     group: root
     mode: 0644
-  register: rtc
+  register: rtc_result
   when: rtc_param is defined
 
 - name: set RTC as servie
   become: yes
   systemd:
     name: rtc
+    state: restarted
+    daemon_reload: yes
     enabled: true
-    state: started
 
 - name: reboot machine
   include: roles/common/reboot.yml
-  when: rtc|changed
+  when: rtc_result|changed

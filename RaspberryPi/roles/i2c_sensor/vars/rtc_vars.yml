@@ -6,3 +6,5 @@ rtc_param:
   PCF8523:   { name: pcf8523, i2c_addr: 0x68 }   # NXP PCF8523
   RTC8564NB: { name: pcf8563, i2c_addr: 0x51 }   # Epson Toyocom RTC-8564NB
   RX8025NB:  { name: rx8025,  i2c_addr: 0x51 }   # Epson Toyocom RX-8025NB
+
+wait_time:   { armv6l: 6 , armv7l: 1 }   # wait time of setting hwclock (RTC)
