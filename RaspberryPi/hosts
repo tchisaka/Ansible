@@ -10,9 +10,12 @@ Iris.local
 John.local
 Kate.local
 Leon.local
+Maggie.local
+Wanda.local
 Xan.local
 Yolanda.local
 Zero.local
+Susie.local ansible_user=linaro
 Tinker.local ansible_user=linaro
 
 [RPi]
@@ -28,12 +31,41 @@ Iris.local
 John.local
 Kate.local
 Leon.local
+Maggie.local
+Wanda.local
 Xan.local
 Yolanda.local
 Zero.local
 
 [TinkerBoard]
+Susie.local ansible_user=linaro
 Tinker.local ansible_user=linaro
+
+[QuadCore]
+Dick.local
+Elsa.local
+Fred.local
+Grace.local
+Harry.local
+Iris.local
+John.local
+Kate.local
+Leon.local
+Maggie.local
+Susie.local ansible_user=linaro
+Tinker.local ansible_user=linaro
+
+[PiQuadCore]
+Dick.local
+Elsa.local
+Fred.local
+Grace.local
+Harry.local
+Iris.local
+John.local
+Kate.local
+Leon.local
+Maggie.local
 
 [zetazero]
 Cathy.local
@@ -45,9 +77,11 @@ Harry.local
 Iris.local
 John.local
 Kate.local
+Leon.local
 Zero.local
 
 [pi0]
+Wanda.local
 Xan.local
 Yolanda.local
 Zero.local
@@ -69,6 +103,7 @@ Iris.local
 John.local
 Kate.local
 Leon.local
+Maggie.local
 
 [OWFS]
 Annie.local

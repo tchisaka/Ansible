@@ -1,5 +1,5 @@
 ---
 - name: Install Arduino IDE
-  hosts: Leon.local
+  hosts: TinkerBoard
   roles:
     - install_arduino_ide

@@ -1,0 +1,25 @@
+---
+# ----- get board infomation -----
+# 
+# 19 Feb. 2018
+
+- shell: |
+    KEY=Details:
+    BOARD=$(gpio -v | grep $KEY | sed -e "s/$KEY//g" -e 's/ *$//g')
+    INFO=$(gpio -v | grep Type | tr ',' '\n' | sed -e 's/^\ *//' -e 's/\ *$//' -e 's/\: /\:/')
+    echo Board:$BOARD && echo "$INFO"
+  args:
+    executable: /bin/bash
+  register: board
+  ignore_errors: true
+  changed_when: board.stderr != ""
+
+- set_fact:
+    board_info: {}
+
+- set_fact:
+    board_info: >
+      {{ board_info | combine(dict([ item.partition(':')[::2]|map('trim') ])) }}
+    with_items: "{{ board.stdout_lines }}"
+      
+- debug: var=board_info

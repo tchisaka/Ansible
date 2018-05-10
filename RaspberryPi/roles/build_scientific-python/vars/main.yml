@@ -1,10 +1,21 @@
 ---
 # ----- vars file for build scientific-python ----
+pyenv_cmd: "{{ ansible_user_dir }}/.pyenv/bin/pyenv"
 
 build_sp:
-  based_python: 3.6.2
-  virtual_python: imaging
-  virtual_setup_dir: '{{ ansible_user_dir }}/imaging'
+  setup_paths:
+    - "{{ ansible_user_dir }}/.pyenv/plugins/pyenv-virtualenv/shims"
+    - "{{ ansible_user_dir }}/.pyenv/shims"
+    - "{{ ansible_user_dir }}/.pyenv/bin"
+    - "/usr/local/sbin"
+    - "/usr/local/bin"
+    - "/usr/sbin"
+    - "/usr/bin"
+    - "/sbin"
+    - "/bin"
+  based_python: 3.6.5
+  virtual_python: scientific
+  virtual_setup_dir: "{{ ansible_user_dir }}/scientific"
   # --- list & dict---
   add_pkgs:
     - build-essential
@@ -29,7 +40,7 @@ build_sp:
     - python3-matplotlib
     - python-scipy
     - python3-scipy
-  pip_science_pkgs1:
+  pip_science_pkgs:
     # --- Package Managements ---
     - pip
     - setuptools
@@ -43,6 +54,7 @@ build_sp:
     - nose              # for UnitTest
     - pipdeptree        # for checking the package dependencies
     # --- GPIO Control Packages ---
+    - wiringpi          # for Raspberry Pi GPIO
     - pyserial          # General Serial Port Control
     - RPi.GPIO          # for Raspberry Pi GPIO
     - picamera          # for Raspberry Pi Camera
@@ -51,6 +63,7 @@ build_sp:
     # --- Scientific Packages ---
     - numpy
     - numexpr
+    - scipy
     - bottleneck
     - py-cpuinfo
     - tables
@@ -65,16 +78,16 @@ build_sp:
     - ipython
     - jupyter
     - notebook
+    - jupyterlab
+    # - jupyter_contrib_nbextensions
+    - ipyparallel
+    - bash_kernel
     # --- Graphical Package --
-    - 'holoviews[recommended]'
     - matplotlib
-  pip_science_pkgs2:   
-    # --- Scientific Packages ---
-    - scipy
-    # --- Graphical Package --
     - bokeh
     - plotly
     - seaborn
     - vispy
+    - 'holoviews[recommended]'
     # --- Machine Learning ---
     - scikit-learn

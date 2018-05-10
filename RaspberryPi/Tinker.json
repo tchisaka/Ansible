@@ -1,10 +1,13 @@
 Tinker.local | SUCCESS => {
     "ansible_facts": {
         "ansible_all_ipv4_addresses": [
-            "192.168.2.17"
+            "192.168.3.74"
         ], 
         "ansible_all_ipv6_addresses": [
-            "fe80::3eee:52e6:1064:5f48"
+            "2400:2412:761:8a00:539:6a66:dbf4:c645", 
+            "2400:2412:761:8a00:c10e:c167:47aa:b1ac", 
+            "fe80::8f05:7836:5564:abf2", 
+            "fe80::9d6e:ae89:33ee:d159"
         ], 
         "ansible_apparmor": {
             "status": "disabled"
@@ -21,46 +24,293 @@ Tinker.local | SUCCESS => {
             "root": "/dev/mmcblk0p2", 
             "rw": true, 
             "splash": true, 
-            "uboot_version": "2016.09-rc1-00002-ge49f665", 
+            "uboot_version": "2017.07-g0d53220", 
             "video": "HDMI-A-1:1368x768@60"
         }, 
         "ansible_date_time": {
-            "date": "2017-08-22", 
-            "day": "22", 
-            "epoch": "1503381416", 
-            "hour": "14", 
-            "iso8601": "2017-08-22T05:56:56Z", 
-            "iso8601_basic": "20170822T145656497691", 
-            "iso8601_basic_short": "20170822T145656", 
-            "iso8601_micro": "2017-08-22T05:56:56.497935Z", 
-            "minute": "56", 
-            "month": "08", 
-            "second": "56", 
-            "time": "14:56:56", 
+            "date": "2017-11-11", 
+            "day": "11", 
+            "epoch": "1510356532", 
+            "hour": "08", 
+            "iso8601": "2017-11-10T23:28:52Z", 
+            "iso8601_basic": "20171111T082852873897", 
+            "iso8601_basic_short": "20171111T082852", 
+            "iso8601_micro": "2017-11-10T23:28:52.874092Z", 
+            "minute": "28", 
+            "month": "11", 
+            "second": "52", 
+            "time": "08:28:52", 
             "tz": "JST", 
             "tz_offset": "+0900", 
-            "weekday": "Tuesday", 
-            "weekday_number": "2", 
-            "weeknumber": "34", 
+            "weekday": "Saturday", 
+            "weekday_number": "6", 
+            "weeknumber": "45", 
             "year": "2017"
         }, 
         "ansible_default_ipv4": {
-            "address": "192.168.2.17", 
-            "alias": "wlan0", 
-            "broadcast": "192.168.2.255", 
-            "gateway": "192.168.2.1", 
-            "interface": "wlan0", 
-            "macaddress": "f0:03:8c:2d:ad:5d", 
+            "address": "192.168.3.74", 
+            "alias": "eth0", 
+            "broadcast": "192.168.3.255", 
+            "gateway": "192.168.3.1", 
+            "interface": "eth0", 
+            "macaddress": "2c:4d:54:42:ca:89", 
             "mtu": 1500, 
             "netmask": "255.255.255.0", 
-            "network": "192.168.2.0", 
+            "network": "192.168.3.0", 
             "type": "ether"
         }, 
-        "ansible_default_ipv6": {}, 
+        "ansible_default_ipv6": {
+            "address": "2400:2412:761:8a00:539:6a66:dbf4:c645", 
+            "gateway": "fe80::32f7:72ff:fec9:81cb", 
+            "interface": "eth0", 
+            "macaddress": "2c:4d:54:42:ca:89", 
+            "mtu": 1500, 
+            "prefix": "64", 
+            "scope": "global", 
+            "type": "ether"
+        }, 
+        "ansible_device_links": {
+            "ids": {
+                "mmcblk0": [
+                    "mmc-SPCC_0xc3350067"
+                ], 
+                "mmcblk0p1": [
+                    "mmc-SPCC_0xc3350067-part1"
+                ], 
+                "mmcblk0p2": [
+                    "mmc-SPCC_0xc3350067-part2"
+                ]
+            }, 
+            "labels": {}, 
+            "masters": {}, 
+            "uuids": {
+                "mmcblk0p1": [
+                    "4C89-2DED"
+                ], 
+                "mmcblk0p2": [
+                    "324cd421-b656-4326-9882-de35a3ad335a"
+                ]
+            }
+        }, 
         "ansible_devices": {
+            "loop0": {
+                "holders": [], 
+                "host": "", 
+                "links": {
+                    "ids": [], 
+                    "labels": [], 
+                    "masters": [], 
+                    "uuids": []
+                }, 
+                "model": null, 
+                "partitions": {}, 
+                "removable": "0", 
+                "rotational": "1", 
+                "sas_address": null, 
+                "sas_device_handle": null, 
+                "scheduler_mode": "", 
+                "sectors": "0", 
+                "sectorsize": "512", 
+                "size": "0.00 Bytes", 
+                "support_discard": "0", 
+                "vendor": null, 
+                "virtual": 1
+            }, 
+            "loop1": {
+                "holders": [], 
+                "host": "", 
+                "links": {
+                    "ids": [], 
+                    "labels": [], 
+                    "masters": [], 
+                    "uuids": []
+                }, 
+                "model": null, 
+                "partitions": {}, 
+                "removable": "0", 
+                "rotational": "1", 
+                "sas_address": null, 
+                "sas_device_handle": null, 
+                "scheduler_mode": "", 
+                "sectors": "0", 
+                "sectorsize": "512", 
+                "size": "0.00 Bytes", 
+                "support_discard": "0", 
+                "vendor": null, 
+                "virtual": 1
+            }, 
+            "loop2": {
+                "holders": [], 
+                "host": "", 
+                "links": {
+                    "ids": [], 
+                    "labels": [], 
+                    "masters": [], 
+                    "uuids": []
+                }, 
+                "model": null, 
+                "partitions": {}, 
+                "removable": "0", 
+                "rotational": "1", 
+                "sas_address": null, 
+                "sas_device_handle": null, 
+                "scheduler_mode": "", 
+                "sectors": "0", 
+                "sectorsize": "512", 
+                "size": "0.00 Bytes", 
+                "support_discard": "0", 
+                "vendor": null, 
+                "virtual": 1
+            }, 
+            "loop3": {
+                "holders": [], 
+                "host": "", 
+                "links": {
+                    "ids": [], 
+                    "labels": [], 
+                    "masters": [], 
+                    "uuids": []
+                }, 
+                "model": null, 
+                "partitions": {}, 
+                "removable": "0", 
+                "rotational": "1", 
+                "sas_address": null, 
+                "sas_device_handle": null, 
+                "scheduler_mode": "", 
+                "sectors": "0", 
+                "sectorsize": "512", 
+                "size": "0.00 Bytes", 
+                "support_discard": "0", 
+                "vendor": null, 
+                "virtual": 1
+            }, 
+            "loop4": {
+                "holders": [], 
+                "host": "", 
+                "links": {
+                    "ids": [], 
+                    "labels": [], 
+                    "masters": [], 
+                    "uuids": []
+                }, 
+                "model": null, 
+                "partitions": {}, 
+                "removable": "0", 
+                "rotational": "1", 
+                "sas_address": null, 
+                "sas_device_handle": null, 
+                "scheduler_mode": "", 
+                "sectors": "0", 
+                "sectorsize": "512", 
+                "size": "0.00 Bytes", 
+                "support_discard": "0", 
+                "vendor": null, 
+                "virtual": 1
+            }, 
+            "loop5": {
+                "holders": [], 
+                "host": "", 
+                "links": {
+                    "ids": [], 
+                    "labels": [], 
+                    "masters": [], 
+                    "uuids": []
+                }, 
+                "model": null, 
+                "partitions": {}, 
+                "removable": "0", 
+                "rotational": "1", 
+                "sas_address": null, 
+                "sas_device_handle": null, 
+                "scheduler_mode": "", 
+                "sectors": "0", 
+                "sectorsize": "512", 
+                "size": "0.00 Bytes", 
+                "support_discard": "0", 
+                "vendor": null, 
+                "virtual": 1
+            }, 
+            "loop6": {
+                "holders": [], 
+                "host": "", 
+                "links": {
+                    "ids": [], 
+                    "labels": [], 
+                    "masters": [], 
+                    "uuids": []
+                }, 
+                "model": null, 
+                "partitions": {}, 
+                "removable": "0", 
+                "rotational": "1", 
+                "sas_address": null, 
+                "sas_device_handle": null, 
+                "scheduler_mode": "", 
+                "sectors": "0", 
+                "sectorsize": "512", 
+                "size": "0.00 Bytes", 
+                "support_discard": "0", 
+                "vendor": null, 
+                "virtual": 1
+            }, 
+            "loop7": {
+                "holders": [], 
+                "host": "", 
+                "links": {
+                    "ids": [], 
+                    "labels": [], 
+                    "masters": [], 
+                    "uuids": []
+                }, 
+                "model": null, 
+                "partitions": {}, 
+                "removable": "0", 
+                "rotational": "1", 
+                "sas_address": null, 
+                "sas_device_handle": null, 
+                "scheduler_mode": "", 
+                "sectors": "0", 
+                "sectorsize": "512", 
+                "size": "0.00 Bytes", 
+                "support_discard": "0", 
+                "vendor": null, 
+                "virtual": 1
+            }, 
+            "md0": {
+                "holders": [], 
+                "host": "", 
+                "links": {
+                    "ids": [], 
+                    "labels": [], 
+                    "masters": [], 
+                    "uuids": []
+                }, 
+                "model": null, 
+                "partitions": {}, 
+                "removable": "0", 
+                "rotational": "1", 
+                "sas_address": null, 
+                "sas_device_handle": null, 
+                "scheduler_mode": "", 
+                "sectors": "0", 
+                "sectorsize": "512", 
+                "size": "0.00 Bytes", 
+                "support_discard": "0", 
+                "vendor": null, 
+                "virtual": 1
+            }, 
             "mmcblk0": {
                 "holders": [], 
                 "host": "", 
+                "links": {
+                    "ids": [
+                        "mmc-SPCC_0xc3350067"
+                    ], 
+                    "labels": [], 
+                    "masters": [], 
+                    "uuids": []
+                }, 
                 "model": null, 
                 "partitions": {}, 
                 "removable": "0", 
@@ -72,18 +322,73 @@ Tinker.local | SUCCESS => {
                 "sectorsize": "512", 
                 "size": "29.57 GB", 
                 "support_discard": "4194304", 
-                "vendor": null
+                "vendor": null, 
+                "virtual": 1
+            }, 
+            "ram0": {
+                "holders": [], 
+                "host": "", 
+                "links": {
+                    "ids": [], 
+                    "labels": [], 
+                    "masters": [], 
+                    "uuids": []
+                }, 
+                "model": null, 
+                "partitions": {}, 
+                "removable": "0", 
+                "rotational": "1", 
+                "sas_address": null, 
+                "sas_device_handle": null, 
+                "scheduler_mode": "", 
+                "sectors": "8192", 
+                "sectorsize": "512", 
+                "size": "4.00 MB", 
+                "support_discard": "4096", 
+                "vendor": null, 
+                "virtual": 1
+            }, 
+            "zram0": {
+                "holders": [], 
+                "host": "", 
+                "links": {
+                    "ids": [], 
+                    "labels": [], 
+                    "masters": [], 
+                    "uuids": []
+                }, 
+                "model": null, 
+                "partitions": {}, 
+                "removable": "0", 
+                "rotational": "0", 
+                "sas_address": null, 
+                "sas_device_handle": null, 
+                "scheduler_mode": "", 
+                "sectors": "0", 
+                "sectorsize": "4096", 
+                "size": "0.00 Bytes", 
+                "support_discard": "4096", 
+                "vendor": null, 
+                "virtual": 1
             }
         }, 
         "ansible_distribution": "Debian", 
+        "ansible_distribution_file_parsed": true, 
+        "ansible_distribution_file_path": "/etc/os-release", 
+        "ansible_distribution_file_variety": "Debian", 
         "ansible_distribution_major_version": "9", 
         "ansible_distribution_release": "stretch", 
-        "ansible_distribution_version": "9.1", 
+        "ansible_distribution_version": "9.2", 
         "ansible_dns": {
             "nameservers": [
-                "192.168.2.1", 
+                "192.168.3.1", 
+                "2400:2412:761:8a00:1111:1111:1111:1111", 
                 "127.0.0.53", 
                 "8.8.8.8"
+            ], 
+            "search": [
+                "flets-east.jp", 
+                "iptvf.jp"
             ]
         }, 
         "ansible_domain": "", 
@@ -96,41 +401,45 @@ Tinker.local | SUCCESS => {
             "LOGNAME": "linaro", 
             "MAIL": "/var/mail/linaro", 
             "MONITOR_PORT": "/dev/tty96B0", 
-            "PATH": "/home/linaro/.pyenv/plugins/pyenv-virtualenv/shims:/home/linaro/.pyenv/shims:/home/linaro/.pyenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games", 
+            "PATH": "/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games", 
             "PWD": "/home/linaro", 
-            "PYENV_ROOT": "/home/linaro/.pyenv", 
-            "PYENV_SHELL": "bash", 
-            "PYENV_VIRTUALENV_INIT": "1", 
             "SHELL": "/bin/bash", 
             "SHLVL": "2", 
-            "SSH_CLIENT": "fe80::830:e060:f110:3e91%wlan0 60166 22", 
-            "SSH_CONNECTION": "fe80::830:e060:f110:3e91%wlan0 60166 fe80::3eee:52e6:1064:5f48%wlan0 22", 
-            "SSH_TTY": "/dev/pts/3", 
+            "SSH_CLIENT": "2400:2412:761:8a00:317b:7e6d:674e:341e 52489 22", 
+            "SSH_CONNECTION": "2400:2412:761:8a00:317b:7e6d:674e:341e 52489 2400:2412:761:8a00:c10e:c167:47aa:b1ac 22", 
+            "SSH_TTY": "/dev/pts/2", 
             "TERM": "xterm-256color", 
             "USER": "linaro", 
             "XDG_RUNTIME_DIR": "/run/user/1000", 
-            "XDG_SESSION_ID": "c18", 
+            "XDG_SESSION_ID": "c23", 
             "_": "/usr/bin/python"
         }, 
         "ansible_eth0": {
             "active": true, 
             "device": "eth0", 
-            "features": {}, 
+            "ipv4": {
+                "address": "192.168.3.74", 
+                "broadcast": "192.168.3.255", 
+                "netmask": "255.255.255.0", 
+                "network": "192.168.3.0"
+            }, 
+            "ipv6": [
+                {
+                    "address": "2400:2412:761:8a00:539:6a66:dbf4:c645", 
+                    "prefix": "64", 
+                    "scope": "global"
+                }
+            ], 
             "macaddress": "2c:4d:54:42:ca:89", 
             "mtu": 1500, 
             "pciid": "ff290000.ethernet", 
             "promisc": false, 
-            "speed": 100, 
+            "speed": 1000, 
             "type": "ether"
         }, 
         "ansible_fips": false, 
         "ansible_form_factor": "NA", 
         "ansible_fqdn": "Tinker", 
-        "ansible_gather_subset": [
-            "hardware", 
-            "network", 
-            "virtual"
-        ], 
         "ansible_hostname": "Tinker", 
         "ansible_interfaces": [
             "sit0", 
@@ -138,11 +447,10 @@ Tinker.local | SUCCESS => {
             "wlan0", 
             "eth0"
         ], 
-        "ansible_kernel": "4.4.16-00010-g0fce7eb-dirty", 
+        "ansible_kernel": "4.4.71+", 
         "ansible_lo": {
             "active": true, 
             "device": "lo", 
-            "features": {}, 
             "ipv4": {
                 "address": "127.0.0.1", 
                 "broadcast": "host", 
@@ -160,67 +468,86 @@ Tinker.local | SUCCESS => {
             "promisc": false, 
             "type": "loopback"
         }, 
+        "ansible_local": {}, 
         "ansible_lsb": {
             "codename": "stretch", 
-            "description": "Debian GNU/Linux 9.1 (stretch)", 
+            "description": "Debian GNU/Linux 9.2 (stretch)", 
             "id": "Debian", 
             "major_release": "9", 
-            "release": "9.1"
+            "release": "9.2"
         }, 
         "ansible_machine": "armv7l", 
-        "ansible_machine_id": "e12ff3dd91b24ca2bb1b7dfe25145a4a", 
-        "ansible_memfree_mb": 363, 
+        "ansible_machine_id": "e536d9f468594c3e8132d40494994854", 
+        "ansible_memfree_mb": 713, 
         "ansible_memory_mb": {
             "nocache": {
-                "free": 1631, 
-                "used": 382
+                "free": 1742, 
+                "used": 272
             }, 
             "real": {
-                "free": 363, 
-                "total": 2013, 
-                "used": 1650
+                "free": 713, 
+                "total": 2014, 
+                "used": 1301
             }, 
             "swap": {
                 "cached": 0, 
-                "free": 0, 
-                "total": 0, 
+                "free": 99, 
+                "total": 99, 
                 "used": 0
             }
         }, 
-        "ansible_memtotal_mb": 2013, 
+        "ansible_memtotal_mb": 2014, 
         "ansible_mounts": [
             {
+                "block_available": 6716729, 
+                "block_size": 4096, 
+                "block_total": 7598359, 
+                "block_used": 881630, 
                 "device": "/dev/root", 
                 "fstype": "ext4", 
+                "inode_available": 1817018, 
+                "inode_total": 1888000, 
+                "inode_used": 70982, 
                 "mount": "/", 
                 "options": "rw,noatime,data=ordered", 
-                "size_available": 26886307840, 
+                "size_available": 27511721984, 
                 "size_total": 31122878464, 
                 "uuid": "N/A"
             }, 
             {
+                "block_available": 114190, 
+                "block_size": 512, 
+                "block_total": 129022, 
+                "block_used": 14832, 
                 "device": "/dev/mmcblk0p1", 
                 "fstype": "vfat", 
+                "inode_available": 0, 
+                "inode_total": 0, 
+                "inode_used": 0, 
                 "mount": "/boot", 
                 "options": "rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro", 
-                "size_available": 58396160, 
+                "size_available": 58465280, 
                 "size_total": 66059264, 
-                "uuid": "B14D-B335"
+                "uuid": "4C89-2DED"
             }
         ], 
         "ansible_nodename": "Tinker", 
         "ansible_os_family": "Debian", 
         "ansible_pkg_mgr": "apt", 
         "ansible_processor": [
+            "0", 
             "ARMv7 Processor rev 1 (v7l)", 
+            "1", 
             "ARMv7 Processor rev 1 (v7l)", 
+            "2", 
             "ARMv7 Processor rev 1 (v7l)", 
+            "3", 
             "ARMv7 Processor rev 1 (v7l)"
         ], 
         "ansible_processor_cores": 1, 
-        "ansible_processor_count": 4, 
+        "ansible_processor_count": 8, 
         "ansible_processor_threads_per_core": 1, 
-        "ansible_processor_vcpus": 4, 
+        "ansible_processor_vcpus": 8, 
         "ansible_product_name": "NA", 
         "ansible_product_serial": "NA", 
         "ansible_product_uuid": "NA", 
@@ -247,30 +574,32 @@ Tinker.local | SUCCESS => {
         "ansible_python_version": "2.7.13", 
         "ansible_real_group_id": 1000, 
         "ansible_real_user_id": 1000, 
-        "ansible_selinux": false, 
+        "ansible_selinux": {
+            "status": "Missing selinux Python library"
+        }, 
+        "ansible_selinux_python_present": false, 
         "ansible_service_mgr": "systemd", 
         "ansible_sit0": {
             "active": false, 
             "device": "sit0", 
-            "features": {}, 
             "macaddress": "00:00:00:00", 
             "mtu": 1480, 
             "promisc": false, 
             "type": "unknown"
         }, 
-        "ansible_ssh_host_key_dsa_public": "AAAAB3NzaC1kc3MAAACBAOoa1jfa4452NK+9f1QjhjDfadG+/oyG55nwyIQY2QXz2Xnx/PH7rDiB0zqxVcHE7Up5sdm8WCVCH1sP8a29UPBWhIS5TTPKIqtr9ZWzbs5EGKd9PC65fl980u4KiQifmASo5W0ulmgXXAdeu49BWcLKRsJ8G65p+MEkmzhTGAAZAAAAFQCCqqaywjSjHPpWcgLnvWobspwjRQAAAIBYn++BQaFasBZL+HP8rbBTZdszGz0I9Bv2D8gMDNPOYeM0MTMWD/DHAqntFePxToizhUmZ1PsY614Kmv3umlU+caL1MNGo3azu4+GPpv/7/SCK67+Pm37I5HiM9g0ahnIxQ0fhtGWfeMN9RbvLapxuBvcNlCwQR+CgoLHCj5G29wAAAIEAsx/8Ss2dDqbXoE7hWE/DeTYEduEoCaj2QafRiHKM/7R+Wl3oHJSp90kcTS66d3hLT0b9o8d0+/+ZdKmqk+9J9XniUfrxT1eCBnDYwVpQ4nAQF3Brv9gciqTCsf7rKeBfJnSLBiwY2M6+bGfCrS77y/7pQmyLI7zhJtiR1LUKfzg=", 
-        "ansible_ssh_host_key_ecdsa_public": "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBCsHIyO8Kj+nDUK//G4Vd9ieBxTrUmB/t5F4m4vmuQV0AndWz3MgHDL6A3KPk7zkBvFYeeJ+YIxwc8GdagA95u4=", 
-        "ansible_ssh_host_key_ed25519_public": "AAAAC3NzaC1lZDI1NTE5AAAAIMdTdzZ+wvSdr1nrI7X9KWai6a4yBqJBW3HICrEUZZ/7", 
-        "ansible_ssh_host_key_rsa_public": "AAAAB3NzaC1yc2EAAAADAQABAAABAQDbbzh4BB7Un5V00cOkAtV/T4oMgzrwB2yS3ZdHOzt5SZxF+JgvhTc0DGEbOoY9clzo2vphZVEuFcgIbQQlPO0Fr7aatIYygMCrhQc0/70udYSqhJSkJpkwtC2xkQIHH4YBfNdDMVORVLaYNcB3QwrOlmFdnATX8XVY+o0t3Oq2OtjP0vFM6UvPx0mMHAuAA/unzogVzU8VYvj6KBUrUe9F+tPXfNm3edC9qcmJ/zTVvW7D62Fmbw63Ut93oE7eJc1ZMmAibzKtR3g1HqsnS5E0r1yAZLIKZTpP4acI8nGoOxgeqdED5HXlbEKxxK0U1eSr8hdZSaaYRub5r9AhnVeD", 
-        "ansible_swapfree_mb": 0, 
-        "ansible_swaptotal_mb": 0, 
+        "ansible_ssh_host_key_dsa_public": "AAAAB3NzaC1kc3MAAACBAP8v4HfQKq+69nn4MiFIsPboK6UcUvMwS0Bllza3LyoS3a2vFGF51ccUy4PFMcYAvMvhu7rkWt677lXxCwCgfj/QtxwegEwS92crhcSA3DwuzT0arQbFPsYEYayuLjKzwbuRwMynGJHAPY8vxVsUA0LPNEmNUVe7hGvTR3gZpPYJAAAAFQCilduEMaCJV6ByNg00f8lUqxQG4wAAAIEA48+0czboWTD+FsHP1TR6MU33/DcsxCZmoSVgftsnLHgYnC1M0zWfRKtPLk9/y47zp/Ui3M0FTAvoO+8mVMUFUqbC4JaUj5ohwm8aF8eA/nfoHT0GSybNfGVJm5To5VSl+G9LP0hDeKw4I9x91+BHQ1Avz2NzY468MS7iDCyaw4sAAACAMhGoVvcMJJVLs5Ip/dn0OaBPmWl8KNZ976tsHvvgyslQVd9bJy5h5Bdt/Glm2l8avpJSSpXzLDagxeAQcBVCyGobh+bAMwy3IdO1ulyZ21uFX9JNmxdHqyr0xNgGPPEW6DWYOH878N/X6EF2w8vp0IyR6RylrZp3ZRycnXLVTRY=", 
+        "ansible_ssh_host_key_ecdsa_public": "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBG3xADJQ+AE/rKE2qDtLbjUCfDyvXMY8CABPeElw0y6NinS5ZcfnjnVs9zwIAGemISV3xPBN7U4yk7E8tgnD0DM=", 
+        "ansible_ssh_host_key_ed25519_public": "AAAAC3NzaC1lZDI1NTE5AAAAIF4c6fzerAop6gHfapQd/Qmscbss41gsBVQOe4GX91xf", 
+        "ansible_ssh_host_key_rsa_public": "AAAAB3NzaC1yc2EAAAADAQABAAABAQDfkNTMrjgnp0MSDJI1Ev6GyYhJYI+NZNNkrFfyGYBjuW7fTPm6KwgaBaSjkVX3qeqUJpzvLLsD6Vvqh6FZvk82SLp6Rk/oo/akYXyN7fEUUm5MIBZzYqJdseCKhILlIerxtU2H6cud6rc5tw15YCYkd/SMo/A6kRVa7RJOdgvnAdiqn9h3Hd8/dyyASmjFXlcaE2MmhuMzUmmWxcQ/tCAXomPwCJJbi58agosygJda40UNMn9C6LCztnIIh+XKZB23cm1m/cIucLFuwYR7PM9tVUUzvHw4kd3sJ/TpgI6axAY1fLtTilo32oo0c2vKPcbz+JY/MF/AMz3npydlKH2F", 
+        "ansible_swapfree_mb": 99, 
+        "ansible_swaptotal_mb": 99, 
         "ansible_system": "Linux", 
         "ansible_system_capabilities": [
             ""
         ], 
         "ansible_system_capabilities_enforced": "True", 
         "ansible_system_vendor": "NA", 
-        "ansible_uptime_seconds": 4218, 
+        "ansible_uptime_seconds": 2566, 
         "ansible_user_dir": "/home/linaro", 
         "ansible_user_gecos": "linaro,,,", 
         "ansible_user_gid": 1000, 
@@ -281,29 +610,19 @@ Tinker.local | SUCCESS => {
         "ansible_virtualization_role": "NA", 
         "ansible_virtualization_type": "NA", 
         "ansible_wlan0": {
-            "active": true, 
+            "active": false, 
             "device": "wlan0", 
-            "features": {}, 
-            "ipv4": {
-                "address": "192.168.2.17", 
-                "broadcast": "192.168.2.255", 
-                "netmask": "255.255.255.0", 
-                "network": "192.168.2.0"
-            }, 
-            "ipv6": [
-                {
-                    "address": "fe80::3eee:52e6:1064:5f48", 
-                    "prefix": "64", 
-                    "scope": "link"
-                }
-            ], 
             "macaddress": "f0:03:8c:2d:ad:5d", 
             "mtu": 1500, 
-            "pciid": "mmc1:0001:1", 
+            "pciid": "mmc2:0001:1", 
             "promisc": false, 
             "type": "ether"
         }, 
+        "gather_subset": [
+            "all"
+        ], 
         "module_setup": true
     }, 
-    "changed": false
+    "changed": false, 
+    "failed": false
 }

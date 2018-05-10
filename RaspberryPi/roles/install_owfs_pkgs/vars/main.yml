@@ -14,7 +14,7 @@ install_owfs:
     - swig
     - python2.7-dev
     - tcl8.5-dev
-    - php5-dev
+    - dh-php5
     - i2c-tools
   build_items:
     armv6l:

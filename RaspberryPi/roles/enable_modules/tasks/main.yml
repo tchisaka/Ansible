@@ -24,5 +24,5 @@
   register: config_state
 
 - name: reboot machine
-  include: 'roles/common/reboot.yml'
+  include_tasks: 'roles/common/reboot.yml'
   when: (modules_state|changed) or (config_state|changed)

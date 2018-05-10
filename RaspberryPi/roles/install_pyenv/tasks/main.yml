@@ -8,7 +8,7 @@
     state: latest
     force: yes
     update_cache: yes
-  with_items: "{{ install_pyenv_add_pkgs }}"
+  with_items: "{{ install_pyenv.add_pkgs }}"
 
 # install pyenv & pyenv-vitrualenv
 - name: git clone pyenv
@@ -16,24 +16,27 @@
     repo: "{{ item.repo }}"
     dest: "{{ item.dest }}"
     update: yes
-  with_items: "{{ install_pyenv_git }}"
+  with_items: "{{ install_pyenv.git }}"
   
-- name: add pyenv path in .profile       
+- name: add pyenv path in .bashrc       
   lineinfile:
-    dest: "{{ ansible_user_dir }}/.profile"
+    path: "{{ install_pyenv.add_bashrc.path }}"
     line: "{{ item }}"
-  with_items: "{{ install_pyenv_add_profile }}"
+  with_items: "{{ install_pyenv.add_bashrc.line }}"
 
 # install new pythons
 - name: check python versions in virtual environment
   shell: pyenv versions
-  register: result
+  register: installed_python_envs
   changed_when: false
+  ignore_errors: yes
+  
+# - debug: var=installed_python_envs.stdout_lines
 
 - name: install python
   shell: pyenv install {{ item }} -f
-  when: item not in result.stdout
-  with_items: "{{ install_pyenv_python_versions }}"
+  when: item not in installed_python_envs.stdout
+  with_items: "{{ install_pyenv.python_versions }}"
 
 - name: pyenv rehash
   shell: pyenv rehash

@@ -16,18 +16,18 @@
 - name: set permission
   become: true
   file:
-    path: "{{ install_motion_lib_oath }}"
+    path: "{{ install_motion.lib_oath }}"
     state: directory
-    group: "{{ install_motion_user }}"
+    group: "{{ install_motion.user }}"
 
 # setup config
 - name: mkdir .motion
   file:
-    path: "{{ install_motion_dest_path }}"
+    path: "{{ install_motion.dest_path }}"
     state: directory
     force: true
 
 - name: set motion.conf
   copy:
-    src: "{{ install_motion_config_file }}"
-    dest: "{{ install_motion_dest_path }}"
+    src: "{{ install_motion.config_file }}"
+    dest: "{{ install_motion.dest_path }}"

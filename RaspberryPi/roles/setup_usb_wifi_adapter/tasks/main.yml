@@ -27,7 +27,7 @@
     when: wan_power_mng.stdout != 0
     
   - name: reboot
-    include: roles/common/reboot.yml
+    import_tasks: roles/common/reboot.yml
     when: copy_file.changed
   when: "'PLANEX GW-USNano2' in usb_wifi.stdout"
   tags:

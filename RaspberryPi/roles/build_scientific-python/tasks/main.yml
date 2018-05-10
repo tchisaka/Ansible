@@ -11,26 +11,26 @@
 
 # ----- checking pyenv command -----
 - name: checking pyenv command
-  shell: pyenv versions
+  shell: "{{ pyenv_cmd }} versions"
   register: pyenv_result
   changed_when: no
   failed_when: "'command not found' in pyenv_result.stderr"
 
 # ----- checking python environment -----
 - name: install python {{ build_sp.based_python }}
-  shell: pyenv install {{ build_sp.based_python }} 
+  shell: "{{ pyenv_cmd }} install {{ build_sp.based_python }}"
   changed_when: no
   when: build_sp.based_python not in pyenv_result.stdout
   
 - name: make a virtualenv as {{ build_sp.virtual_python }}
-  shell: pyenv virtualenv {{ build_sp.based_python }} {{ build_sp.virtual_python }}
+  shell: "{{ pyenv_cmd }} virtualenv {{ build_sp.based_python }} {{ build_sp.virtual_python }}"
   changed_when: no
   ignore_errors: yes
   register: virtual_pythin_is_exists
   when: build_sp.virtual_python not in pyenv_result.stdout
 
 - name: pyenv rehash
-  shell: pyenv rehash
+  shell: "{{ pyenv_cmd }} rehash"
   changed_when: false
 
 # ----- make local python environment -----
@@ -52,28 +52,22 @@
   when: pyenv_stat.stat.exists
 
 - name: create local pyenv
-  shell: pyenv local {{ build_sp.virtual_python }}
+  #shell: "{{ pyenv_cmd }} local {{ build_sp.virtual_python }}"
+  shell: echo {{ build_sp.virtual_python }} > .python-version
   args:
     chdir: "{{ build_sp.virtual_setup_dir }}"
-  changed_when: false  
+  changed_when: false
+  ignore_errors: yes
   when: (not pyenv_stat.stat.exists) or
         (py_version.stdout != build_sp.virtual_python)
 
 # ----- install python modules -----
-- name: pip install pkgs for virtualenv (common)
+- name: pip install pkgs for virtualenv
   pip:
     name: "{{ item }}"
     state: latest
-    chdir: "{{ build_sp.virtual_setup_dir }}"
-    executable: pip3
-  with_items: "{{ build_sp.pip_science_pkgs1 }}"
+    chdir:      "{{ ansible_user_dir }}/.pyenv/versions/{{ build_sp.based_python }}" 
+    executable: "{{ ansible_user_dir }}/.pyenv/versions/{{ build_sp.based_python }}/bin/pip"
+  with_items: "{{ build_sp.pip_science_pkgs }}"
   ignore_errors: yes
-
-- name: pip install pkgs for virtualenv (Pi2 and pi3 only)
-  pip:
-    name: "{{ item }}"
-    state: latest
-    chdir: "{{ build_sp.virtual_setup_dir }}"
-    executable: pip3
-  with_items: "{{ build_sp.pip_science_pkgs2 }}"
   when: ansible_architecture == 'armv7l'

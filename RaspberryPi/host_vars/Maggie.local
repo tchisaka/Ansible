@@ -1,0 +1,11 @@
+---
+# hostname: Maggie ( Raspberry Pi 3 Rev.02 )
+
+# ----- i2c module -----
+i2cQ: disabled
+
+# ----- Pi-Camera module -----
+picameraQ: enabled
+
+# ----- v4l2 (Video for Linux Two) module -----
+v4l2Q: enabled

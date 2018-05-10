@@ -30,6 +30,6 @@
     register: result2
 
   - name: shutdown Paspberry Pi Zero
-    include: 'roles/common/shutdown.yml'
+    import_tasks: 'roles/common/shutdown.yml'
     when: ( (result1|changed) or (result2|changed) ) and shutdownQ
   when: pizeroQ

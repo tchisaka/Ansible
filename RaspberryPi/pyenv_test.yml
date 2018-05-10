@@ -1,0 +1,24 @@
+---
+- name: setup pyenv & pyenv-virtualenv
+  hosts: Tinker.local
+  vars:
+    path:
+      - "{{ ansible_user_dir }}/.pyenv/plugins/pyenv-virtualenv/shims"
+      - "{{ ansible_user_dir }}/.pyenv/shims"
+      - "{{ ansible_user_dir }}/.pyenv/bin"
+      - "/usr/local/sbin"
+      - "/usr/local/bin"
+      - "/usr/sbin"
+      - "/usr/bin"
+      - "/sbin"
+      - "/bin"
+
+  environment:
+    PATH: "{{ path | join(':')}}"
+    
+  tasks:
+    - shell: echo $PATH
+      register: result
+      
+    - debug: var=result
+      

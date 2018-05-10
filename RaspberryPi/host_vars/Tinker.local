@@ -1,5 +1,6 @@
 ---
 # hostname: Tinker ( ASUS TinkerBoard )
+ansible-uer: linaro
 
 # ----- i2c module -----
 i2cQ: enabled

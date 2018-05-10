@@ -1,0 +1,33 @@
+---
+- name: Download Raspbian
+  hosts: localhost
+  vars:
+    - working_dir: ~/Downloads
+    - tempfile: '{{ working_dir }}/log.txt'
+    - logfile: '{{ working_dir }}/loglog.txt'
+    - urls:
+      - 'https://downloads.raspberrypi.org/raspbian_latest'
+      - 'https://downloads.raspberrypi.org/raspbian_lite_latest '
+      - 'https://downloads.raspberrypi.org/NOOBS_latest'
+      - 'https://downloads.raspberrypi.org/NOOBS_lite_latest'
+    
+  tasks:
+    - name: remove log file
+      file:
+        path: "{{ item }}"
+        state: absent
+      with_items:
+        - "{{ tempfile }}"
+        - "{{ logfile }}"
+      
+    - name: chek latest OS image 1
+      shell: wget {{ item }} --spider -o {{ tempfile }}; cat {{ tempfile }} | grep "Location.*https" | cut -f2 -d' ' >> {{ logfile }}
+      with_items: "{{ urls }}"
+      
+    - shell: cat {{ logfile }}
+      register: result
+      
+    - set_fact: 
+        raspbian: "{{ result.stdout_lines }}"
+
+    - debug: var=raspbian

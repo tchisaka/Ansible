@@ -1,13 +1,33 @@
 ---
 - name: check the model of Raspberry Pi
   hosts: all
-  gather_facts: false
-  tasks:  
-    - shell: gpio -v | grep Type
+  gather_facts: no
+  tasks:
+#    - import_tasks: 'roles/common/get_board_info.yml'
+    
+    
+    - shell: |
+        KEY=Details:
+        BOARD=$(gpio -v | grep $KEY | sed -e "s/$KEY//g" -e 's/ *$//g')
+        INFO=$(gpio -v | grep Type | tr ',' '\n' | sed -e 's/^\ *//' -e 's/\ *$//' -e 's/\: /\:/')
+        echo Board:$BOARD && echo "$INFO"
       args:
         executable: /bin/bash
-      register: pimodel
+      register: board
       ignore_errors: true
-      changed_when: pimodel.stderr != ""
-      
-    - debug: var=pimodel.stdout
+      changed_when: board.stderr != ""
+
+    - set_fact:
+        board_info: {}
+
+    - set_fact:
+        board_info: >
+          {{ board_info | combine(dict([ item.partition(':')[::2]|map('trim') ])) }}
+      with_items: "{{ board.stdout_lines }}"
+
+    - set_fact:
+        borad_kind: "{{ board_info.Board }}"
+        
+    - debug: var=board_info
+    - debug: var=borad_kind
+    - debug: msg={{ borad_kind | replace(' ','_') | lower }}

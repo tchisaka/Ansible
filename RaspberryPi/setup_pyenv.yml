@@ -1,6 +1,8 @@
 ---
 - name: setup pyenv & pyenv-virtualenv
-  hosts: all
+  hosts: QuadCore
+  environment:
+    PATH: "{{ install_pyenv.setup_paths | join(':')}}"
   roles:
     - apt_get_upgrade
     - install_pyenv

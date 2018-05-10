@@ -19,7 +19,7 @@ cd data
 rm zetazero*.tsv 2> /dev/null
 oldname=$(ls *.dat | sort -n | tail -1)
 newname=$(ls *.dat | sort -n | tail -1 | sed -e "s/.dat/.tsv/g" | sed -e "s/^0/zetazero/g")
-cat *.dat | sort -n > $newname
+cat *.dat | sed -e 's/\"//g' -e 's/\t\t//g' -e '/^$/d' | sort -n > $newname
 ls -l
 scp $newname takamasa@Fuga.local:
 

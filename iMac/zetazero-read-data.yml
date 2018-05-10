@@ -2,12 +2,11 @@
 - name: iMac's tasks
   hosts: localhost
   user: takamasa
+  gather_facts: no
   tasks:
-  
   - name: Delete local zetazero*.tsv files in the iMac
 #   file: path={{item}} state=absent  
-    shell: mv {{item}} {{item|dirname}}/.Trash/{{item|basename}}
-    delegate_to: localhost
+    shell: mv {{ item }} {{ item | dirname }}/.Trash/{{ item | basename }}
     with_fileglob:
       - ~/zetazero*.tsv
 
@@ -15,4 +14,7 @@
   hosts: zetazero
   tasks:
   - name: Get zetazero*.tsv files from Raspberry Pis
-    shell: bash move-data.sh -m chdir=~/ZetaZero/
+    script: move-data.sh -m
+    args:
+      executable: /bin/bash
+      chdir: "{{ ansible_user_dir }}/ZetaZero"

@@ -6,4 +6,4 @@
     state: restarted
 
 - name: reboot machine
-  include: roles/common/reboot.yml
+  import_tasks: roles/common/reboot.yml

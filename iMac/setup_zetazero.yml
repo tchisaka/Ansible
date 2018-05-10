@@ -1,6 +1,19 @@
 ---
+- name: iMac's tasks
+  hosts: localhost
+  user: takamasa
+  gather_facts: no
+  tasks:
+  - name: Delete local zetazero*.tsv files in the iMac
+    shell: mv {{ item }} {{ item | dirname }}/.Trash/
+    args:
+      executable: /bin/bash
+    ignore_errors: yes
+    with_fileglob:
+      - ~/zetazero*.tsv
+
 - name: Every Raspberry Pi's tasks
-  hosts: Leon.local
+  hosts: zetazero
   tasks:
   - name: Is zetazero.wl script working?
     script: get_wolfram_id.sh
@@ -12,10 +25,13 @@
       wolfram_id: "{{ wolfram.stdout_lines }}"
 
   - debug: var=wolfram_id
-  
-  - name: kill process
-    shell: kill -9 {{ item }}
-    with_items: "{{ wolfram_id }}"
-    
+
+#  - name: kill process
+#    shell: kill -9 {{ item }}
+#    with_items: "{{ wolfram_id }}"
+
   - name: recive data
-    script: move-data.sh -m chdir=ZetaZero
+    script: move-data.sh -m
+    args:
+      executable: /bin/bash
+      chdir: "{{ ansible_user_dir }}/ZetaZero/"

@@ -1,14 +1,13 @@
 ---
 # ----- Raspberry Pi first setup -----
-- name: iMac's tasks
-  hosts: localhost
-  user: takamasa
-  tasks:
-    - name: remove known host keys from localhost
-      shell: ssh-keygen -R {{ item | lower }}
-      with_items: "{{ inventory_hostname }}"
-
 - name: setup
   hosts: all
+  pre_tasks:
+    - name: remove known host keys from localhost
+      shell: ssh-keygen -R {{ item | lower }}
+      with_items: "{{ inventory_hostname }}"  
+      delegate_to: localhost
+      ignore_errors: true
+      
   roles:
     - set_authorized_key

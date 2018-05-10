@@ -1,11 +1,23 @@
 ---
 - name: setup wifi
   hosts: all
-  vars_prompt:
-    - name: "wifi_passphrase"
-      prompt: "Please enter Wi-Fi passphrase"
-      private: true
-      confirm: true
+  pre_tasks:
+    - name: check kind of board
+      shell: |
+        KEY=Details:
+        gpio -v | grep $KEY | sed -e "s/$KEY//g" -e 's/ *$//g'
+      args:
+        executable: /bin/bash
+      register: board
+      ignore_errors: true
+      changed_when: board.stderr != ""
+        
+    - name: set_fact board_kind
+      set_fact: 
+        kind_of_board: "{{ board.stdout | replace(' ','_') | lower }}"
+        
+    - debug: var=kind_of_board
+
   roles:
     - setup_usb_wifi_adapter
-    - setup_wifi_ap
+    - { role: setup_wifi_ap, board: "{{ kind_of_board }}" }

@@ -31,5 +31,5 @@
     enabled: true
 
 - name: reboot machine
-  include: roles/common/reboot.yml
+  import_tasks: roles/common/reboot.yml
   when: rtc_result|changed

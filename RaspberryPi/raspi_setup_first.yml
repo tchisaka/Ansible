@@ -1,16 +1,9 @@
 ---
 - name: Raspberry Pi's First Setup
   hosts: all
-  vars_prompt:
-    - name: wifi_passphrase
-      prompt: "Please enter Wi-Fi passphrase"
-      private: true
-      confirm: true
-    - name: samba_pwd
-      prompt: "Please enter Samba password"
-      private: true
-      confirm: true
-      default: 'raspberry'
+  pre_tasks:
+    - name: check board kind
+      import_tasks: 'roles/common/get_board_kind.yml'
   roles:
     # set SSH public key
     - set_authorized_key

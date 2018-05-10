@@ -5,9 +5,11 @@
     upgrade: full
     force: yes
     update_cache: yes
+  ignore_errors: yes
 
 - name: apt-get dist-upgrade
   become : true
   apt:
     upgrade: dist
     force: yes
+  ignore_errors: yes

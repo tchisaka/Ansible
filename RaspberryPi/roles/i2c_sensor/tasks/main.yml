@@ -6,9 +6,8 @@
   with_items: "{{ i2c_modules }}"
 
 - name: include i2c module
-  include: "{{ module_item }}.yml"
+  include_tasks: "{{ module_item }}.yml"
   with_items: "{{ i2c_modules }}"
   # change loop variable of 'with_item' as module_item 
   loop_control:
     loop_var: module_item
-

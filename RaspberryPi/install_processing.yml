@@ -2,7 +2,7 @@
 # Refer to https://github.com/processing/processing/wiki/Raspberry-Pi
 #
 - name: Install Processing
-  hosts: Leon.local
+  hosts: TinkerBoard
   vars:
     src_url: 'https://processing.org/download/install-arm.sh'
     install_script: 'install-arm.sh'

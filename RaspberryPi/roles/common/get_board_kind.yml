@@ -1,0 +1,21 @@
+---
+# ----- get board infomation -----
+# 
+# 12 Apr. 2018
+
+- block:
+  - name: check kind of board
+    shell: |
+      KEY=Details: &&  gpio -v | grep $KEY | sed -e "s/$KEY//g" -e 's/ *$//g'
+    args:
+      executable: /bin/bash
+    register: board
+    ignore_errors: true
+    changed_when: board.stderr != ""
+        
+  - name: set_fact board_kind
+    set_fact: 
+      borad_kind: "{{ board.stdout }}"
+
+  - debug: var=borad_kind
+  - debug: msg={{ borad_kind | replace(' ','_') | lower }}

@@ -4,6 +4,7 @@
   copy:
     src: 'bash_aliases'
     dest: "{{ ansible_user_dir }}/.bash_aliases"
+    force: no
   tags:
     - set bash aliases
 
@@ -12,6 +13,7 @@
   become: true
   apt: name={{ item }} state=latest force=yes
   with_items: "{{ add_pkgs }}"
+  ignore_errors: yes
   notify:
     - restart avahi-daemon
   tags:

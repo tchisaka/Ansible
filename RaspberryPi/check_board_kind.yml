@@ -1,0 +1,9 @@
+---
+- name: check Raspberry Pi or TinkerBoard
+  hosts: all
+  gather_facts: no
+  tasks:
+    - import_tasks: 'roles/common/get_board_kind.yml'
+    - debug: var=borad_kind
+
+

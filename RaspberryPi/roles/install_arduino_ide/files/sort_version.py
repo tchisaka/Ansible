@@ -3,10 +3,12 @@
 import os, re
 
 files = os.listdir(os.getcwd())
+#files = os.listdir(os.path.abspath(os.path.dirname(__file__)))
 arduinos = [ x for x in files if x.find('arduino') == 0 ]
 versions = [ re.findall(r'[\d]+', x) for x in arduinos ]
 vers = [ tuple( int(v) for v in x ) for x in versions ]
 vers = sorted(zip(vers,arduinos))
 
+#print os.path.abspath(os.path.dirname(__file__))
 for v,f in vers:
   print f

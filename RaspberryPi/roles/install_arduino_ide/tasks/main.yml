@@ -1,38 +1,28 @@
 ---
-
-- name: get arduino archive files
-  delegate_to: localhost
-  find:
-    paths: files
-    patterns: 'arduino*.tar.xz'
-  register: arduino_files
-  
-- debug: var=arduino_files
-
-- name: get arduino archive files
-  script: sort_version.py
+- name: find Arduino IDE archive files
+  shell: find *arduino* | grep tar.xz | sort -k 1,1n -k 2,2n -k 3,3n -t'.'
+  args:
+    executable: /bin/bash
+    chdir: roles
   delegate_to: localhost
   register: result
   changed_when: no
-  
-- name: set_fact arduino archive filename
-  set_fact:
-    srcfile: "{{ result.stdout_lines[-1] }}"
-    
-- debug: var=srcfile
 
-- debug: var=ansible_env.PWD
+- set_fact:
+    arduino_file: "roles/{{ result.stdout_lines[-1] }}"
+
+- debug: var=arduino_file
 
 - name: Copy archive file
   become: true
   copy:
-    src:  "{{ srcfile }}"
+    src:  "{{ arduino_file }}"
     dest: "{{ src_dest }}"
 
 - name: Unarchive
   become: true
   unarchive:
-    src:  "{{ src_dest }}/{{ srcfile }}"
+    src:  "{{ src_dest }}/{{ arduino_file | basename }}"
     dest: "{{ src_lib }}"
     copy: false
     list_files: true
