@@ -13,7 +13,7 @@ build_sp:
     - "/usr/bin"
     - "/sbin"
     - "/bin"
-  based_python: 3.6.6
+  based_python: 3.6.5
   virtual_python: scientific
   virtual_setup_dir: "{{ ansible_user_dir }}/scientific"
   # --- list & dict---
