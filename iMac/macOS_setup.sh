@@ -25,7 +25,7 @@ brew install gnu-sed # gsed
 #
 # 1. Install Pyenv
 brew update --force && brew upgrade # Update homebrew itself 
-brew install pyenv
+brew install pyenv pyenv-virtualenv
 
 # 2. Add pathes ~/.bash_profile
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bash_profile
