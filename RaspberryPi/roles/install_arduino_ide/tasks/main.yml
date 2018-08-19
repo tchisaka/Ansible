@@ -4,6 +4,8 @@
   args:
     executable: /bin/bash
     chdir: roles
+  environment:
+    GREP_OPTIONS: ""
   delegate_to: localhost
   register: result
   changed_when: no
