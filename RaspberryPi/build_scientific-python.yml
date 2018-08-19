@@ -5,9 +5,7 @@
     PATH: "{{ build_sp.setup_paths | join(':')}}"
   pre_tasks:
     - import_tasks: 'roles/common/get_board_kind.yml'
-    - debug: var=borad_kind
   roles:
     - apt_get_upgrade
     - install_pyenv
     - build_scientific-python
-
