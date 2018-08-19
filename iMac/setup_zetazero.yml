@@ -31,7 +31,7 @@
 #    with_items: "{{ wolfram_id }}"
 
   - name: recive data
-    script: move-data.sh -m
+    shell: ./move-data.sh -m
     args:
       executable: /bin/bash
       chdir: "{{ ansible_user_dir }}/ZetaZero/"
