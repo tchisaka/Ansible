@@ -1,5 +1,5 @@
 ---
 - name: Install Arduino IDE
-  hosts: TinkerBoard
+  hosts: QuadCore
   roles:
     - install_arduino_ide
