@@ -13,9 +13,9 @@
     ignore_errors: true
     changed_when: board.stderr != ""
         
-  - name: set_fact board_kind
+  - name: set_fact kind_of_board
     set_fact: 
-      borad_kind: "{{ board.stdout }}"
+      kind_of_board: "{{ board.stdout | replace(' ','_') | lower }}"
+      
+  - debug: var=kind_of_board
 
-  - debug: var=borad_kind
-  - debug: msg={{ borad_kind | replace(' ','_') | lower }}

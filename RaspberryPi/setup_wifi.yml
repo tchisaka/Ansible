@@ -2,21 +2,7 @@
 - name: setup wifi
   hosts: all
   pre_tasks:
-    - name: check kind of board
-      shell: |
-        KEY=Details:
-        gpio -v | grep $KEY | sed -e "s/$KEY//g" -e 's/ *$//g'
-      args:
-        executable: /bin/bash
-      register: board
-      ignore_errors: true
-      changed_when: board.stderr != ""
-        
-    - name: set_fact board_kind
-      set_fact: 
-        kind_of_board: "{{ board.stdout | replace(' ','_') | lower }}"
-        
-    - debug: var=kind_of_board
+    - include_tasks: 'roles/common/get_board_kind.yml'
 
   roles:
     - setup_usb_wifi_adapter

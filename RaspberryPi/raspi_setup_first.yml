@@ -2,8 +2,8 @@
 - name: Raspberry Pi's First Setup
   hosts: all
   pre_tasks:
-    - name: check board kind
-      import_tasks: 'roles/common/get_board_kind.yml'
+    - include_tasks: 'roles/common/get_board_kind.yml'
+
   roles:
     # set SSH public key
     - set_authorized_key
@@ -11,7 +11,7 @@
     - international_setting
     # set Wi-Fi configure
     - setup_usb_wifi_adapter
-    - setup_wifi_ap
+    - { role: setup_wifi_ap, board: "{{ kind_of_board }}" }
     # update software
     - apt_get_upgrade
     - update_firmware
