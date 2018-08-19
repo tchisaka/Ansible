@@ -46,4 +46,4 @@ install_pyenv:
 # --- installing python version on pyenv ---
   python_versions:
     - 2.7.15
-    - 3.6.5
+    - 3.6.6
