@@ -1,5 +1,5 @@
 ---
-# hostname: Susie ( ASUS TinkerBoard )
+# hostname: Susie ( ASUS TinkerBoard S )
 ansible-uer: linaro
 
 # ----- i2c module -----
