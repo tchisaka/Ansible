@@ -66,8 +66,8 @@
   pip:
     name: "{{ item }}"
     state: latest
-    chdir:      "{{ ansible_user_dir }}/.pyenv/versions/{{ build_sp.based_python }}" 
-    executable: "{{ ansible_user_dir }}/.pyenv/versions/{{ build_sp.based_python }}/bin/pip"
+    chdir:      "{{ ansible_user_dir }}/.pyenv/versions/{{ build_sp.virtual_python }}" 
+    executable: "{{ ansible_user_dir }}/.pyenv/versions/{{ build_sp.virtual_python }}/bin/pip"
   with_items: "{{ build_sp.pip_science_pkgs }}"
   ignore_errors: yes
   when: ansible_architecture == 'armv7l'
