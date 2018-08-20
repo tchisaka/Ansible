@@ -23,6 +23,7 @@
     path: "{{ install_pyenv.add_bashrc.path }}"
     line: "{{ item }}"
   with_items: "{{ install_pyenv.add_bashrc.line }}"
+  notify: source bashrc
 
 # install new pythons
 - name: check python versions in virtual environment
