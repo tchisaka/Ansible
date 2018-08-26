@@ -67,6 +67,9 @@ nano .bash_aliases
 alias ll="ls -l"
 alias la="ls -la"
 alias tinker-update="sudo apt-get update;sudo apt-get upgrade -y; sudo apt-get dist-upgrade -y;sudo apt-get autoremove -y"
+alias cpu-temp="echo $(cat /sys/class/thermal/thermal_zone0/type)=$(cat /sys/class/thermal/thermal_zone0/temp)"
+alias gpu-temp="echo $(cat /sys/class/thermal/thermal_zone1/type)=$(cat /sys/class/thermal/thermal_zone1/temp)"
+alias cpu-freq="cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq"
 #.................
 source ~/.bash_aliases
 
