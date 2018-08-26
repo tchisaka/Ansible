@@ -22,9 +22,13 @@
   lineinfile:
     path: "{{ install_pyenv.add_bashrc.path }}"
     line: "{{ item }}"
+  register: bashrc_changed
   with_items: "{{ install_pyenv.add_bashrc.line }}"
-  notify: source bashrc
 
+- name: source bashrc
+  shell: bash -lc "source {{ install_pyenv.add_bashrc.path }}"
+  when: bashrc_changed|changed
+  
 # install new pythons
 - name: check python versions in virtual environment
   shell: pyenv versions

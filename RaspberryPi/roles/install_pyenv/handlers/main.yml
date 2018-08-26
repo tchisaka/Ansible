@@ -1,2 +1,0 @@
-- name: source .bashrc
-  shell: bash -lc "source {{ add_bashrc.path }}"
