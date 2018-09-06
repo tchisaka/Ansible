@@ -23,6 +23,7 @@ add_pkgs:
   - python3-gpiozero
   # Fonts
   - fonts-takao
+  - fonts-noto-cjk
   # Japanese Input Method
   - ibus-mozc
   # Web Browser
