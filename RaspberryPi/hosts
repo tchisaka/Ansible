@@ -11,7 +11,7 @@ John.local
 Kate.local
 Leon.local
 Maggie.local
-RasPad3Bp.local
+RasPad.local
 Wanda.local
 Xan.local
 Yolanda.local
@@ -33,7 +33,7 @@ John.local
 Kate.local
 Leon.local
 Maggie.local
-RasPad3Bp.local
+RasPad.local
 Wanda.local
 Xan.local
 Yolanda.local
@@ -54,7 +54,7 @@ John.local
 Kate.local
 Leon.local
 Maggie.local
-RasPad3Bp.local
+RasPad.local
 Susie.local ansible_user=linaro
 Tinker.local ansible_user=linaro
 
@@ -69,7 +69,7 @@ John.local
 Kate.local
 Leon.local
 Maggie.local
-RasPad3Bp.local
+RasPad.local
 
 [zetazero]
 Cathy.local
@@ -108,7 +108,7 @@ John.local
 Kate.local
 Leon.local
 Maggie.local
-RasPad3Bp.local
+RasPad.local
 
 [OWFS]
 Annie.local
