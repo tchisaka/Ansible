@@ -4,7 +4,7 @@
   hosts: all
   pre_tasks:
     - name: remove known host keys from localhost
-      shell: ssh-keygen -R {{ item | lower }}
+      shell: ssh-keygen -R {{ item | lower }} 2> /dev/null
       with_items: "{{ inventory_hostname }}"  
       delegate_to: localhost
       ignore_errors: true
