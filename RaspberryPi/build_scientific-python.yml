@@ -2,9 +2,11 @@
 - name: Build Scientific Python on Raspberry pi
   hosts: QuadCore
   environment:
-    PATH: "{{ build_sp.setup_paths | join(':')}}"
+    PATH: "{{ ansible_env.PATH }}:{{ ansible_user_dir }}/.pyenv/plugins/pyenv-virtualenv/shims:{{ ansible_user_dir }}/.pyenv/shims:{{ ansible_user_dir }}/.pyenv/bin"
+
   pre_tasks:
     - import_tasks: 'roles/common/get_board_kind.yml'
+
   roles:
     - apt_get_upgrade
     - install_pyenv

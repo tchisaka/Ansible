@@ -2,11 +2,10 @@
 # ----- install additional packages for OWFS -----
 - name: apt-get install packages for OWFS
   apt:
-    name: "{{ item }}"
+    name: "{{ install_owfs.add_pkgs }}"
     state: latest
     force: yes
     update_cache: yes
-  with_items: "{{ install_owfs.add_pkgs }}"
 
 # ----- download the latest version of OWFS -----
 - name: download OWFS file

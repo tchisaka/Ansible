@@ -2,27 +2,16 @@
 #----- set wifi access point -----
 - name: add wifi access point
   become: true
-  shell: nmcli c add type wifi ifname wlan0 con-name {{ item.ssid }} ssid {{ item.ssid }}
+  shell: |
+    nmcli c add type wifi ifname wlan0 con-name {{ item.ssid }} ssid {{ item.ssid }}
+    nmcli con modify {{ item.ssid }} wifi-sec.key-mgmt wpa-psk
+    nmcli con modify {{ item.ssid }} wifi-sec.psk {{ item.passphrase }}
+  changed_when: false
   with_items: "{{ setup_wifi_ap.wifi_list }}"
 
-- name: set wifi access use wpa-psk
-  become: true
-  shell: nmcli con modify {{ item.ssid }} wifi-sec.key-mgmt wpa-psk;
-  with_items: "{{ setup_wifi_ap.wifi_list }}"
-  
-- name: set wifi apassphrase
-  become: true
-  shell: nmcli con modify {{ item.ssid }} wifi-sec.psk {{ item.passphrase }};
-  with_items: "{{ setup_wifi_ap.wifi_list }}"
-  
-- name: set wifi passphrase
-  become: true
-  shell: nmcli con modify {{ item.ssid }} wifi-sec.psk {{ item.passphrase }};
-  with_items: "{{ setup_wifi_ap.wifi_list }}"
-  
-- name: activate wifi access
-  become: true
-  shell: nmcli con up {{ item.ssid }};
-  ignore_errors: yes
-  with_items: "{{ setup_wifi_ap.wifi_list }}"
+#- name: activate wifi access
+#  become: true
+#  shell: nmcli con up {{ item.ssid }};
+#  ignore_errors: yes
+#  with_items: "{{ setup_wifi_ap.wifi_list }}"
 

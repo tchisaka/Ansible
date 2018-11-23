@@ -59,7 +59,10 @@ sudo apt-get dist-upgrade -y
 sudo apt-get autoremove -y
 
 # ===== 6. Install additional pkgs #1 =====
-sudo apt-get install -y git aptitude avahi-daemon avahi-autoipd avahi-utils libnss-mdns nano samba samba-common-bin tightvncserver xrdp xorgxrdp
+sudo apt-get install -y git aptitude avahi-daemon avahi-autoipd avahi-utils libnss-mdns nano samba samba-common samba-common-bin xrdp xorgxrdp
+sudo apt-get install -y i2c-tools libi2c-dev python-smbus
+sudo apt-get install -y fonts-takao fonts-noto-cjk ibus-mozc firefox-esr
+sudo apt-get install -y zip unzip p7zip-full exfat-fuse exfat-utils
 
 # --- create .bash_aliases ---
 nano .bash_aliases
@@ -70,6 +73,10 @@ alias tinker-update="sudo apt-get update;sudo apt-get upgrade -y; sudo apt-get d
 alias cpu-temp="echo $(cat /sys/class/thermal/thermal_zone0/type)=$(cat /sys/class/thermal/thermal_zone0/temp)"
 alias gpu-temp="echo $(cat /sys/class/thermal/thermal_zone1/type)=$(cat /sys/class/thermal/thermal_zone1/temp)"
 alias cpu-freq="cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq"
+alias watch-cpu="watch -n 1 echo $(cat /sys/class/thermal/thermal_zone0/type)=$(cat /sys/class/thermal/thermal_zone0/temp) $(cat /sys/class/thermal/thermal_zone1/type)=$(cat /sys/class/thermal/thermal_zone1/temp) $(cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq | tr '\n' ' ')"
+
+
+
 #.................
 source ~/.bash_aliases
 

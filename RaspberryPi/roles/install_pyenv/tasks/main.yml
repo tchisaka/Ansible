@@ -4,11 +4,11 @@
 - name: apt-get install packages for pyenv
   become : true
   apt:
-    name: "{{ item }}"
+    name: "{{ install_pyenv.add_pkgs }}"
     state: latest
     force: yes
     update_cache: yes
-  with_items: "{{ install_pyenv.add_pkgs }}"
+  ignore_errors: yes
 
 # install pyenv & pyenv-vitrualenv
 - name: git clone pyenv
@@ -27,7 +27,8 @@
 
 - name: source bashrc
   shell: bash -lc "source {{ install_pyenv.add_bashrc.path }}"
-  when: bashrc_changed|changed
+  when: bashrc_changed is changed # ansible==2.5
+# when: bashrc_changed|changed #
   
 # install new pythons
 - name: check python versions in virtual environment

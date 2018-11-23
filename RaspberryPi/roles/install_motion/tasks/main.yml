@@ -6,12 +6,10 @@
 - name: apt-get install motion
   become: true
   apt:
-    name: "{{ item }}"
+    name: motion
     state: latest
     force: yes
     update_cache: yes
-  with_items:
-    - motion
 
 - name: set permission
   become: true

@@ -8,6 +8,8 @@
         src:  "{{ timezone.src }}"
         dest: "{{ timezone.dest }}"
         mode: 0644
+      changed_when: false
+    
     - name: update timezone
       become: true
       shell: dpkg-reconfigure --frontend noninteractive tzdata
@@ -55,7 +57,11 @@
       
     - name: set default locale
       become: true
-      shell: update-locale LANG={{ locale.default_lang }}
+      shell: >
+        locale-gen {{ locale.langs.enable[0] }}
+        update-locale LANG={{ locale.langs.enable[0] }}
+        export LANGUAGE={{ locale.default_lang }}
+        export LC_ALL={{ locale.default_lang }}
       changed_when: false
   tags:
     - set_locale

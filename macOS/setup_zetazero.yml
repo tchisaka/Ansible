@@ -10,7 +10,7 @@
       executable: /bin/bash
     ignore_errors: yes
     with_fileglob:
-      - ~/zetazero*.tsv
+      - ~/zeta*.tsv
 
 - name: Every Raspberry Pi's tasks
   hosts: zetazero

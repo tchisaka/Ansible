@@ -2,7 +2,8 @@
 - name: setup pyenv & pyenv-virtualenv
   hosts: QuadCore
   environment:
-    PATH: "{{ install_pyenv.setup_paths | join(':')}}"
+    PATH: "{{ ansible_env.PATH }}:{{ ansible_user_dir }}/.pyenv/plugins/pyenv-virtualenv/shims:{{ ansible_user_dir }}/.pyenv/shims:{{ ansible_user_dir }}/.pyenv/bin"
+    
   roles:
     - apt_get_upgrade
     - install_pyenv

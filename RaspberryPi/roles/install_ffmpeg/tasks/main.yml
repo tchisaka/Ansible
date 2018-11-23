@@ -5,11 +5,10 @@
 - name: apt-get install add pkgs
   become: true
   apt:
-    name: "{{ item }}"
+    name: "{{ install_ffmpeg.add_pkgs }}"
     state: latest
     force: yes
     update_cache: yes
-  with_items: "{{ install_ffmpeg.add_pkgs }}"
 
 # --- install fdk-aac ---
 - name: wget fdk-aac

@@ -47,9 +47,22 @@ cd
 # Install software
 curl https://get.pimoroni.com/hyperpixel | bash
 
+git clone https://github.com/pimoroni/hyperpixel4
+cd hyperpixel4
+sudo ./install.sh
+sudo reboot
+
+
+
 # Uninstalling
 # 1. edit /boot/config.txt & comment-out the '# HyperPixel LCD Settings' lines
 sudo nano /boot/config.txt
 # 2. stop the init and touchscreen scripts
 sudo systemctl disable hyperpixel-init
 sudo systemctl disable hyperpixel-touch
+
+cd hyperpixel4
+sudo ./uninstall.sh
+sudo reboot
+
+

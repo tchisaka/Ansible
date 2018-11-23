@@ -8,6 +8,9 @@
     changed_when: not result.stat.exists
 
   - name: Install pyenv
-    shell: echo "pyenv is not installed"
-    when: result|changed
+    debug: msg="pyenv is not installed"
+    when: result is changed
 
+  - name: Install pyenv
+    debug: msg="pyenv is installed"
+    when: result is not changed

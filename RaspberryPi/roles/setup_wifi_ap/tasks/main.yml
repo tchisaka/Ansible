@@ -1,4 +1,2 @@
 ---
-- include_tasks: "{{ board }}.yml"
-
-  
+- include_tasks: "{{ kind_of_board }}.yml"

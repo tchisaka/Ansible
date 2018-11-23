@@ -1,0 +1,17 @@
+---
+- name: Ansible Command Test
+  hosts: localhost
+  tasks:
+  - name: test
+    shell: echo $HOSTNAME
+    register: result
+    changed_when: no
+
+  - set_fact:
+      host: "{{ result.stdout }}"
+      
+  - debug: var=host
+    when: host == 'Shiori.local'
+
+  - debug: var=host
+    when: host == 'Fuga.local'

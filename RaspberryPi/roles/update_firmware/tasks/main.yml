@@ -8,6 +8,7 @@
     executable: '/bin/bash'
   ignore_errors: true
   register: result
+  when: kind_of_board == 'raspberry_pi'
   changed_when: "'reboot is needed' in result.stdout"
   notify:
     - reboot

@@ -1,0 +1,24 @@
+---
+- ansible 2.4: OK
+
+- ansible 2.5:
+  - set_authorized_key.yml: OK
+  - raspi_setup_first.yml: OK
+  - setup_pyenv.yml: WARNING
+    - `result|changed`: => `result is changed`
+  - build_scientific-python.yml: Error (pip module)
+    - error modules:
+      - matplotlib
+      - seaborn
+      - holoviews[recommended]
+    - matplotlib: => Need `sudo apt-get install FOLLOWING pkgs`
+      - libagg-dev
+      - freetype2-demos
+      
+- ansible 2.6:
+  - set_authorized_key.yml: OK
+  - raspi_setup_first.yml: OK
+
+- ansible 2.7:
+  - apt:
+    -name: item -> list

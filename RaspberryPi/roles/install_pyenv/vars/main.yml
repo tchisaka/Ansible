@@ -1,17 +1,6 @@
 ---
 # ----- vars file for install pyenv ----
 install_pyenv:
-  setup_paths:
-    - "{{ ansible_user_dir }}/.pyenv/plugins/pyenv-virtualenv/shims"
-    - "{{ ansible_user_dir }}/.pyenv/shims"
-    - "{{ ansible_user_dir }}/.pyenv/bin"
-    - /usr/local/sbin
-    - /usr/local/bin
-    - /usr/sbin
-    - /usr/bin
-    - /sbin
-    - /bin
-
 # --- add package for installing pyenv ---
   add_pkgs:
     - build-essential
@@ -25,6 +14,7 @@ install_pyenv:
     - openssl
     - libbz2-dev
     - libreadline-dev
+    - libffi-dev
 
 # --- for pyenv & pyenv-virtualenv ---
   git:
@@ -46,4 +36,4 @@ install_pyenv:
 # --- installing python version on pyenv ---
   python_versions:
     - 2.7.15
-    - 3.6.6
+    - 3.7.1

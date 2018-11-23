@@ -1,6 +1,8 @@
 ---
 - name: Raspberry Pi software update
   hosts: RPi
+  pre_tasks:
+    - import_tasks: 'roles/common/get_board_kind.yml'
   roles:
     - apt_get_upgrade
     - update_firmware

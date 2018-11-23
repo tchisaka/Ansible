@@ -28,6 +28,8 @@ sudo reboot
 
 # ========================
 # zetazerocd ~/ZetaZero
+cd
+tmux
 cd ~/ZetaZero
 ./zetazero.wl &
 sleep 0.1

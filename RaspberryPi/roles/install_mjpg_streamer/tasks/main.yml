@@ -5,11 +5,10 @@
 - name: apt-get install additional pkgs
   become: true
   apt:
-    name: "{{ item }}"
+    name: "{{ install_mjpg_streamer.add_pkgs }}"
     state: latest
     force: yes
     update_cache: yes
-  with_items: "{{ install_mjpg_streamer.add_pkgs }}"
 
 - name: download source code of mjpg-streamer
   become: true
